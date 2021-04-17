@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS laravel;
+
+CREATE USER IF NOT EXISTS 'laravel'@'%' IDENTIFIED BY 'we0yf8si';
+
+GRANT ALL PRIVILEGES ON laravel.* TO 'laravel'@'%';
