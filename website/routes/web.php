@@ -14,14 +14,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-//
-// Route::get('/test', function () {
-//     return view('test');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
-// Route::get('user/profile', function () {return view('test');})->name('profile');
+Route::get('/pricing', function () {
+    return view('pricing');
+});
 
-Route::get('/', IndexController::class);
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/services', function () {
+    return view('services');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/counselor', function () {
+    return view('counselor');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+
+Route::get('/blog-single', function () {
+    return view('blog-single');
+});
