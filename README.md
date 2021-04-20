@@ -15,6 +15,7 @@
     php artisan serve
   ```
 # How to Push (Steps):
+  **DO NOT PUSH the .env file** that is inside the website folder
  1. Create a new branch
 ```shell
 git checkout -b <new-branch-name>
