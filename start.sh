@@ -30,11 +30,11 @@ apt install php-mbstring php-xml php-bcmath -y
 echo "step 2"
 set -e
 echo -e "\n Create a LARAVEL sql user"
-mysql -e "source /root/CSIT334-Project/laravel.sql";
+mysql -e "source /root/CSCI334-Project/laravel.sql";
 
 echo "Create Laravel"
 # sudo -u test -H sh -c "cd /home/test/; composer create-project --prefer-dist laravel/laravel website"
-mv /root/CSIT334-Project/website /home/test
+mv /root/CSCI334-Project/website /home/test
 
 echo "Edit Laravel .env"
 cd /home/test/website;
@@ -48,8 +48,8 @@ sudo chown -R $USER:www-data /var/www/website/bootstrap/cache
 sudo chmod -R 775 /var/www/website/storage
 sudo chmod -R 775 /var/www/website/bootstrap/cache
 ip_addr=$(hostname -I); 
-sed -i -e "s|{{ IP_ADDR }}|$ip_addr|g" /root/CSIT334-Project/website_test
-sudo cp /root/CSIT334-Project/website_nginx /etc/nginx/sites-available
+sed -i -e "s|{{ IP_ADDR }}|$ip_addr|g" /root/CSCI334-Project/website_test
+sudo cp /root/CSCI334-Project/website_nginx /etc/nginx/sites-available
 sudo ln -s /etc/nginx/sites-available/website_nginx /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
