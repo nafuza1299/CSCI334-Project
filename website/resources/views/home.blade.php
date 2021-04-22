@@ -7,25 +7,47 @@
 		<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/#menu-forms -->
 		<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
 			<h3> Sign up for a free account</h3>
-			<form class="px-4 py-3">
-					<div class="form-group">
-					<label for="exampleDropdownFormEmail1">Email address</label>
-					<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+				<form class="px-4 py-3">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Username">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="First Name">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Last Name">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Email">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+							<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">							</div>
+						</div>
+						<div class="col-md-12">
+							<input type="checkbox" class="" id="dropdownCheck">
+								<label class="form-check-label" for="dropdownCheck">
+									Remember me
+								</label>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary py-3 px-4">Register</button>
+								<!-- <input type="submit" value="Send message" class="btn btn-primary py-3 px-4"> -->
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-					<label for="exampleDropdownFormPassword1">Password</label>
-					<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-					</div>
-					<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="dropdownCheck">
-					<label class="form-check-label" for="dropdownCheck">
-						Remember me
-					</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
 				</form>
 					<div></div>
-					<a class="dropdown-item" href="#">New around here? Sign up</a>
 					<a class="dropdown-item" href="#">Forgot password?</a>	
 		</div>
 		<div class="container">	

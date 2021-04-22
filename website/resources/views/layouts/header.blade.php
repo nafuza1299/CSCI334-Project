@@ -52,8 +52,8 @@
 			</div>
 			<div class="collapse navbar-collapse justify-content-md-end" id="ftco-nav">
 				<p>
-					<a href="#" class="btn btn-white py-2 px-4 mt-3">Log In</a>
-					<a href="#" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
+					<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
+					<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
 				</p>
 			</div>
 		</div>
