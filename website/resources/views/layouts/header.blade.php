@@ -41,7 +41,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav">
-				<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('home')}}" class="nav-link">Home</a></li>
+				<li class="nav-item {{ Request::segment(1) === 'home' ? 'active' : null }}"><a href="{{url('home')}}" class="nav-link">Home</a></li>
 				<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Quick Check In</a></li>
 				<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">News</a></li>
 				<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Services</a></li>
