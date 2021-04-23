@@ -34,14 +34,14 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="{{url('home')}}">COVID19 Tracker</a>
+			<a class="navbar-brand" href="{{url('/')}}">COVID19 Tracker</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="oi oi-menu"></span> Menu
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav">
-				<li class="nav-item {{ Request::segment(1) === 'home' ? 'active' : null }}"><a href="{{url('home')}}" class="nav-link">Home</a></li>
+				<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Home</a></li>
 				<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Quick Check In</a></li>
 				<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">News</a></li>
 				<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Services</a></li>
@@ -52,8 +52,23 @@
 			</div>
 			<div class="collapse navbar-collapse justify-content-md-end" id="ftco-nav">
 				<p>
-					<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
-					<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
+					@guest
+						<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
+						<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
+					@endguest
+
+					@auth
+						<a class="btn btn-primary py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
+						<form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log out') }}
+                            </x-dropdown-link>
+                        </form>
+					@endauth
 				</p>
 			</div>
 		</div>

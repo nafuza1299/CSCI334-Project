@@ -5,58 +5,63 @@
 		<!-- <div class="hero-wrap" style="background-image: url('assets/images/bg_1.jpg');" data-stellar-background-ratio="0.5"> -->
 		<!-- <div class="overlay"></div> -->
 		<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/#menu-forms -->
-		<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
-			<h3> Sign up for a free account</h3>
-				<form class="px-4 py-3">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Username">
+		@guest
+			<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
+				
+				<h3> Sign up for a free account</h3>
+					<form class="px-4 py-3">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Username">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="First Name">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Last Name">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Email">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+								<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">							</div>
+							</div>
+							<div class="col-md-12">
+								<input type="checkbox" class="" id="dropdownCheck">
+									<label class="form-check-label" for="dropdownCheck">
+										Remember me
+									</label>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary py-3 px-4">Register</button>
+									<!-- <input type="submit" value="Send message" class="btn btn-primary py-3 px-4"> -->
+								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="First Name">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Last Name">
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-							<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">							</div>
-						</div>
-						<div class="col-md-12">
-							<input type="checkbox" class="" id="dropdownCheck">
-								<label class="form-check-label" for="dropdownCheck">
-									Remember me
-								</label>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary py-3 px-4">Register</button>
-								<!-- <input type="submit" value="Send message" class="btn btn-primary py-3 px-4"> -->
-							</div>
-						</div>
-					</div>
-				</form>
-					<div></div>
-					<a class="dropdown-item" href="#">Forgot password?</a>	
-		</div>
+					</form>
+						<div></div>
+						<a class="dropdown-item" href="#">Forgot password?</a>	
+			</div>
+		@endguest
 		<div class="container">	
 		<div class=" no-gutters slider-text align-items-center">
 			<div class="col-md-6 ftco-animate d-flex align-items-end">
 				<div class="text w-100">
 				<h1 class="mb-4">Stay safe with the new COVID-19 APP</h1>
-				<p class="mb-4">Sign up now to track your activities and prevent COVID19 contact</p>
-				<p><a href="#" class="btn btn-white py-3 px-4">Log In</a> <a href="#" class="btn btn-primary py-3 px-4">Register</a></p>
+				@guest
+					<p class="mb-4">Sign up now to track your activities and prevent COVID19 contact</p>
+					<p><a href="#" class="btn btn-white py-3 px-4">Log In</a> <a href="#" class="btn btn-primary py-3 px-4">Register</a></p>
+				@endguest
 			</div>
 			</div>
 			<!-- <a href="https://vimeo.com/45830194" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
