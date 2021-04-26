@@ -1,80 +1,99 @@
 <div class="wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 d-flex align-items-center">
-						<p class="mb-2 mt-2 phone pl-md-2">
-							<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
-							<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
-						</p>
-					</div>
-					<div class="col-md-6 d-flex align-items-center">
-						<p class="mb-2 mt-2 phone pl-md-2" >
-							 <a style="color:black">
-							 	<b>Visit our </b>
-							</a>
-							<a href="#" style="color:black"><b><u>news page</u></b></a>
-							<a style="color:black">
-								<b>for the latest on COVID-19 updates in Australia</b>
-							</a>
-						</p>
-					</div>
-					<!-- <div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media">
-						<p class="mb-0 d-flex">
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-						</p>
-					</div> -->
-					</div>
-				</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 d-flex align-items-center">
+				<p class="mb-2 mt-2 phone pl-md-2">
+					<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
+					<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+				</p>
 			</div>
+			<div class="col-md-6 d-flex align-items-center">
+				<p class="mb-2 mt-2 phone pl-md-2" >
+					<a style="color:black">
+						<b>Visit our </b>
+					</a>
+					<a href="#" style="color:black"><b><u>news page</u></b></a>
+					<a style="color:black">
+						<b>for the latest on COVID-19 updates in Australia</b>
+					</a>
+				</p>
+			</div>
+			<!-- <div class="col-md-6 d-flex justify-content-md-end">
+				<div class="social-media">
+				<p class="mb-0 d-flex">
+					<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+					<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+					<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+					<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+				</p>
+			</div> -->
 		</div>
+	</div>
+</div>
 
-		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="{{url('/')}}">COVID19 Tracker</a>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light mb-5" id="ftco-navbar">
+	<div class="container">
+		<div class="row">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="oi oi-menu"></span> Menu
 			</button>
+			<div class="col-md-12">
+				<div class="collapse navbar-collapse" id="ftco-nav">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 d-flex align-items-center">
+								<a class="navbar-brand" href="{{url('/')}}">COVID19 Tracker</a>
+								<ul class="navbar-nav">
+									<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Home</a></li>
+									<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Quick Check In</a></li>
+									<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">News</a></li>
+								</ul>
+							</div>
+							<div class="col-md-4 d-flex justify-content-md-end">
+									@guest
+									<p>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav">
-				<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Home</a></li>
-				<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Quick Check In</a></li>
-				<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">News</a></li>
-				<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Services</a></li>
-				<li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : null }}"><a href="{{url('pricing')}}" class="nav-link">Pricing</a></li>
-				<li class="nav-item {{ Request::segment(1) === 'blog' ? 'active' : null }}"><a href="{{url('blog')}}" class="nav-link">Blog</a></li>
-				<li class="nav-item {{ Request::segment(1) === 'contact' ? 'active' : null }}"><a href="{{url('contact')}}" class="nav-link">Contact</a></li>
-			</ul>
-			</div>
-			<div class="collapse navbar-collapse justify-content-md-end" id="ftco-nav">
-				<p>
-					@guest
-						<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
-						<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
-					@endguest
+										<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
+										<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
+									</p>
+									@endguest
 
-					@auth
-					<form method="POST" action="{{ route('logout') }}">
-						<p>
-							<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
-								@csrf
-										<x-button class="btn btn-primary py-2 px-4 mt-3">
-											{{ __('Log out') }}
-										</x-button>
-								<!-- <x-dropdown-link :href="route('logout')"
-										onclick="event.preventDefault();
-													this.closest('form').submit();">
-									{{ __('Log out') }}
-								</x-dropdown-link> -->
-						</p>
-                        </form>
-					@endauth
-				</p>
+									@auth
+									<form method="POST" action="{{ route('logout') }}">
+										<p>
+											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
+												@csrf
+														<x-button class="btn btn-primary py-2 px-4 mt-3">
+															{{ __('Log out') }}
+														</x-button>
+												<!-- <x-dropdown-link :href="route('logout')"
+														onclick="event.preventDefault();
+																	this.closest('form').submit();">
+													{{ __('Log out') }}
+												</x-dropdown-link> -->
+										</p>
+										</form>
+									@endauth
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		</nav>
-		<!-- END nav -->
+			<div class="col-md-12">
+				@auth
+				<div class="collapse navbar-collapse" id="ftco-nav">
+					<ul class="navbar-nav">
+						<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Overview</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Alerts</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">COVID-19 Vaccine</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Check-In History</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : null }}"><a href="{{url('pricing')}}" class="nav-link">Manage Account</a></li>
+					</ul>
+				</div>
+				@endauth
+
+			</div>
+		</div>		
+	</div>
+</nav>
+<!-- END nav -->

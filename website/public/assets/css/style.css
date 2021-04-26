@@ -3437,6 +3437,9 @@ input[type="button"].btn-block {
   display: block; }
 
 .navbar {
+  -webkit-box-shadow: 0 8px 6px -6px #999; 
+  -moz-box-shadow: 0 8px 6px -6px #999; 
+  box-shadow: 0 8px 6px -6px #999;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3452,9 +3455,9 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem; }
   .navbar > .container,
   .navbar > .container-fluid {
-    display: -webkit-box;
+    /* display: -webkit-box; */
     display: -ms-flexbox;
-    display: flex;
+    /* display: flex; */
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -webkit-box-align: center;
