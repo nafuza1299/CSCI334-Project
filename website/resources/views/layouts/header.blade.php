@@ -58,15 +58,19 @@
 					@endguest
 
 					@auth
-						<a class="btn btn-primary py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
-						<form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log out') }}
-                            </x-dropdown-link>
+					<form method="POST" action="{{ route('logout') }}">
+						<p>
+							<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
+								@csrf
+										<x-button class="btn btn-primary py-2 px-4 mt-3">
+											{{ __('Log out') }}
+										</x-button>
+								<!-- <x-dropdown-link :href="route('logout')"
+										onclick="event.preventDefault();
+													this.closest('form').submit();">
+									{{ __('Log out') }}
+								</x-dropdown-link> -->
+						</p>
                         </form>
 					@endauth
 				</p>
