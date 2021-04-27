@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/overview', function () {
-    return view('overview');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -53,4 +49,13 @@ Route::get('/blog', function () {
 
 Route::get('/blog-single', function () {
     return view('blog-single');
+});
+
+//public
+Route::get('/overview', function () {
+    return view('overview');
+});
+
+Route::get('/vaccine', function () {
+    return view('vaccine');
 });

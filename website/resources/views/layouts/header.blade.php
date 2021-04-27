@@ -64,7 +64,7 @@
 											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
 												@csrf
 														<x-button class="btn btn-primary py-2 px-4 mt-3">
-															{{ __('Log out') }}
+															{{ __('Log Out') }}
 														</x-button>
 												<!-- <x-dropdown-link :href="route('logout')"
 														onclick="event.preventDefault();
@@ -85,7 +85,7 @@
 					<ul class="navbar-nav" style="font-weight:600 !important">
 						<li class="nav-item {{ Request::segment(1) === 'overview' ? 'active' : null }}"><a href="{{url('overview')}}" class="nav-link">Overview</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Alerts</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">COVID-19 Vaccine</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{url('vaccine')}}" class="nav-link">COVID-19 Vaccine</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Check-In History</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : null }}"><a href="{{url('pricing')}}" class="nav-link">Manage Account</a></li>
 					</ul>

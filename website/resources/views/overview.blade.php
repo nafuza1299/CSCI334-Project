@@ -26,19 +26,10 @@
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-justify">
 								<ul style="list-style-type: none !important;">
-									<li>
-										<h2>Last Check In</h2>
-									</li>
-									<li>
-										Location: University Of Wollongong
-									</li>
-									<li>
-										Checked In: 28/03/21 11:02
-									</li>
-									<li>
-										Checked Out: 28/03/21 11:02
-									</li>
-									
+									<li><h2>Last Check In</h2></li>
+									<li>Location: University Of Wollongong</li>
+									<li>Checked In: 28/03/21 11:02</li>
+									<li>Checked Out: 28/03/21 11:02</li>	
 								</ul>
 							</div>
 						</div>
@@ -53,18 +44,10 @@
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-justify">
 								<ul style="list-style-type: none !important;">
-									<li>
-										<h2>Last COVID-19 Test</h2>
-									</li>
-									<li>
-										Test Result: Negative
-									</li>
-									<li>
-										Test Location: Barden Ridge Test Facility
-									</li>
-									<li>
-										Test Date: 17/3/21
-									</li>
+									<li><h2>Last COVID-19 Test</h2></li>
+									<li>Test Result: Negative</li>
+									<li>Test Location: Barden Ridge Test Facility</li>
+									<li>Test Date: 17/3/21</li>
 								</ul>
 							</div>
 						</div>
