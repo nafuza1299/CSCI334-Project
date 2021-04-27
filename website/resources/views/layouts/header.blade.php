@@ -81,9 +81,9 @@
 			</div>
 			<div class="col-md-12">
 				@auth
-				<div class="collapse navbar-collapse" id="ftco-nav">
-					<ul class="navbar-nav">
-						<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Overview</a></li>
+				<div class="collapse navbar-collapse" id="ftco-nav" >
+					<ul class="navbar-nav" style="font-weight:600 !important">
+						<li class="nav-item {{ Request::segment(1) === 'overview' ? 'active' : null }}"><a href="{{url('overview')}}" class="nav-link">Overview</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Alerts</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'counselor' ? 'active' : null }}"><a href="{{url('counselor')}}" class="nav-link">COVID-19 Vaccine</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Check-In History</a></li>
@@ -91,7 +91,6 @@
 					</ul>
 				</div>
 				@endauth
-
 			</div>
 		</div>		
 	</div>
