@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -8836,8 +8836,8 @@ textarea.form-control {
     width: 100%;
     margin: 0 auto; }
     .block-7 .btn-primary:hover, .block-7 .btn-primary:focus {
-      background: #ffd644 !important;
-      color: #fff; }
+      background: #fff !important;
+      color: #3BB9FF !important; }
   .block-7:hover, .block-7:focus {
     -webkit-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
     -moz-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
