@@ -23,32 +23,33 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+//template
 Route::get('/pricing', function () {
-    return view('pricing');
+    return view('template.pricing');
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('template.contact');
 });
 
 Route::get('/services', function () {
-    return view('services');
+    return view('template.services');
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('template.about');
 });
 
 Route::get('/counselor', function () {
-    return view('counselor');
+    return view('template.counselor');
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    return view('template.blog');
 });
 
 Route::get('/blog-single', function () {
-    return view('blog-single');
+    return view('template.blog-single');
 });
 
 //public
