@@ -46,7 +46,7 @@
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-center">
 								<ul style="list-style-type: none !important;">
-									<li>h2>COVID-19 Vaccine Certificate</h2></li>
+									<li><h2>COVID-19 Vaccine Certificate</h2></li>
 									<li>You currently do not have a COVID-19 vaccine certificate</li>
 								</ul>
 							</div>
@@ -72,7 +72,7 @@
 					<div class="text-left align-items-end">
 						<div class="text">
 							<ul style="list-style-type: none !important;">
-								<li><h4>Phase 1a</h4></li>
+								<li><h4><b>Phase 1a</b></h4></li>
 								<li>Quarantine, border and front line health care workers </li>
 								<li>Frontline health care worker sub-groups for prioritisation</li>
 								<li>Aged care and disability care staff</li>
@@ -85,7 +85,7 @@
 					<div class="text-right align-items-end">
 						<div class="text">
 							<ul style="list-style-type: none !important;">
-								<li><h4>Phase 2a</h4></li>
+								<li><h4><b>Phase 2a</b></h4></li>
 								<li>Adults aged 60-69 years</li>
 								<li>Adults aged 50-59 years</li>
 								<li>Continue vaccinating Aboriginal and Torres Strait Islander adults</li>
@@ -99,7 +99,7 @@
 					<div class="text-left align-items-end">
 						<div class="text">
 							<ul style="list-style-type: none !important;">
-								<li><h4>Phase 1b</h4></li>
+								<li><h4><b>Phase 1b</b></h4></li>
 								<li>Elderly adults aged 80 years and over</li>
 								<li>Elderly adults aged 70-79 years</li>
 								<li>Other health care workers</li>
@@ -113,10 +113,10 @@
 					<div class="text-right align-items-end">
 						<div class="text">
 							<ul style="list-style-type: none !important;">
-								<li><h4>Phase 2b</h4></li>
+								<li><h4><b>Phase 2b</b></h4></li>
 								<li>Balance of adult population</li>
 								<li>Catch up any unvaccinated Australians from previous phases</li>
-								<li><h4>Phase 3</h4></li>
+								<li><h4><b>Phase 3</b></h4></li>
 								<li>< 16 if recommended*</li>
 							</ul>
 						</div>

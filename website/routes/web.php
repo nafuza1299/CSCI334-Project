@@ -59,3 +59,7 @@ Route::get('/overview', function () {
 Route::get('/vaccine', function () {
     return view('vaccine');
 });
+
+Route::get('/quick-check-in', function () {
+    return view('quick-check-in');
+});

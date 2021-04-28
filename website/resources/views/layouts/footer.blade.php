@@ -3,18 +3,14 @@
 		<div class="row mb-5">
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4">
-				<h2 class="ftco-heading-2 logo"><a href="#">Counselor</a></h2>
-				<p>Far far away, behind the word mountains, far from the countries.</p>
-				<ul class="ftco-footer-social list-unstyled mt-2">
-				<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-				<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-				<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-				</ul>
+				<h2 class="ftco-heading-2 logo"><a href="#">COVID19 Tracker</a></h2>
+				<p>Australia-based COVID19 Tracker for public, business, health staff and health organization use</p>
+			
 			</div>
 			</div>
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4 ml-md-4">
-				<h2 class="ftco-heading-2">Explore</h2>
+				<h2 class="ftco-heading-2">Mobile App</h2>
 				<ul class="list-unstyled">
 				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
 				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
@@ -25,7 +21,7 @@
 			</div>
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4 ml-md-4">
-				<h2 class="ftco-heading-2">Legal</h2>
+				<h2 class="ftco-heading-2">Community</h2>
 				<ul class="list-unstyled">
 				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Join us</a></li>
 				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Blog</a></li>
