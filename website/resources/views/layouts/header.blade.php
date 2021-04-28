@@ -84,9 +84,9 @@
 				<div class="collapse navbar-collapse" id="ftco-nav" >
 					<ul class="navbar-nav" style="font-weight:600 !important">
 						<li class="nav-item {{ Request::segment(1) === 'overview' ? 'active' : null }}"><a href="{{url('overview')}}" class="nav-link">Overview</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{url('about')}}" class="nav-link">Alerts</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'alerts' ? 'active' : null }}"><a href="{{url('alerts')}}" class="nav-link">Alerts</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{url('vaccine')}}" class="nav-link">COVID-19 Vaccine</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{{url('services')}}" class="nav-link">Check-In History</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'history' ? 'active' : null }}"><a href="{{url('history')}}" class="nav-link">Check-In History</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : null }}"><a href="{{url('pricing')}}" class="nav-link">Manage Account</a></li>
 					</ul>
 				</div>

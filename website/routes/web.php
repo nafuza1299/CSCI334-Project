@@ -63,3 +63,11 @@ Route::get('/vaccine', function () {
 Route::get('/quick-check-in', function () {
     return view('quick-check-in');
 });
+
+Route::get('/alerts', function () {
+    return view('alerts');
+});
+
+Route::get('/history', function () {
+    return view('history');
+});
