@@ -10,7 +10,12 @@
   ```shell
   cd [your local path]/CSCI334-Project/website/
   ```
-  5. Once the current directory is .../CSCI334-Project/website/ 
+  5. Install dependencies
+  ```shell
+  composer install
+  npm install
+  ```
+  6. Once the current directory is .../CSCI334-Project/website/ 
   ```shell
     php artisan serve
   ```
