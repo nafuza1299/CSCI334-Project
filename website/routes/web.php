@@ -53,22 +53,24 @@ Route::get('/blog-single', function () {
 });
 
 //public
-Route::get('/overview', function () {
-    return view('overview');
-});
+Route::get('/overview', ['middleware' => 'auth', 'uses' => 'OverviewController@index']);
 
-Route::get('/vaccine', function () {
+Route::get('vaccine', ['middleware' => 'auth', function()
+{
     return view('vaccine');
-});
+}]);
 
-Route::get('/quick-check-in', function () {
+Route::get('quick-check-in', ['middleware' => 'auth', function()
+{
     return view('quick-check-in');
-});
+}]);
 
-Route::get('/alerts', function () {
+Route::get('alerts', ['middleware' => 'auth', function()
+{
     return view('alerts');
-});
+}]);
 
-Route::get('/history', function () {
+Route::get('history', ['middleware' => 'auth', function()
+{
     return view('history');
-});
+}]);
