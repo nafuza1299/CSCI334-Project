@@ -21,7 +21,7 @@
 			<div class="slider-text align-items-center" style="height:inherit !important">
 				<div class="col-md-6 d-flex align-items-end">
 					<div class="text">
-						<h1  style="font-size:40px !important">Check In History</h1>
+						<h1  style="font-size:40px !important">Alerts</h1>
 						<h2>Hi, {{{Auth::user()->name}}}</h2>
                         <h4>Edit Alerts</h4>
 					</div>

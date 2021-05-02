@@ -73,10 +73,7 @@ Route::get('alerts', ['middleware' => 'auth', function()
     return view('alerts');
 }]);
 
-Route::get('history', ['middleware' => 'auth', function()
-{
-    return view('history');
-}]);
+Route::get('history', ['middleware' => 'auth', 'uses' => 'CheckInController@index'])->name('history');
 
 Route::get('search', ['as' => 'search', 'uses' => 'QRCodeController@search']);
 
