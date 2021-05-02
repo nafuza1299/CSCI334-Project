@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    public function index()
+    {
+       
+            // return view('overview', compact());
+        return view('profile');
+
+        
+    }
     public function editAccountInfo(Request $request)
     {
         $request->validate([
@@ -18,7 +26,7 @@ class ProfileController extends Controller
             'first_name' => 'required|string|max:190',
             'last_name' => 'required|string|max:190',
             'address' => 'nullable|string|max:190',
-            'phone_number' => 'nullable|numeric|max:12',
+            'phone_number' => 'nullable|numeric|digits_between:8,12',
             'date_of_birth' => 'nullable|date',
         ]);
         
@@ -30,6 +38,6 @@ class ProfileController extends Controller
         $user->phone_number = $request->phone_number;
         $user->date_of_birth = $request->date_of_birth;
         $user->save();
-        return view('profile');
+        return redirect(route('profile'));
     }
 }

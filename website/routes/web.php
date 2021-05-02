@@ -60,10 +60,8 @@ Route::get('vaccine', ['middleware' => 'auth', function()
     return view('vaccine');
 }]);
 
-Route::get('profile', ['middleware' => 'auth', function()
-{
-    return view('profile');
-}]);
+Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
+
 
 Route::get('quick-check-in', ['middleware' => 'auth', function()
 {
