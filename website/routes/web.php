@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -79,3 +79,11 @@ Route::get('history', ['middleware' => 'auth', function()
 {
     return view('history');
 }]);
+
+Route::get('search', ['as' => 'search', 'uses' => 'QRCodeController@search']);
+
+Route::get('/qr-code/generate/{latitude}/{longitude}/{address}', 'QRCodeController@index');
+
+Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
+
+
