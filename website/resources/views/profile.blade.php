@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="name" class="form-control" type="text" name="name" :value="Auth::user()->name" required placeholder="Name"/>
+                            <x-input id="email" class="form-control" type="email" name="email" :value="Auth::user()->email" required placeholder="Email"/>
                         </div>
                     </div>
 					<div class="col-md-12">
