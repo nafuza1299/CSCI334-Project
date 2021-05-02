@@ -156,16 +156,16 @@ class UserCrudController extends CrudController
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
             ],
-            // [
-            //     'name'  => 'password',
-            //     'label' => trans('backpack::permissionmanager.password'),
-            //     'type'  => 'password',
-            // ],
-            // [
-            //     'name'  => 'password_confirmation',
-            //     'label' => trans('backpack::permissionmanager.password_confirmation'),
-            //     'type'  => 'password',
-            // ],
+            [
+                'name'  => 'password',
+                'label' => trans('backpack::permissionmanager.password'),
+                'type'  => 'password',
+            ],
+            [
+                'name'  => 'password_confirmation',
+                'label' => trans('backpack::permissionmanager.password_confirmation'),
+                'type'  => 'password',
+            ],
             [
                 // two interconnected entities
                 'label'             => trans('backpack::permissionmanager.user_role_permission'),
