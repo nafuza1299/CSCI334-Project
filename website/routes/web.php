@@ -67,14 +67,9 @@ Route::get('vaccine', ['middleware' => 'auth', function()
 
 Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
 
-Route::get('alerts', ['middleware' => 'auth', function()
-{
-    return view('alerts');
-}]);
+Route::get('alerts', ['middleware' => 'auth', 'uses' => 'AlertsController@index'])->name('alerts');
 
 Route::get('history', ['middleware' => 'auth', 'uses' => 'CheckInController@index'])->name('history');
-
-Route::get('search', ['as' => 'search', 'uses' => 'QRCodeController@search']);
 
 Route::get('/qr-code/generate/{latitude}/{longitude}/{address}', 'QRCodeController@index');
 
