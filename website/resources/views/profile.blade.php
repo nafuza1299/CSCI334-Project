@@ -21,31 +21,37 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="first_name">First Name</label>
                                         <x-input id="first_name" class="form-control" type="text" name="first_name" :value="Auth::user()->first_name" required placeholder="First Name" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="last_name">Last Name</label>
                                         <x-input id="last_name" class="form-control" type="text" name="last_name" :value="Auth::user()->last_name" required placeholder="Last Name" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="email">Email</label>
                                         <x-input id="email" class="form-control" type="email" name="email" :value="Auth::user()->email" required placeholder="Email"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="address">Address</label>
                                         <x-input id="address" class="form-control" type="text" name="address" :value="Auth::user()->address" placeholder="Address"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="phone_number">Phone Number</label>
                                         <x-input id="phone_number" class="form-control" type="number" name="phone_number" :value="Auth::user()->phone_number" placeholder="Phone Number"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="date_of_birth">Date of Birth</label>
                                         <x-input id="date_of_birth" class="form-control" type="date" name="date_of_birth" :value="Auth::user()->date_of_birth" placeholder="Date of Birth"/>
                                     </div>
                                 </div>
