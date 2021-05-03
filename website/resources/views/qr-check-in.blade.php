@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required placeholder="Email" autofocus/>
+                            <x-input id="name" class="form-control" type="name" name="name" :value="old('name')" required placeholder="Username" autofocus/>
                         </div>
                     </div>
                     <div class="col-md-12">

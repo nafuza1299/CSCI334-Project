@@ -50,9 +50,12 @@
 								</ul>
 							</div>
 							<div class="col-md-4 d-flex justify-content-md-end">
+									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2">
+											<i class="fa fa-bell"></i>
+										<span class="icon-button__badge">2</span>
+									</a>
 									@guest
 									<p>
-
 										<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
 										<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
 									</p>
@@ -61,6 +64,7 @@
 									@auth
 									<form method="POST" action="{{ route('logout') }}">
 										<p>
+
 											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
 												@csrf
 														<x-button class="btn btn-primary py-2 px-4 mt-3">

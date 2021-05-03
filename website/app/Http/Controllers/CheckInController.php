@@ -16,7 +16,8 @@ class CheckInController extends Controller
                             ->orderByDesc('check_in_time')
                             ->take(10)
                             ->get();
-        
-        return view('history', ['checkin_data' => $checkin_data]);
+                    // return view('overview', compact());
+
+        return view('history', compact('checkin_data'));
     }
 }
