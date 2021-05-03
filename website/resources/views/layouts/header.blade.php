@@ -87,7 +87,7 @@
 						<li class="nav-item {{ Request::segment(1) === 'alerts' ? 'active' : null }}"><a href="{{url('alerts')}}" class="nav-link">Alerts</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{url('vaccine')}}" class="nav-link">COVID-19 Vaccine</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'history' ? 'active' : null }}"><a href="{{url('history')}}" class="nav-link">Check-In History</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : null }}"><a href="{{url('profile')}}" class="nav-link">Manage Account</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'profile' ? 'active' : null }}"><a href="{{url('profile')}}" class="nav-link">Manage Account</a></li>
 					</ul>
 				</div>
 				@endauth

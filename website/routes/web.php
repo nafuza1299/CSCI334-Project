@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('quick-check-in',  function()
+{
+    return view('quick-check-in');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -61,12 +66,6 @@ Route::get('vaccine', ['middleware' => 'auth', function()
 }]);
 
 Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
-
-
-Route::get('quick-check-in', ['middleware' => 'auth', function()
-{
-    return view('quick-check-in');
-}]);
 
 Route::get('alerts', ['middleware' => 'auth', function()
 {
