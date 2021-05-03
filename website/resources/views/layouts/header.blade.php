@@ -46,7 +46,7 @@
 								<ul class="navbar-nav">
 									<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Home</a></li>
 									<li class="nav-item {{ Request::segment(1) === 'quick-check-in' ? 'active' : null }}"><a href="{{url('quick-check-in')}}" class="nav-link">Quick Check In</a></li>
-									<li class="nav-item {{ Request::segment(1) === 'blog' ? 'active' : null }}"><a href="{{url('blog')}}" class="nav-link">News</a></li>
+									<li class="nav-item {{ Request::segment(1) === 'news' ? 'active' : null }}"><a href="{{url('news')}}" class="nav-link">News</a></li>
 								</ul>
 							</div>
 							<div class="col-md-4 d-flex justify-content-md-end">
