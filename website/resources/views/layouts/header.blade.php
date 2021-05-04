@@ -59,7 +59,7 @@
 									@endguest
 
 									@auth
-									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2">
+									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2" id="notif_count">
 											<i class="fa fa-bell"></i>
 											@if(count(Auth::user()->unreadNotifications) > 0)
 												<span class="icon-button__badge">{{count(Auth::user()->unreadNotifications)}}</span>

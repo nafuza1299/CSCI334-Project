@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Notifications;
-
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,6 +11,7 @@ class Alerts extends Notification
 {
     use Queueable;
     public $message, $type;
+
 
     /**
      * Create a new notification instance.
@@ -31,7 +32,7 @@ class Alerts extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -60,5 +61,12 @@ class Alerts extends Notification
             'type' => $this->type,
             'message'=> $this->message
         ];
+    }
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage([
+            'msg_type' => $this->type,
+            'message'=> $this->message,
+        ]);
     }
 }
