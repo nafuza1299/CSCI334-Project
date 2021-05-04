@@ -17,7 +17,7 @@
 </style>
 <section>
     <body>
-        <div class="container">	
+        <div class="container mb-5">	
 			<div class="slider-text align-items-center" style="height:inherit !important">
 				<div class="col-md-6 d-flex align-items-end">
 					<div class="text">
@@ -36,45 +36,24 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach(Auth::user()->notifications as $notification)
                             <tr>
                             <th scope="row">
                                 <div class="row-status">
                                     <div class='box yellow'></div>
-                                    <span>COVID-19 Cases Update</span>
+                                    <span>{{$notification->data['type']}}</span>
                                 </div>
                             </th>
-                            <td>0 COVID-19 cases were recorded in your area</td>
-                            <td>21/3/21</td>
+                            <td>{{$notification->data['message']}}</td>
+                            <td>{{$notification->created_at->diffForHumans()}}</td>
                             </tr>
                             <tr>
-                            <th scope="row">
-                                <div class="row-status">
-                                    <div class='box yellow'></div>
-                                    <span>COVID-19 Cases Update</span>
-                                </div>
-                            </th>
-                            <td>0 COVID-19 cases were recorded in your area</td>
-                            <td>21/3/21</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">
-                                <div class="row-status">
-                                    <div class='box yellow'></div>
-                                    <span>COVID-19 Cases Update</span>
-                                </div>
-                            </th>
-                            <td>0 COVID-19 cases were recorded in your area</td>
-                            <td>21/3/21</td>
-                            </tr>
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
 			</div>
 		</div>
-        <div class="container mb-5">	
-
-         
-            </div>
     </body>
 </section>
 @endsection

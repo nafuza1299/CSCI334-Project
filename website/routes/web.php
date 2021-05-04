@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Notifications\Alerts;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +78,5 @@ Route::get('/qr-code/generate/{latitude}/{longitude}/{address}', 'QRCodeControll
 Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
 
 Route::get('news', ['uses' => 'NewsController@index'])->name('news');
+
+Route::get('/message', ['middleware' => 'auth', 'uses' => 'AlertsController@createAlert'])->name('createAlert');
