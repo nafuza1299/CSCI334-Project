@@ -46,6 +46,17 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'business' => [
+            'driver' => 'session',
+            'provider' => 'businesses',
+        ],
+
+        'business_api' => [
+            'driver' => 'token',
+            'provider' => 'businesses',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +80,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'businesses' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Business::class,
         ],
 
         // 'users' => [
@@ -95,6 +111,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'businesses' => [
+            'provider' => 'businesses',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
