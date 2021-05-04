@@ -50,10 +50,7 @@
 								</ul>
 							</div>
 							<div class="col-md-4 d-flex justify-content-md-end">
-									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2">
-											<i class="fa fa-bell"></i>
-										<span class="icon-button__badge">2</span>
-									</a>
+									
 									@guest
 									<p>
 										<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
@@ -62,6 +59,12 @@
 									@endguest
 
 									@auth
+									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2">
+											<i class="fa fa-bell"></i>
+											@if(count(Auth::user()->unreadNotifications) > 0)
+												<span class="icon-button__badge">{{count(Auth::user()->unreadNotifications)}}</span>
+											@endif
+									</a>
 									<form method="POST" action="{{ route('logout') }}">
 										<p>
 
