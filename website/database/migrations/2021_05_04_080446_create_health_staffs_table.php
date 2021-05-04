@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHealthStaffTable extends Migration
+class CreateHealthStaffsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateHealthStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('health_staff', function (Blueprint $table) {
+        Schema::create('health_staffs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string("position");
-            $table->foreignId('business_id')->constrained("business");
+            $table->foreignId('businesses_id')->constrained("businesses");
             $table->string("health_org_email");
             $table->boolean("verified")->default(0);
         });
@@ -30,6 +30,6 @@ class CreateHealthStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('health_staff');
+        Schema::dropIfExists('health_staffs');
     }
 }
