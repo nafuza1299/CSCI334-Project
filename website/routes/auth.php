@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\RegisteredBusinessController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
@@ -68,3 +69,20 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::post('/edit-profile', [ProfileController::class, 'editAccountInfo'])
                 ->middleware('auth')
                 ->name('edit-profile');
+
+// route for business
+Route::get('/business/register', [RegisteredBusinessController::class, 'create'])
+                ->name('business-register');
+
+Route::post('/business/register', [RegisteredBusinessController::class, 'store'])
+                ->middleware('guest');
+
+Route::get('/business/login', [AuthenticatedSessionController::class, 'create'])
+                ->middleware('guest')
+                ->name('business-login');
+
+Route::post('/business/login', [AuthenticatedSessionController::class, 'store'])
+                ->middleware('guest');
+
+
+
