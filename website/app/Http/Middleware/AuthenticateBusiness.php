@@ -15,7 +15,7 @@ class AuthenticateBusiness extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('business-login');
+            return route('business.login');
         }
     }
 }
