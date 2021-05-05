@@ -22,7 +22,11 @@
   </head>
   <body class="hold-transition skin-black sidebar-mini">
   <div class="wrapper">
-    @include('layouts.header')
+    @if(Request::is('business*'))
+      @include('layouts.organization.header')
+    @else
+      @include('layouts.user.header')
+    @endif
     <div class="content-wrapper">
       @yield('content')
     </div>
