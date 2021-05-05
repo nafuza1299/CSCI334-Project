@@ -14,8 +14,13 @@ class ProfileController extends Controller
     public function index()
     {
        
-            // return view('overview', compact());
+        // return view('overview', compact());
         return view('user.public.profile');
+        
+    }
+    public function business()
+    {
+        return view('organization.business.profile');
         
     }
     public function editAccountInfo(Request $request)
@@ -38,5 +43,23 @@ class ProfileController extends Controller
         $user->date_of_birth = $request->date_of_birth;
         $user->save();
         return redirect(route('profile'));
+    }
+    public function editAccountInfoBusiness(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:190',
+            'address' => 'nullable|string|max:190',
+            'phone_number' => 'nullable|numeric|digits_between:8,12',
+            'address' => 'nullable|string|max:190',
+        ]);
+        
+        $user = Auth::guard('business')->user();
+        $user->email = $request->email;
+        $user->name = $request->name;
+        // $user->address = $request->address;
+        $user->phone_number = $request->phone_number;
+        $user->type = $request->type;
+        $user->save();
+        return redirect(route('business.profile'));
     }
 }
