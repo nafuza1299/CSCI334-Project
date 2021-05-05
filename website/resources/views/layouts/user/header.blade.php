@@ -33,11 +33,11 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-8 d-flex align-items-center">
-								<a class="navbar-brand" href="{{url('/')}}">COVID19 Tracker</a>
+								<a class="navbar-brand" href="{{route('home')}}">COVID19 Tracker</a>
 								<ul class="navbar-nav">
-									<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Home</a></li>
-									<li class="nav-item {{ Request::segment(1) === 'quick-check-in' ? 'active' : null }}"><a href="{{url('quick-check-in')}}" class="nav-link">Quick Check In</a></li>
-									<li class="nav-item {{ Request::segment(1) === 'news' ? 'active' : null }}"><a href="{{url('news')}}" class="nav-link">News</a></li>
+									<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+									<li class="nav-item {{ Request::segment(1) === 'quick-check-in' ? 'active' : null }}"><a href="{{route('quick-check-in')}}" class="nav-link">Quick Check In</a></li>
+									<li class="nav-item {{ Request::segment(1) === 'news' ? 'active' : null }}"><a href="{{route('news')}}" class="nav-link">News</a></li>
 								</ul>
 							</div>
 							<div class="col-md-4 d-flex justify-content-md-end">
@@ -58,7 +58,7 @@
 									<form method="POST" action="{{ route('logout') }}">
 										<p>
 
-											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
+											<a class="btn btn-white py-2 px-4 mt-3" href="{{route('profile')}}">Welcome {{{Auth::user()->name}}}</a> 
 												@csrf
 											<x-button class="btn btn-primary py-2 px-4 mt-3">
 												{{ __('Log Out') }}
@@ -75,11 +75,11 @@
 				@auth
 				<div class="collapse navbar-collapse" id="ftco-nav" >
 					<ul class="navbar-nav" style="font-weight:600 !important">
-						<li class="nav-item {{ Request::segment(1) === 'overview' ? 'active' : null }}"><a href="{{url('overview')}}" class="nav-link">Overview</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'alerts' ? 'active' : null }}"><a href="{{url('alerts')}}" class="nav-link">Alerts</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{url('vaccine')}}" class="nav-link">COVID-19 Vaccine</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'history' ? 'active' : null }}"><a href="{{url('history')}}" class="nav-link">Check-In History</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'profile' ? 'active' : null }}"><a href="{{url('profile')}}" class="nav-link">Manage Account</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'overview' ? 'active' : null }}"><a href="{{route('overview')}}" class="nav-link">Overview</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'alerts' ? 'active' : null }}"><a href="{{route('alerts')}}" class="nav-link">Alerts</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{route('vaccine')}}" class="nav-link">COVID-19 Vaccine</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'history' ? 'active' : null }}"><a href="{{route('history')}}" class="nav-link">Check-In History</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'profile' ? 'active' : null }}"><a href="{{route('profile')}}" class="nav-link">Manage Account</a></li>
 					</ul>
 				</div>
 				@endauth
