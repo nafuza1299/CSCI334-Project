@@ -93,3 +93,20 @@ Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 
 Route::post('/business/edit-profile', [ProfileController::class, 'editAccountInfoBusiness'])
                 // ->middleware('auth')
                 ->name('business-edit-profile');
+
+
+// route for health staff
+
+Route::get('/healthstaff/register', [RegisteredUserController::class, 'create'])
+                ->middleware('guest')
+                ->name('healthstaff.register');
+
+Route::post('/healthstaff/register', [RegisteredUserController::class, 'store'])
+                ->middleware('guest');
+
+Route::get('/healthstaff/login', [AuthenticatedSessionController::class, 'create_healthstaff'])
+                ->middleware('guest')
+                ->name('healthstaff.login');
+
+Route::post('/healthstaff/login', [AuthenticatedSessionController::class, 'store_healthstaff'])
+                ->middleware('guest');

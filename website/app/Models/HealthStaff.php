@@ -13,4 +13,5 @@ class HealthStaff extends Model
         'health_org_email',
         'verified',
     ];
+    protected $table = 'health_staffs';
 }

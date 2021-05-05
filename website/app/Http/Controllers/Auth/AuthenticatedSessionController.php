@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\HealthStaff;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -18,6 +19,11 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         return view('auth.public.login');
+    }
+
+    public function create_healthstaff()
+    {
+        return view('auth.healthstaff.login');
     }
 
     /**
@@ -33,6 +39,27 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function store_healthstaff(LoginRequest $request)
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        if (HealthStaff::where('user_id', Auth::user()->id)->count() != 0){
+                return redirect('/');
+        }
+        else{
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+
+            return redirect('/login');
+        }
+        
     }
 
     /**
