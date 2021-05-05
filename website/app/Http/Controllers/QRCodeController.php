@@ -17,7 +17,7 @@ class QRCodeController extends Controller
     {
         Auth::guard('web')->logout();
 
-        return view('qr-check-in',  compact('latitude', 'longitude', 'address'));
+        return view('user.qr-check-in',  compact('latitude', 'longitude', 'address'));
     }
 
     public function store(LoginRequest $request)

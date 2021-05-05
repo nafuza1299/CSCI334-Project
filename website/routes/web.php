@@ -30,41 +30,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-//template
-Route::get('/pricing', function () {
-    return view('template.pricing');
-});
 
-Route::get('/contact', function () {
-    return view('template.contact');
-});
-
-Route::get('/services', function () {
-    return view('template.services');
-});
-
-Route::get('/about', function () {
-    return view('template.about');
-});
-
-Route::get('/counselor', function () {
-    return view('template.counselor');
-});
-
-Route::get('/blog', function () {
-    return view('template.blog');
-});
-
-Route::get('/blog-single', function () {
-    return view('template.blog-single');
-});
-
-//public
+//user
 Route::get('/overview', ['middleware' => 'auth', 'uses' => 'OverviewController@index']);
 
 Route::get('vaccine', ['middleware' => 'auth', function()
 {
-    return view('vaccine');
+    return view('user.vaccine');
 }]);
 
 Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
