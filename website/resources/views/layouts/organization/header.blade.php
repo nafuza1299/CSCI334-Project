@@ -49,7 +49,10 @@
 								@endguest
 								@auth('business')
 									<a type="button" href="{{route('business.alerts')}}" class="icon-button mr-3 px-4 mt-2" id="notif_count">
-											<i class="fa fa-bell"></i>
+										<i class="fa fa-bell"></i>
+											@if(count(Auth::guard('business')->user()->unreadNotifications) > 0)
+												<span class="icon-button__badge">{{count(Auth::guard('business')->user()->unreadNotifications)}}</span>
+											@endif
 											
 									</a>
 									<form method="POST" action="{{ route('business.logout') }}">

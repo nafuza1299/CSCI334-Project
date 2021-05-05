@@ -66,5 +66,20 @@
         });
       </script>
     @endauth
+    @auth('business')   
+      <script>
+        $(document).ready(function() {
+          user_id = {{auth()->guard('business')->id()}};
+          window.unreadNotifications = {{count(auth()->guard('business')->user()->unreadNotifications)}};
+          var alert_count;
+          Echo.private('App.Models.Business.' + user_id)
+          .notification((notification) => {
+            window.unreadNotifications++;
+            alert_count ='<i class="fa fa-bell"></i>'+'<span class="icon-button__badge">'+unreadNotifications+'</span>'
+              $("#notif_count").html(alert_count);
+          });
+        });
+      </script>
+    @endauth
     @yield('javascript')
 </body>

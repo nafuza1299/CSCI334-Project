@@ -15,12 +15,30 @@ class AlertsController extends Controller
         foreach(Auth::user()->unreadNotifications as $notification){
             $notification->markAsRead();
         }
-       return view('alerts');
+       return view('user.alerts');
     }
-    
+
+    public function business()
+    {
+        foreach(Auth::guard('business')->user()->unreadNotifications as $notification){
+            $notification->markAsRead();
+        }
+
+       return view('organization.alerts');
+    }
+
     public function createAlert()
     {
         $user = Auth::user();
+        //$user = User::findorFail(2);
+        $message = "test 3resrew343423 message";
+        $msg_type = "Covid 19 Update";
+        $user->notify(new Alerts($message, $msg_type));
+    }
+
+    public function createAlertBusiness()
+    {
+        $user = Auth::guard('business')->user();
         //$user = User::findorFail(2);
         $message = "test 3resrew343423 message";
         $msg_type = "Covid 19 Update";
