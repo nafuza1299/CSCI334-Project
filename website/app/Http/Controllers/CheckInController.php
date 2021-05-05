@@ -18,6 +18,6 @@ class CheckInController extends Controller
                             ->get();
                     // return view('overview', compact());
 
-        return view('history', compact('checkin_data'));
+        return view('user.history', compact('checkin_data'));
     }
 }

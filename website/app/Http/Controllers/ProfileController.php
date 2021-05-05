@@ -15,7 +15,7 @@ class ProfileController extends Controller
     {
        
             // return view('overview', compact());
-        return view('profile');
+        return view('user.public.profile');
         
     }
     public function editAccountInfo(Request $request)

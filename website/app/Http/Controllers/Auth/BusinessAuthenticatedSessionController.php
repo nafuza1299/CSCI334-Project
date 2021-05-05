@@ -17,7 +17,7 @@ class BusinessAuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.business-login');
+        return view('auth.business.login');
     }
 
     /**

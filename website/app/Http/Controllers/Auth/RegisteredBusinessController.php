@@ -19,7 +19,7 @@ class RegisteredBusinessController extends Controller
      */
     public function create()
     {
-        return view('auth.business-register');
+        return view('auth.business.register');
     }
 
     /**

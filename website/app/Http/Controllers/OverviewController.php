@@ -15,7 +15,7 @@ class OverviewController extends Controller
     {
        
             // return view('overview', compact());
-        return view('overview');
+        return view('user.overview');
 
         
     }
