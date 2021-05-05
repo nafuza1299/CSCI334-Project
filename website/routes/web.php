@@ -16,8 +16,12 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('user.home');
 })->name('home');
+
+Route::get('/business', function () {
+    return view('organization.home');
+})->name('business');
 
 Route::get('quick-check-in',  function()
 {
