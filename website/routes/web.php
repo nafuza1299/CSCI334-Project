@@ -61,7 +61,9 @@ Route::prefix('business')->group(function () {
 
     Route::get('/news', ['uses' => 'NewsController@index'])->name('business.news');
 
-    Route::get('/alerts', ['uses' => 'AlertsController@index'])->name('business.alerts');
+    Route::get('/alerts', ['uses' => 'AlertsController@business'])->name('business.alerts');
 
     Route::get('/overview', [ 'uses' => 'OverviewController@business'])->name('business.overview');
+
+    Route::get('/message', ['uses' => 'AlertsController@createAlertBusiness'])->name('createAlertBusiness');
 });
