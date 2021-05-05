@@ -13,12 +13,18 @@ class OverviewController extends Controller
      */
     public function index()
     {
-       
             // return view('overview', compact());
         return view('user.overview');
-
         
     }
+
+    public function business()
+    {
+            // return view('overview', compact());
+        return view('organization.overview');
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.

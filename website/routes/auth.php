@@ -90,3 +90,6 @@ Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 
                 // ->middleware('business.auth')
                 ->name('business.logout');
 
+Route::post('/business/edit-profile', [ProfileController::class, 'editAccountInfoBusiness'])
+                // ->middleware('auth')
+                ->name('business-edit-profile');
