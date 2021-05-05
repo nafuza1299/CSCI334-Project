@@ -87,6 +87,6 @@ Route::post('/business/login', [BusinessAuthenticatedSessionController::class, '
                 ->middleware('guest');
 
 Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 'destroy'])
-                ->middleware('auth')
+                // ->middleware('business.auth')
                 ->name('business.logout');
 
