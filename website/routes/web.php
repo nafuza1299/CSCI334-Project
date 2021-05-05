@@ -29,14 +29,14 @@ Route::get('/', function () {
 Route::get('quick-check-in',  function()
 {
     return view('quick-check-in');
-});
+})->name('quick-check-in');
 
-Route::get('overview', ['middleware' => 'auth', 'uses' => 'OverviewController@index']);
+Route::get('overview', ['middleware' => 'auth', 'uses' => 'OverviewController@index'])->name('overview');
 
 Route::get('vaccine', ['middleware' => 'auth', function()
 {
     return view('user.vaccine');
-}]);
+}])->name('vaccine');
 
 Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
 
@@ -44,7 +44,7 @@ Route::get('alerts', ['middleware' => 'auth', 'uses' => 'AlertsController@index'
 
 Route::get('history', ['middleware' => 'auth', 'uses' => 'CheckInController@index'])->name('history');
 
-Route::get('/qr-code/check-in/{latitude}/{longitude}/{address}', 'QRCodeController@index');
+Route::get('/qr-code/check-in/{latitude}/{longitude}/{address}', 'QRCodeController@index')->name("qr-check-in");
 
 Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
 
@@ -63,5 +63,5 @@ Route::prefix('business')->group(function () {
 
     Route::get('/alerts', ['uses' => 'AlertsController@index'])->name('business.alerts');
 
-    Route::get('/overview', [ 'uses' => 'OverviewController@business']);
+    Route::get('/overview', [ 'uses' => 'OverviewController@business'])->name('business.overview');
 });
