@@ -8,7 +8,7 @@
             <x-auth-session-status class="mb-4" :status="session('status')" />  
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
-            <form method="POST" action="{{ route('business-login') }}">
+            <form method="POST" action="{{ route('business.login') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">

@@ -5,7 +5,7 @@
         <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
             <h3> Sign up for a free business account</h3>
             <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
-            <form class="px-4 py-3" method="POST" action="{{ route('business-register') }}">
+            <form class="px-4 py-3" method="POST" action="{{ route('business.register') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">

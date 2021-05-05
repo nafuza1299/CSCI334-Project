@@ -50,14 +50,35 @@
 								</ul>
 							</div>
 							<div class="col-md-4 d-flex justify-content-md-end">
-									
-									@guest
+							<!-- business side login/logout -->
+							@if(Request::is('business/*'))
+								@guest('business')
+										<p>
+											<a href="{{ route('business.login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
+											<a href="{{ route('business.register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
+										</p>
+								@endguest
+								@auth('business')
+									<form method="POST" action="{{ route('business.logout') }}">
+										<p>
+
+											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::guard('business')->user()->name}}}</a> 
+												@csrf
+											<x-button class="btn btn-primary py-2 px-4 mt-3">
+												{{ __('Log Out') }}
+											</x-button>
+										</p>
+									</form>
+								@endauth
+							@else
+								<!-- web side login/logout -->
+								@guest
 									<p>
 										<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
 										<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
 									</p>
-									@endguest
 
+									@endguest
 									@auth
 									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2" id="notif_count">
 											<i class="fa fa-bell"></i>
@@ -70,17 +91,12 @@
 
 											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::user()->name}}}</a> 
 												@csrf
-														<x-button class="btn btn-primary py-2 px-4 mt-3">
-															{{ __('Log Out') }}
-														</x-button>
-												<!-- <x-dropdown-link :href="route('logout')"
-														onclick="event.preventDefault();
-																	this.closest('form').submit();">
-													{{ __('Log out') }}
-												</x-dropdown-link> -->
+											<x-button class="btn btn-primary py-2 px-4 mt-3">
+												{{ __('Log Out') }}
+											</x-button>
 										</p>
-										</form>
-									@endauth
+									</form>
+								@endauth
 							</div>
 						</div>
 					</div>

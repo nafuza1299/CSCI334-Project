@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredBusinessController;
+use App\Http\Controllers\Auth\BusinessAuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
@@ -72,17 +73,20 @@ Route::post('/edit-profile', [ProfileController::class, 'editAccountInfo'])
 
 // route for business
 Route::get('/business/register', [RegisteredBusinessController::class, 'create'])
-                ->name('business-register');
+                ->middleware('guest')
+                ->name('business.register');
 
 Route::post('/business/register', [RegisteredBusinessController::class, 'store'])
                 ->middleware('guest');
 
-Route::get('/business/login', [AuthenticatedSessionController::class, 'create'])
+Route::get('/business/login', [BusinessAuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
-                ->name('business-login');
+                ->name('business.login');
 
-Route::post('/business/login', [AuthenticatedSessionController::class, 'store'])
+Route::post('/business/login', [BusinessAuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
 
-
+Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 'destroy'])
+                ->middleware('auth')
+                ->name('business.logout');
 
