@@ -23,7 +23,7 @@ class AlertsController extends Controller
         $user = Auth::user();
         //$user = User::findorFail(2);
         $message = "test 3resrew343423 message";
-        $type = "Covid 19 Update";
-        $user->notify(new Alerts($message, $type));
+        $msg_type = "Covid 19 Update";
+        $user->notify(new Alerts($message, $msg_type));
     }
 }
