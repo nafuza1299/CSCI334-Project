@@ -33,11 +33,10 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-6 d-flex align-items-center">
-								<a class="navbar-brand" href="{{url('/')}}">COVID19 Tracker Business</a>
+								<a class="navbar-brand" href="{{route('business')}}">COVID19 Tracker Business</a>
 								<ul class="navbar-nav">
-									<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{url('/')}}" class="nav-link">Home</a></li>
-									<li class="nav-item {{ Request::segment(1) === 'quick-check-in' ? 'active' : null }}"><a href="{{url('quick-check-in')}}" class="nav-link">Quick Check In</a></li>
-									<li class="nav-item {{ Request::segment(1) === 'news' ? 'active' : null }}"><a href="{{url('news')}}" class="nav-link">News</a></li>
+									<li class="nav-item {{ Request::segment(2) === NULL ? 'active' : null }}"><a href="{{route('business')}}" class="nav-link">Home</a></li>
+									<li class="nav-item {{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{{route('business.news')}}" class="nav-link">News</a></li>
 								</ul>
 							</div>
 							<div class="col-md-6 d-flex justify-content-md-end">
@@ -49,12 +48,12 @@
 										</p>
 								@endguest
 								@auth('business')
-									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2" id="notif_count">
+									<a type="button" href="{{route('business.alerts')}}" class="icon-button mr-3 px-4 mt-2" id="notif_count">
 											<i class="fa fa-bell"></i>
 											
 									</a>
 									<form method="POST" action="{{ route('business.logout') }}">
-											<a class="btn btn-white py-2 px-4 mt-3">Welcome {{{Auth::guard('business')->user()->name}}}</a> 
+											<a class="btn btn-white py-2 px-4 mt-3" href="{{route('business.profile')}}">Welcome {{{Auth::guard('business')->user()->username}}}</a> 
 												@csrf
 											<x-button class="btn btn-primary py-2 px-4 mt-3">
 												{{ __('Log Out') }}
@@ -70,12 +69,12 @@
 			@auth('business')
 				<div class="collapse navbar-collapse" id="ftco-nav" >
 					<ul class="navbar-nav" style="font-weight:600 !important">
-						<li class="nav-item {{ Request::segment(1) === 'overview' ? 'active' : null }}"><a href="{{url('overview')}}" class="nav-link">Overview</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'alerts' ? 'active' : null }}"><a href="{{url('alerts')}}" class="nav-link">Alerts</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'alerts' ? 'active' : null }}"><a href="{{url('alerts')}}" class="nav-link">Generate QR-Code</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{url('vaccine')}}" class="nav-link">Safe Registration</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'history' ? 'active' : null }}"><a href="{{url('history')}}" class="nav-link">Report</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'profile' ? 'active' : null }}"><a href="{{url('profile')}}" class="nav-link">Manage Account</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'overview' ? 'active' : null }}"><a href="{{route('business.overview')}}" class="nav-link">Overview</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'alerts' ? 'active' : null }}"><a href="{{route('business.alerts')}}" class="nav-link">Alerts</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'qr-code' ? 'active' : null }}"><a href="{{url('business/qr-code/generate')}}" class="nav-link">Generate QR-Code</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'safe-registration' ? 'active' : null }}"><a href="{{url('business.safe-registration')}}" class="nav-link">Safe Registration</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'report' ? 'active' : null }}"><a href="{{url('business.report')}}" class="nav-link">Report</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{route('business.profile')}}" class="nav-link">Manage Account</a></li>
 					</ul>
 				</div>
 				@endauth
