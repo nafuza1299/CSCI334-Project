@@ -97,6 +97,7 @@
 										</p>
 									</form>
 								@endauth
+							@endif
 							</div>
 						</div>
 					</div>
