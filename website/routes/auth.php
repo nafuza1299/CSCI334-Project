@@ -74,17 +74,19 @@ Route::post('/edit-profile', [ProfileController::class, 'editAccountInfo'])
 // route for business
 Route::get('/business/register', [RegisteredBusinessController::class, 'create'])
                 ->middleware('guest')
-                ->name('business-register');
+                ->name('business.register');
 
 Route::post('/business/register', [RegisteredBusinessController::class, 'store'])
                 ->middleware('guest');
 
 Route::get('/business/login', [BusinessAuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
-                ->name('business-login');
+                ->name('business.login');
 
 Route::post('/business/login', [BusinessAuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
 
-
+Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 'destroy'])
+                ->middleware('auth')
+                ->name('business.logout');
 

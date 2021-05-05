@@ -54,6 +54,6 @@ class RegisteredBusinessController extends Controller
 
         // Auth::login($user);
 
-        return redirect(route('business-login'));
+        return redirect(route('business.login'));
     }
 }
