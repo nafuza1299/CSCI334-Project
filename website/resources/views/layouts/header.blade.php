@@ -77,13 +77,14 @@
 										<a href="{{ route('login') }}" class="btn btn-white py-2 px-4 mt-3">Log In</a>
 										<a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 mt-3">Register</a> 
 									</p>
-								@endguest
-								@auth
-									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2">
-										<i class="fa fa-bell"></i>
-										@if(count(Auth::user()->unreadNotifications) > 0)
-											<span class="icon-button__badge">{{count(Auth::user()->unreadNotifications)}}</span>
-										@endif
+
+									@endguest
+									@auth
+									<a type="button" href="{{route('alerts')}}" class="icon-button mr-3 px-4 mt-2" id="notif_count">
+											<i class="fa fa-bell"></i>
+											@if(count(Auth::user()->unreadNotifications) > 0)
+												<span class="icon-button__badge">{{count(Auth::user()->unreadNotifications)}}</span>
+											@endif
 									</a>
 									<form method="POST" action="{{ route('logout') }}">
 										<p>

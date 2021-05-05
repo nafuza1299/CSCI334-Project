@@ -17,6 +17,8 @@
     
     <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
   </head>
   <body class="hold-transition skin-black sidebar-mini">
   <div class="wrapper">
@@ -26,7 +28,7 @@
     </div>
     @include('layouts.footer')
   </div>
-
+  
     <!-- Scripts -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-migrate-3.0.1.min.js')}}"></script>
@@ -42,6 +44,23 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{{asset('assets/js/google-map.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
-    
+    <script src="{{asset('assets/js/moment.min.js')}}"></script>
 
+    <script src="{{asset('js/app.js')}}"></script>
+    @auth   
+      <script>
+        $(document).ready(function() {
+          user_id = {{auth()->id()}};
+          window.unreadNotifications = {{count(auth()->user()->unreadNotifications)}};
+          var alert_count;
+          Echo.private('App.Models.User.' + user_id)
+          .notification((notification) => {
+            window.unreadNotifications++;
+            alert_count ='<i class="fa fa-bell"></i>'+'<span class="icon-button__badge">'+unreadNotifications+'</span>'
+              $("#notif_count").html(alert_count);
+          });
+        });
+      </script>
+    @endauth
+    @yield('javascript')
 </body>
