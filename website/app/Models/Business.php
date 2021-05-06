@@ -11,6 +11,7 @@ use \Backpack\CRUD\app\Models\Traits\CrudTrait;
 class Business extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use CrudTrait; 
 
     protected $fillable = [
         'name',

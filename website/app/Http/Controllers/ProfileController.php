@@ -26,7 +26,7 @@ class ProfileController extends Controller
     public function editAccountInfo(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:190',
+            'email' => 'required|email|max:190',
             'first_name' => 'required|string|max:190',
             'last_name' => 'required|string|max:190',
             'address' => 'nullable|string|max:190',
