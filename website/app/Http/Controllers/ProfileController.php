@@ -47,6 +47,7 @@ class ProfileController extends Controller
     public function editAccountInfoBusiness(Request $request)
     {
         $request->validate([
+            'email' => 'required|email|max:190',
             'name' => 'required|string|max:190',
             'address' => 'nullable|string|max:190',
             'phone_number' => 'nullable|numeric|digits_between:8,12',
