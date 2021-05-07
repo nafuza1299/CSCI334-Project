@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\QRCode;
 
 class OverviewController extends Controller
 {
@@ -13,8 +14,13 @@ class OverviewController extends Controller
      */
     public function index()
     {
-            // return view('overview', compact());
-        return view('user.overview');
+        $userid = auth()->id();
+        $last_checkin_data = QRCode::where('user_id', $userid)
+                            ->orderByDesc('check_in_time')
+                            ->take(1)
+                            ->get();
+
+            return view('user.overview', compact('last_checkin_data'));
         
     }
 

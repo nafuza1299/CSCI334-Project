@@ -26,8 +26,8 @@
 							<div class="d-flex align-items-center justify-content-center text-justify">
 								<ul style="list-style-type: none !important;">
 									<li><h2>Last Check In</h2></li>
-									<li>Location: University Of Wollongong</li>
-									<li>Checked In: 28/03/21 11:02</li>
+									<li>Location: {{$last_checkin_data[0]->address}}</li>
+									<li>Checked In: {{$last_checkin_data[0]->check_in_time}}</li>
 									<li>Checked Out: 28/03/21 11:02</li>	
 								</ul>
 							</div>
