@@ -57,13 +57,14 @@ Route::prefix('business')->group(function () {
     Route::get('/', function () {
         return view('organization.home');
     })->name('business');
-    Route::get('/profile', ['uses' => 'ProfileController@business'])->name('business.profile');
 
     Route::get('/news', ['uses' => 'NewsController@index'])->name('business.news');
 
-    Route::get('/alerts', ['uses' => 'AlertsController@business'])->name('business.alerts');
+    Route::get('/profile', ['middleware' => 'business.auth:business','uses' => 'ProfileController@business'])->name('business.profile');
 
-    Route::get('/overview', [ 'uses' => 'OverviewController@business'])->name('business.overview');
+    Route::get('/alerts', ['middleware' => 'business.auth:business', 'uses' => 'AlertsController@business'])->name('business.alerts');
 
-    Route::get('/message', ['uses' => 'AlertsController@createAlertBusiness'])->name('createAlertBusiness');
+    Route::get('/overview', ['middleware' => 'business.auth:business', 'uses' => 'OverviewController@business'])->name('business.overview');
+
+    Route::get('/message', ['middleware' => 'business.auth:business','uses' => 'AlertsController@createAlertBusiness'])->name('createAlertBusiness');
 });

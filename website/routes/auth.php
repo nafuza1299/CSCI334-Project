@@ -87,11 +87,11 @@ Route::post('/business/login', [BusinessAuthenticatedSessionController::class, '
                 ->middleware('guest');
 
 Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 'destroy'])
-                // ->middleware('business.auth')
+                ->middleware('business.auth:business')
                 ->name('business.logout');
 
 Route::post('/business/edit-profile', [ProfileController::class, 'editAccountInfoBusiness'])
-                // ->middleware('auth')
+                ->middleware('business.auth:business')
                 ->name('business-edit-profile');
 
 
