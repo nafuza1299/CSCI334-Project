@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\PermissionManager\app\Http\Requests\UserStoreCrudRequest as StoreRequest;
-use Backpack\PermissionManager\app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserCreateRequest;
+// use Backpack\PermissionManager\app\Http\Requests\UserStoreCrudRequest as StoreRequest;
+// use Backpack\PermissionManager\app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserCrudController extends CrudController
@@ -85,14 +87,33 @@ class UserCrudController extends CrudController
 
     public function setupCreateOperation()
     {
+        $this->crud->addFields([
+            [
+                'name'  => 'name',
+                'label' => trans('backpack::permissionmanager.name'),
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'password',
+                'label' => trans('backpack::permissionmanager.password'),
+                'type'  => 'password',
+            ],
+            [
+                'name'  => 'password_confirmation',
+                'label' => trans('backpack::permissionmanager.password_confirmation'),
+                'type'  => 'password',
+            ],
+        ]);
+        
         $this->addUserFields();
-        $this->crud->setValidation(StoreRequest::class);
+        
+        $this->crud->setValidation(UserCreateRequest::class);
     }
 
     public function setupUpdateOperation()
     {
         $this->addUserFields();
-        $this->crud->setValidation(UpdateRequest::class);
+        $this->crud->setValidation(UserUpdateRequest::class);
     }
 
     /**
@@ -147,25 +168,34 @@ class UserCrudController extends CrudController
     {
         $this->crud->addFields([
             [
-                'name'  => 'name',
-                'label' => trans('backpack::permissionmanager.name'),
-                'type'  => 'text',
-            ],
-            [
                 'name'  => 'email',
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
             ],
-            // [
-            //     'name'  => 'password',
-            //     'label' => trans('backpack::permissionmanager.password'),
-            //     'type'  => 'password',
-            // ],
-            // [
-            //     'name'  => 'password_confirmation',
-            //     'label' => trans('backpack::permissionmanager.password_confirmation'),
-            //     'type'  => 'password',
-            // ],
+            [
+                'name'  => 'first_name',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'last_name',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'vaccinated',
+                'type'  => 'checkbox',
+            ],
+            [
+                'name'  => 'address',
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'phone_number',
+                'type'  => 'number',
+            ],
+            [
+                'name'  => 'date_of_birth',
+                'type'  => 'date',
+            ],
             [
                 // two interconnected entities
                 'label'             => trans('backpack::permissionmanager.user_role_permission'),
