@@ -17,7 +17,7 @@
 </style>
 <section>
     <body>
-        <div class="container mb-5">	
+        <div class="container block-7 mb-5">	
 			<div class="slider-text align-items-center" style="height:inherit !important">
 				<div class="col-md-6 d-flex align-items-end">
 					<div class="text">
