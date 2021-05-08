@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\QrCode;
+use App\Models\CheckIn;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\BusinessAddress;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class QRCodeController extends Controller
 {
@@ -30,7 +33,7 @@ class QRCodeController extends Controller
             'address' => 'required|string|max:255',
         ]);
 
-         $check_in= QRCode::create([
+         $check_in= CheckIn::create([
             'user_id' => $id,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
@@ -40,61 +43,26 @@ class QRCodeController extends Controller
         return redirect(route('home'));
     }
 
-    public function create()
+    public function indexGenerate()
     {
-        //
+        $userid = Auth::guard('business')->user()->id;
+        $address= BusinessAddress::where('business_id', $userid)
+                            ->orderByDesc('address')
+                            ->get();
+
+        return view('organization.generate-qr-code', compact('address'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-  
+    public function generateQR(Request $request)
+    {   
+        $userid = Auth::guard('business')->user()->id;
+        $address= BusinessAddress::where('business_id', $userid)
+                            ->where('id', $request->id)
+                            ->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+       $qrcode = QrCode::generate(route('qr-check-in', ['latitude' => $address[0]->latitude,'longitude' => $address[0]->longitude,'address' => $address[0]->address]));
+        
+       return redirect()->route('business.generate.qr')->with('qrcode', $qrcode);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
