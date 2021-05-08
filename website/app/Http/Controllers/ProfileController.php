@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\BusinessAddress;
 
 
 class ProfileController extends Controller
@@ -20,7 +21,13 @@ class ProfileController extends Controller
     }
     public function business()
     {
-        return view('organization.business.profile');
+        $userid = Auth::guard('business')->user()->id;
+        $address= BusinessAddress::where('business_id', $userid)
+                            ->orderByDesc('address')
+                            ->get();
+                    // return view('overview', compact());
+
+        return view('organization.business.profile', compact('address'));
         
     }
     public function editAccountInfo(Request $request)
@@ -61,6 +68,55 @@ class ProfileController extends Controller
         $user->phone_number = $request->phone_number;
         $user->type = $request->type;
         $user->save();
+        return redirect(route('business.profile'));
+    }
+
+    public function editAddressInfoBusiness(Request $request)
+    {
+        $request->validate([
+            'latitude' => 'required|numeric|between:0,99.99',
+            'longitude' => 'required|numeric|between:0,99.99',
+            'address' => 'required|string|max:255',
+        ]);
+        
+        $user = Auth::guard('business')->user()->id;
+
+        BusinessAddress::where('business_id', $user)
+        ->where('id', $request->id)
+        ->update(['address' => $request->address, 'longitude' => $request->longitude, 'latitude' => $request->latitude])
+        ->save();
+
+        return redirect(route('business.profile'));
+    }
+
+    public function storeAddressInfoBusiness(Request $request)
+    {
+        $request->validate([
+            'latitude' => 'required|numeric|between:0,99.99',
+            'longitude' => 'required|numeric|between:0,99.99',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $user = Auth::guard('business')->user()->id;
+
+        $insert_address= BusinessAddress::create([
+            'business_id' => $user,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'address' => $request->address,
+        ]);
+        $insert_address->save();
+        return redirect(route('business.profile'));
+    }
+
+    public function deleteAddressInfoBusiness(Request $request)
+    {
+        $user = Auth::guard('business')->user()->id;
+        
+        BusinessAddress::where('business_id', $user)
+        ->where('id', $request->id)
+        ->delete();
+
         return redirect(route('business.profile'));
     }
 }

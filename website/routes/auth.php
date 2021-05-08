@@ -94,6 +94,17 @@ Route::post('/business/edit-profile', [ProfileController::class, 'editAccountInf
                 ->middleware('business.auth:business')
                 ->name('business-edit-profile');
 
+Route::post('/business/edit-address', [ProfileController::class, 'editAddressInfoBusiness'])
+                ->middleware('business.auth:business')
+                ->name('business-edit-address');
+
+Route::post('/business/insert-address', [ProfileController::class, 'storeAddressInfoBusiness'])
+                ->middleware('business.auth:business')
+                ->name('business-insert-address');
+
+Route::post('/business/delete-address', [ProfileController::class, 'deleteAddressInfoBusiness'])
+                ->middleware('business.auth:business')
+                ->name('business-delete-address');
 
 // route for health staff
 
