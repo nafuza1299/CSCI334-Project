@@ -179,32 +179,35 @@ table.table td .add {
                             </form>
                             <form id="edit-address" method="POST" action="{{route('business-edit-address')}}">
                                 @csrf
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Address</th>
-                                            <th>Latitude</th>
-                                            <th>Longitude</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($address as $data)
-                                            <input type="hidden" class="form-control" value="{{$data->id}}" name="id"/>
-                                            <tr value="{{$data->id}}">
-                                                <td name="address" type="text">{{$data->address}}</td>
-                                                <td name="latitude" type="decimal">{{$data->latitude}}</td>
-                                                <td name="longitude" type="decimal">{{$data->longitude}}</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip" onclick="document.getElementById('edit-address').submit()"><i class="fa fa-plus"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                                    <a class="delete" title="Delete"  data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <input type="hidden" id="id_edit" class="form-control" name="id"/>
+                                <input type="hidden" id="address_edit" class="form-control" name="address"/>
+                                <input type="hidden" id="latitude_edit" class="form-control" name="latitude"/>
+                                <input type="hidden" id="longitude_edit" class="form-control" name="longitude"/>
                             </form>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Address</th>
+                                        <th>Latitude</th>
+                                        <th>Longitude</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($address as $data)
+                                        <tr value="{{$data->id}}">
+                                            <td name="address" type="text">{{$data->address}}</td>
+                                            <td name="latitude" type="decimal">{{$data->latitude}}</td>
+                                            <td name="longitude" type="decimal">{{$data->longitude}}</td>
+                                            <td>
+                                                <a class="add" title="Add" data-toggle="tooltip" onclick=""><i class="fa fa-plus"></i></a>
+                                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                                                <a class="delete" title="Delete"  data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -218,7 +221,6 @@ table.table td .add {
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 	var actions = $("table td:last-child").html();
-	
 	// Add row on add button click
 	$(document).on("click", ".add", function(){
         var input_value = [];
@@ -241,15 +243,25 @@ $(document).ready(function(){
 			});			
 			$(this).parents("tr").find(".add, .edit").toggle();
 			$(".add-new").removeAttr("disabled");
-		}	
+
+            $("#id_edit").val(input_id);
+            $("#address_edit").val(input_value[0]);	
+            $("#latitude_edit").val(input_value[1]);	
+            $("#longitude_edit").val(input_value[2]);
+            document.getElementById('edit-address').submit()
+
+		}
         console.log(input_value)
-     
+
+        $("#id_edit").val(input_id);
+        $("#address_edit").val(input_value[0]);	
+        $("#latitude_edit").val(input_value[1]);	
+        $("#longitude_edit").val(input_value[2]);		
     });
 	// Edit row on edit button click
-	$(document).on("click", ".edit", function(){	
+	$(document).on("click", ".edit", function(){		
         $(this).parents("tr").find("td:not(:last-child)").each(function(){
-            console.log($(this))
-			$(this).html('<input type="'+$(this).attr('type')+'" class="form-control" name="'+$(this).attr('name')+'" value="' + $(this).text() + '">');
+			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
 		});		
 		$(this).parents("tr").find(".add, .edit").toggle();
 		$(".add-new").attr("disabled", "disabled");
@@ -257,7 +269,6 @@ $(document).ready(function(){
 	// Delete row on delete button click
 	$(document).on("click", ".delete", function(){
         var input_id =  $(this).parents("tr").attr("value");
-        console.log(input_id);
         $("#id_delete").val(input_id);
         document.getElementById('delete-address').submit()
         $(this).parents("tr").remove();

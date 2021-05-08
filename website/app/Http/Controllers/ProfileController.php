@@ -80,11 +80,9 @@ class ProfileController extends Controller
         ]);
         
         $user = Auth::guard('business')->user()->id;
-
         BusinessAddress::where('business_id', $user)
         ->where('id', $request->id)
-        ->update(['address' => $request->address, 'longitude' => $request->longitude, 'latitude' => $request->latitude])
-        ->save();
+        ->update(['address' => $request->address, 'longitude' => $request->longitude, 'latitude' => $request->latitude]);
 
         return redirect(route('business.profile'));
     }
@@ -105,7 +103,6 @@ class ProfileController extends Controller
             'longitude' => $request->longitude,
             'address' => $request->address,
         ]);
-        $insert_address->save();
         return redirect(route('business.profile'));
     }
 
