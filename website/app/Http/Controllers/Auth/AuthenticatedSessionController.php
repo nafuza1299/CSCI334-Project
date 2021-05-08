@@ -48,7 +48,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if (HealthStaff::where('user_id', Auth::user()->id)->count() != 0){
-                return redirect('/');
+                return redirect('/staff');
         }
         else{
             Auth::guard('web')->logout();

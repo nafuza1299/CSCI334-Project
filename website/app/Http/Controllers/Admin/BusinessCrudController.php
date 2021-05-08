@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\BusinessRequest;
+use App\Http\Requests\BusinessCreateRequest;
+use App\Http\Requests\BusinessUpdateRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class BusinessCrudController
@@ -18,6 +20,7 @@ class BusinessCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -31,6 +34,26 @@ class BusinessCrudController extends CrudController
         CRUD::setEntityNameStrings('business', 'businesses');
     }
 
+    public function store()
+    {
+        $this->crud->setRequest($this->crud->validateRequest());
+
+        /** @var \Illuminate\Http\Request $request */
+        $request = $this->crud->getRequest();
+
+        // Encrypt password if specified.
+        if ($request->input('password')) {
+            $request->request->set('password', Hash::make($request->input('password')));
+        } else {
+            $request->request->remove('password');
+        }
+
+        $this->crud->setRequest($request);
+        $this->crud->unsetValidation(); // Validation has already been run
+
+        return $this->traitStore();
+    }
+
     /**
      * Define what happens when the List operation is loaded.
      * 
@@ -42,10 +65,9 @@ class BusinessCrudController extends CrudController
         CRUD::column('name');
         CRUD::column('username');
         CRUD::column('email');
-        CRUD::column('phone_number');
+        // CRUD::column('phone_number');
         CRUD::column('type');
         CRUD::column('verified');
-        // CRUD::column('password');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -62,15 +84,22 @@ class BusinessCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(BusinessRequest::class);
+        CRUD::setValidation(BusinessCreateRequest::class);
 
-        CRUD::field('name');
+        $this->setupUpdateOperation();
         CRUD::field('username');
-        CRUD::field('email');
-        CRUD::field('phone_number');
-        CRUD::field('type');
-        CRUD::field('verified');
-        // CRUD::field('password');
+        $this->crud->addFields([
+            [
+                'name'  => 'password',
+                'label' => trans('backpack::permissionmanager.password'),
+                'type'  => 'password',
+            ],
+            [
+                'name'  => 'password_confirmation',
+                'label' => trans('backpack::permissionmanager.password_confirmation'),
+                'type'  => 'password',
+            ],
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -87,6 +116,14 @@ class BusinessCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(BusinessCreateRequest::class);
+
+        CRUD::field('name');
+        // CRUD::field('username');
+        CRUD::field('email');
+        CRUD::field('phone_number');
+        CRUD::field('type');
+        CRUD::field('verified');
+        
     }
 }

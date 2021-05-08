@@ -36,8 +36,8 @@ class RegisteredBusinessController extends Controller
             'name' => 'required|string|max:190',
             'username' => 'required|string|max:190|unique:businesses',
             'email' => 'required|string|email|max:190',
-            'phone_number' => 'nullable|numeric|digits_between:8,12',
-            'type' => 'string|max:190',
+            'phone_number' => 'required|numeric|digits_between:8,12',
+            'type' => 'required|string|max:190',
             'password' => 'required|string|confirmed|min:8|max:190',
         ]);
 
