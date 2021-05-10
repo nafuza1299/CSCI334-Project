@@ -94,7 +94,7 @@ table.table td .add {
                     <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; !important">
                         <h3>Edit Profile</h3>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
-                        <form id="edit-business" class="px-4 py-3" method="POST" action="{{ route('business-edit-profile') }}">
+                        <form id="edit-business" class="px-4 py-3" method="POST" action="{{ route('business.edit.profile') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -139,7 +139,7 @@ table.table td .add {
                         </form>
                     </div>
                     <div class="container block-7 " style="background-color:#FFF; border: 1px solid black !important; !important">
-                        <form id="insert-address" method="POST" action="{{route('business-insert-address')}}">
+                        <form id="insert-address" method="POST" action="{{route('business.insert.address')}}">
                             @csrf
                             <h3>Edit Business Address</h3>
                             <div class="col-md-12">
@@ -173,11 +173,11 @@ table.table td .add {
                             </div>
                         </form>
                         <div class="col-md-12">
-                            <form id="delete-address" method="POST" action="{{route('business-delete-address')}}">
+                            <form id="delete-address" method="POST" action="{{route('business.delete.address')}}">
                                 @csrf
                                 <input type="hidden" id="id_delete" class="form-control" name="id"/>
                             </form>
-                            <form id="edit-address" method="POST" action="{{route('business-edit-address')}}">
+                            <form id="edit-address" method="POST" action="{{route('business.edit.address')}}">
                                 @csrf
                                 <input type="hidden" id="id_edit" class="form-control" name="id"/>
                                 <input type="hidden" id="address_edit" class="form-control" name="address"/>
