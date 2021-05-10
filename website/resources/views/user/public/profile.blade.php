@@ -59,6 +59,26 @@
                                         <x-input id="email" class="form-control" type="text" name="email" :value="Auth::user()->email" required placeholder="Email"/>
                                     </div>
                                 </div> -->
+                                @role('healthstaff')
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="position">Position</label>
+                                            <input id="position" class="form-control" type="text" name="position" value="{{$health_staff[0]->position}}" placeholder="Position"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="health_organization">Health Organization</label>
+                                            <input id="health_organization" class="form-control" type="text" name="business" value="{{$health_staff[0]->business}}" placeholder="Health Organization"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="health_email">Health Organization Email</label>
+                                            <input id="health_email" class="form-control" type="text" name="health_org_email" value="{{$health_staff[0]->health_org_email}}" placeholder="Health Organization Email"/>
+                                        </div>
+                                    </div>
+                                @endrole
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <x-button class="btn btn-primary py-3 px-4">
