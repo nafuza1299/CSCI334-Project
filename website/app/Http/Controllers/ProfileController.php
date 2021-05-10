@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\BusinessAddress;
-
+use App\Models\HealthStaff;
 
 class ProfileController extends Controller
 {
@@ -16,7 +16,13 @@ class ProfileController extends Controller
     {
        
         // return view('overview', compact());
-        return view('user.public.profile');
+        $health_staff = '';
+        if (HealthStaff::where('user_id', Auth::user()->id)->count() != 0){
+            $userid = Auth::user()->id;
+            $health_staff = HealthStaff::where('user_id', $userid)
+                            ->get();
+        }
+        return view('user.public.profile', compact('health_staff'));
         
     }
     public function business()
@@ -40,7 +46,17 @@ class ProfileController extends Controller
             'phone_number' => 'nullable|numeric|digits_between:8,12',
             'date_of_birth' => 'nullable|date',
         ]);
-        
+        if (HealthStaff::where('user_id', Auth::user()->id)->count() != 0){
+            $request->validate([
+
+                'health_org_email' => 'required|email|max:190',
+                'position' => 'required|string|max:190',
+                'business' => 'required|string|max:190',
+            ]);
+            $user = Auth::user()->id;
+            HealthStaff::where('user_id', $user)
+                ->update(['business' => $request->business, 'position' => $request->position, 'health_org_email' => $request->health_org_email]);
+        }
         $user = Auth::user();
         $user->email = $request->email;
         $user->first_name = $request->first_name;
