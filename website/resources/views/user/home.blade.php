@@ -4,7 +4,7 @@
 	<body>
 		<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/#menu-forms -->
 		@guest
-			<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
+			<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width: 600px !important">
 				<h3> Sign up for a free account</h3>
 				<form class="px-4 py-3" method="POST" action="{{ route('register') }}">
 					@csrf
@@ -70,7 +70,7 @@
 							<h1 class="mb-4">Stay safe with the new COVID-19 APP</h1>
 							@guest
 								<p class="mb-4">Sign up now to track your activities and prevent COVID19 contact</p>
-								<p><a href="{{route('login')}}" class="btn btn-white py-3 px-4">Log In</a> <a href="{{route('business')}}" class="btn btn-primary py-3 px-4">Register</a></p>
+								<p><a href="{{route('login')}}" class="btn btn-white py-3 px-4">Log In</a> <a href="{{route('register')}}" class="btn btn-primary py-3 px-4">Register</a></p>
 							@endguest
 						</div>
 					</div>

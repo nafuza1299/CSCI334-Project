@@ -74,6 +74,8 @@ Route::prefix('business')->group(function () {
 
     Route::get('/generate-qr-code', ['middleware' => 'business.auth:business','uses' => 'QRCodeController@indexGenerate'])->name('business.generate.qr');
     
+    Route::get('/safe-registration', ['middleware' => 'business.auth:business', 'uses' => 'SafeRegistrationController@index'])->name('business.safe.registration');
+
     Route::post('/edit-profile', ['middleware' => 'business.auth:business','uses' => 'ProfileController@editAccountInfoBusiness'])
                     ->name('business.edit.profile');
 
@@ -88,4 +90,8 @@ Route::prefix('business')->group(function () {
 
     Route::post('/generated-qr-code',  ['middleware' => 'business.auth:business', 'uses' => 'QRCodeController@generateQR'])
                     ->name('generate.qr.code');
+
+    Route::post('/upload-certificate',  ['middleware' => 'business.auth:business', 'uses' => 'SafeRegistrationController@store'])
+                    ->name('business.upload.certificate');
+
 });
