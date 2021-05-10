@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\HealthStaff;
 
 class CheckIfAdmin
 {
@@ -28,8 +29,26 @@ class CheckIfAdmin
      */
     private function checkIfUserIsAdmin($user)
     {
-        return ($user->hasRole(['admin', 'healthstaff']));
+        $flag = false;
+
+        if($user->hasRole('admin')){
+            
+            $flag = true;
+        }
+        else if($user->hasRole('healthstaff')){
+            try{
+                $healthstaff = HealthStaff::where('user_id', $user->id)->firstOrFail();
+                if($healthstaff->verified == true){
+                    $flag = true;
+                }
+            }
+            catch(ModelNotFoundException $exception){
+                return false;
+            }
+        }
+        
         // return true;
+        return $flag;
     }
 
     /**
