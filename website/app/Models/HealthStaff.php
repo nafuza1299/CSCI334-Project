@@ -9,9 +9,10 @@ class HealthStaff extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'position',
+        'business',
         'health_org_email',
-        'verified',
     ];
     protected $table = 'health_staffs';
 }

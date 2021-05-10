@@ -17,9 +17,11 @@ class CreateHealthStaffsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string("position");
-            $table->foreignId('businesses_id')->constrained("businesses");
+            $table->string('business');
             $table->string("health_org_email");
             $table->boolean("verified")->default(0);
+            $table->timestamps();
+            $table->timestamp('email_verified_at')->nullable();
         });
     }
 

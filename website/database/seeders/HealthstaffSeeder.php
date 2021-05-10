@@ -33,7 +33,7 @@ class HealthstaffSeeder extends Seeder
         DB::table('health_staffs')->insert([
             'user_id' => 2,
             'position' => "General Practitioner",
-            'businesses_id' => 1,
+            'business' => "Hospital1",
             'health_org_email' => "test@test.com",
             'verified' => true,
         ]);
