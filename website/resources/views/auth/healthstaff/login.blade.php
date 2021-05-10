@@ -3,7 +3,7 @@
 <section>
     <body>
         <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
-            <h3>Log in to your COVID-19 Safe Health Staff Account</h3>
+            <h3>Log in to your COVID-19 Safe <b>Health Staff</b> Account</h3>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />  
             <!-- Validation Errors -->
@@ -37,6 +37,10 @@
                                 </a>
                             @endif
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ route('healthstaff.register') }}">Don't have an account?</a> 
+                        <!-- might change link placement -->
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">

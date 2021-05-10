@@ -89,11 +89,11 @@ Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 
 
 
 // route for health staff
-Route::get('/healthstaff/register', [RegisteredUserController::class, 'create'])
+Route::get('/healthstaff/register', [RegisteredUserController::class, 'create_healthstaff'])
                 ->middleware('guest')
                 ->name('healthstaff.register');
 
-Route::post('/healthstaff/register', [RegisteredUserController::class, 'store'])
+Route::post('/healthstaff/register', [RegisteredUserController::class, 'store_user_healthstaff'])
                 ->middleware('guest');
 
 Route::get('/healthstaff/login', [AuthenticatedSessionController::class, 'create_healthstaff'])

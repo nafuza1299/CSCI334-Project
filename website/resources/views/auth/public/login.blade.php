@@ -36,8 +36,14 @@
                                     {{ __('Forgot your password?') }}
                                 </a>
                             @endif
+                           
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <a href="{{ route('healthstaff.login') }}">Health staff?</a> 
+                        <!-- might change link placement -->
+                    </div>
+                    
                     <div class="col-md-12">
                         <div class="form-group">
                             <x-button class="btn btn-primary py-3 px-4">

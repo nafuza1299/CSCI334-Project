@@ -16,7 +16,7 @@ class BusinessSeeder extends Seeder
     public function run()
     {
         DB::table('businesses')->insert([
-            'name' => 'test',
+            'name' => 'Hospital1',
             'username' => 'test',
             'email' => 'test@test.com',
             'phone_number' => '01234567890',

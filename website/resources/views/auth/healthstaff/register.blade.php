@@ -30,6 +30,21 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
+                            <x-input id="position" class="form-control" type="text" name="position" :value="old('position')" required placeholder="Position"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <x-input id="business" class="form-control" type="text" name="business" :value="old('business')" required placeholder="Organization"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <x-input id="health_org_email" class="form-control" type="email" name="health_org_email" :value="old('health_org_email')" required placeholder="Health Org Email"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
                             <x-input id="password" class="form-control" type="password" name="password" required placeholder="Password" />		
                         </div>
                     </div>
