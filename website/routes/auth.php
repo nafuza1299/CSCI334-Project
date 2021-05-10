@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\Auth\RegisteredBusinessController;
 use App\Http\Controllers\Auth\BusinessAuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
@@ -105,6 +106,10 @@ Route::post('/business/insert-address', [ProfileController::class, 'storeAddress
 Route::post('/business/delete-address', [ProfileController::class, 'deleteAddressInfoBusiness'])
                 ->middleware('business.auth:business')
                 ->name('business-delete-address');
+
+Route::post('/business/generated-qr-code', [QRCodeController::class, 'generateQR'])
+                ->middleware('business.auth:business')
+                ->name('generate.qr.code');
 
 // route for health staff
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\QRCode;
+use App\Models\CheckIn;
 
 class OverviewController extends Controller
 {
@@ -15,7 +15,7 @@ class OverviewController extends Controller
     public function index()
     {
         $userid = auth()->id();
-        $last_checkin_data = QRCode::where('user_id', $userid)
+        $last_checkin_data = CheckIn::where('user_id', $userid)
                             ->orderByDesc('check_in_time')
                             ->take(1)
                             ->get();
