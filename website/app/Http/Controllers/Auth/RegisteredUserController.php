@@ -88,7 +88,12 @@ class RegisteredUserController extends Controller
             'business' => $request->business,
             'health_org_email' => $request->health_org_email,
         ]);
+        $user->assignRole('healthstaff');
 
+        // create notification
+        $message = "Please wait until the admin verifies your account before accessing the dashboard";
+        $msg_type = "System";
+        $user->notify(new Alerts($message, $msg_type));
         event(new Registered($user));
 
         // Auth::login($user);

@@ -36,6 +36,16 @@ class UserCrudController extends CrudController
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
             ],
+            [
+                'name'  => 'first_name',
+                'label' => "First Name",
+                'type'  => 'text',
+            ],
+            [
+                'name'  => 'last_name',
+                'label' => "Last Name",
+                'type'  => 'text',
+            ],
             [ // n-n relationship (with pivot table)
                 'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
                 'type'      => 'select_multiple',
