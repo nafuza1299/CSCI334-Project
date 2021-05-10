@@ -74,7 +74,7 @@
 					<ul class="navbar-nav" style="font-weight:600 !important">
 						<li class="nav-item {{ Request::segment(2) === 'overview' ? 'active' : null }}"><a href="{{route('business.overview')}}" class="nav-link">Overview</a></li>
 						<li class="nav-item {{ Request::segment(2) === 'alerts' ? 'active' : null }}"><a href="{{route('business.alerts')}}" class="nav-link">Alerts</a></li>
-						<li class="nav-item {{ Request::segment(2) === 'qr-code' ? 'active' : null }}"><a href="{{url('business/qr-code/generate')}}" class="nav-link">Generate QR-Code</a></li>
+						<li class="nav-item {{ Request::segment(2) === 'generate-qr-code' ? 'active' : null }}"><a href="{{route('business.generate.qr')}}" class="nav-link">Generate QR-Code</a></li>
 						<li class="nav-item {{ Request::segment(2) === 'safe-registration' ? 'active' : null }}"><a href="{{url('business.safe-registration')}}" class="nav-link">Safe Registration</a></li>
 						<li class="nav-item {{ Request::segment(2) === 'report' ? 'active' : null }}"><a href="{{url('business.report')}}" class="nav-link">Report</a></li>
 						<li class="nav-item {{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{route('business.profile')}}" class="nav-link">Manage Account</a></li>

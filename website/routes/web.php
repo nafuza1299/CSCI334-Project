@@ -52,6 +52,10 @@ Route::get('news', ['uses' => 'NewsController@index'])->name('news');
 
 Route::get('/message', ['middleware' => 'auth', 'uses' => 'AlertsController@createAlert'])->name('createAlert');
 
+// route for editing profile
+Route::post('/edit-profile',['middleware' => 'auth', 'uses' => 'ProfileController@editAccountInfo'])
+                ->name('edit.profile');
+
 //business
 Route::prefix('business')->group(function () {
     Route::get('/', function () {
@@ -67,4 +71,21 @@ Route::prefix('business')->group(function () {
     Route::get('/overview', ['middleware' => 'business.auth:business', 'uses' => 'OverviewController@business'])->name('business.overview');
 
     Route::get('/message', ['middleware' => 'business.auth:business','uses' => 'AlertsController@createAlertBusiness'])->name('createAlertBusiness');
+
+    Route::get('/generate-qr-code', ['middleware' => 'business.auth:business','uses' => 'QRCodeController@indexGenerate'])->name('business.generate.qr');
+    
+    Route::post('/edit-profile', ['middleware' => 'business.auth:business','uses' => 'ProfileController@editAccountInfoBusiness'])
+                    ->name('business.edit.profile');
+
+    Route::post('/edit-address', ['middleware' => 'business.auth:business','uses' => 'ProfileController@editAddressInfoBusiness'])
+                    ->name('business.edit.address');
+
+    Route::post('/insert-address',  ['middleware' => 'business.auth:business','uses' => 'ProfileController@storeAddressInfoBusiness'])
+                    ->name('business.insert.address');
+
+    Route::post('/delete-address', ['middleware' => 'business.auth:business', 'uses' => 'ProfileController@deleteAddressInfoBusiness'])
+                    ->name('business.delete.address');
+
+    Route::post('/generated-qr-code',  ['middleware' => 'business.auth:business', 'uses' => 'QRCodeController@generateQR'])
+                    ->name('generate.qr.code');
 });

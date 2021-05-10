@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class QRCode extends Model
+class CheckIn extends Model
 {
     use HasFactory;
     protected $table = 'check_in';

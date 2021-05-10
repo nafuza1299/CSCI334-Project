@@ -15,7 +15,7 @@
                     <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; !important">
                         <h3>Edit Profile</h3>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
-                        <form class="px-4 py-3" method="POST" action="{{ route('edit-profile') }}">
+                        <form class="px-4 py-3" method="POST" action="{{ route('edit.profile') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\Auth\RegisteredBusinessController;
 use App\Http\Controllers\Auth\BusinessAuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
@@ -66,10 +67,6 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
 
-// route for editing profile
-Route::post('/edit-profile', [ProfileController::class, 'editAccountInfo'])
-                ->middleware('auth')
-                ->name('edit-profile');
 
 // route for business
 Route::get('/business/register', [RegisteredBusinessController::class, 'create'])
@@ -90,24 +87,8 @@ Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 
                 ->middleware('business.auth:business')
                 ->name('business.logout');
 
-Route::post('/business/edit-profile', [ProfileController::class, 'editAccountInfoBusiness'])
-                ->middleware('business.auth:business')
-                ->name('business-edit-profile');
-
-Route::post('/business/edit-address', [ProfileController::class, 'editAddressInfoBusiness'])
-                ->middleware('business.auth:business')
-                ->name('business-edit-address');
-
-Route::post('/business/insert-address', [ProfileController::class, 'storeAddressInfoBusiness'])
-                ->middleware('business.auth:business')
-                ->name('business-insert-address');
-
-Route::post('/business/delete-address', [ProfileController::class, 'deleteAddressInfoBusiness'])
-                ->middleware('business.auth:business')
-                ->name('business-delete-address');
 
 // route for health staff
-
 Route::get('/healthstaff/register', [RegisteredUserController::class, 'create_healthstaff'])
                 ->middleware('guest')
                 ->name('healthstaff.register');
