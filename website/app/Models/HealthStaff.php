@@ -10,7 +10,8 @@ class HealthStaff extends Model
 {
     use HasFactory;
     use CrudTrait;
-    
+
+    public $timestamps = false;
     protected $fillable = [
         'user_id',
         'position',
