@@ -17,7 +17,7 @@ class CreateCovidtestsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
-            $table->timestamp("test_date");
+            $table->date("test_date");
             $table->string("location");
         });
     }
