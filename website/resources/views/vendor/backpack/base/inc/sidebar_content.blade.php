@@ -21,7 +21,7 @@
 	<li class="nav-item nav-dropdown">
 		<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-hospital-o"></i> Health Staff Forms</a>
 		<ul class="nav-dropdown-items">
-		<li class="nav-item"><a class="nav-link" href="{{ backpack_url('update_test_results') }}"><i class="nav-icon la la-user"></i> <span>Update Test results</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="{{ backpack_url('testresult') }}"><i class="nav-icon la la-user"></i> <span>Test Results</span></a></li>
 		</ul>
 	</li>
 @endcan

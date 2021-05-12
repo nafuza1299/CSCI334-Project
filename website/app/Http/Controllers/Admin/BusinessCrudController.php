@@ -116,7 +116,7 @@ class BusinessCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        CRUD::setValidation(BusinessCreateRequest::class);
+        CRUD::setValidation(BusinessUpdateRequest::class);
 
         CRUD::field('name');
         // CRUD::field('username');
