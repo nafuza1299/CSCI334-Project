@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
-class TestResults extends Model
+class TestResult extends Model
 {
     use HasFactory;
-    protected $table = 'covidtests';
+    use CrudTrait;
+    protected $table = 'testresults';
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
@@ -19,8 +21,11 @@ class TestResults extends Model
         'user_id',
         'test_date',
         'location',
-        'infects',
+        'infected',
     ];
 
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
