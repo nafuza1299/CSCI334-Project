@@ -37,7 +37,11 @@ class TestResultCRUDController extends CrudController
         );
         CRUD::column('test_date');
         CRUD::column('location');
-        CRUD::column('infected');
+        CRUD::addcolumn([
+            'name'  => 'infected',
+            'label' => 'Positive',
+            'type'  => 'boolean',
+        ]);
     }
 
     protected function setupCreateOperation()
@@ -59,7 +63,7 @@ class TestResultCRUDController extends CrudController
             'type'  => 'date'
         ]);
         CRUD::field('location');
-        CRUD::addfield([   // Date
+        CRUD::addfield([
             'name'  => 'infected',
             'label' => 'Positive',
             'type'  => 'checkbox'

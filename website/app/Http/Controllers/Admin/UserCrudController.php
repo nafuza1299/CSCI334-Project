@@ -46,6 +46,11 @@ class UserCrudController extends CrudController
                 'label' => "Last Name",
                 'type'  => 'text',
             ],
+            [
+                'name'  => 'vaccinated',
+                'label' => "Vaccinated",
+                'type'  => 'boolean',
+            ],
             [ // n-n relationship (with pivot table)
                 'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
                 'type'      => 'select_multiple',
