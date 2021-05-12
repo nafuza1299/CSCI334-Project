@@ -7,6 +7,7 @@ use App\Http\Requests\BusinessUpdateRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class BusinessCrudController
@@ -20,7 +21,6 @@ class BusinessCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -67,7 +67,26 @@ class BusinessCrudController extends CrudController
         CRUD::column('email');
         // CRUD::column('phone_number');
         CRUD::column('type');
-        CRUD::column('verified');
+        CRUD::addcolumn([
+            'name'  => 'verified',
+            'label' => 'Verified',
+            'type'  => 'boolean',
+        ]);
+
+        CRUD::addcolumn(
+        [
+            'name'      => 'certificate', // The db column name
+            'label'     => 'Certificate', // Table column heading
+            'wrapper'   => [
+                // 'element' => 'a', // the element will default to "a" so you can skip it here
+                'href' => function ($crud, $column, $entry, $related_key) {
+                    $url = Storage::url("app/images/test_1620809655.jpg");
+                    return $url;
+                },
+                // 'target' => '_blank',
+                // 'class' => 'some-class',
+            ],
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
