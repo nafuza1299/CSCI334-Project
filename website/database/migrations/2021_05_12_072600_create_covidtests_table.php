@@ -19,6 +19,7 @@ class CreateCovidtestsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->date("test_date");
             $table->string("location");
+            $table->boolean('infected')->default(0);
         });
     }
 

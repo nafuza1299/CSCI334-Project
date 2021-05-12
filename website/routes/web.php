@@ -44,6 +44,8 @@ Route::get('alerts', ['middleware' => 'auth', 'uses' => 'AlertsController@index'
 
 Route::get('history', ['middleware' => 'auth', 'uses' => 'CheckInController@index'])->name('history');
 
+Route::get('test-results', ['middleware' => 'auth', 'uses' => 'TestResultsController@index'])->name('test.results');
+
 Route::get('/qr-code/check-in/{latitude}/{longitude}/{address}', 'QRCodeController@index')->name("qr-check-in");
 
 Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
