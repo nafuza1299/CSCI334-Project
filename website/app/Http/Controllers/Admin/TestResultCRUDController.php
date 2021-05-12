@@ -12,6 +12,8 @@ class TestResultCRUDController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     
     public function setup()
     {
@@ -39,6 +41,32 @@ class TestResultCRUDController extends CrudController
     }
 
     protected function setupCreateOperation()
+    {
+        CRUD::setValidation(TestResultCreateRequest::class);
+        CRUD::addfield(
+        [  // Select
+            'label'     => "User",
+            'type'      => 'select',
+            'name'      => 'user_id', // the db column for the foreign key 
+
+            // optional - manually specify the related model and attribute
+            'model'     => "App\Models\User", // related model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+        ]);
+        CRUD::addfield([   // Date
+            'name'  => 'test_date',
+            'label' => 'Test Date',
+            'type'  => 'date'
+        ]);
+        CRUD::field('location');
+        CRUD::addfield([   // Date
+            'name'  => 'infected',
+            'label' => 'Positive',
+            'type'  => 'checkbox'
+        ]);
+    }
+    
+    protected function setupUpdateOperation()
     {
         CRUD::setValidation(TestResultCreateRequest::class);
         CRUD::addfield(
