@@ -22,6 +22,7 @@
 		<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-hospital-o"></i> Health Staff Forms</a>
 		<ul class="nav-dropdown-items">
 		<li class="nav-item"><a class="nav-link" href="{{ backpack_url('testresult') }}"><i class="nav-icon la la-user"></i> <span>Test Results</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="{{ backpack_url('vaccine') }}"><i class="nav-icon la la-user"></i> <span>Vaccine Update</span></a></li>
 		</ul>
 	</li>
 @endcan
