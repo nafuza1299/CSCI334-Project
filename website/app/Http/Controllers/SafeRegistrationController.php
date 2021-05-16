@@ -38,13 +38,13 @@ class SafeRegistrationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'certificate' => 'required|image|mimes:pdf,jpeg,png,jpg,gif,svg|max:2048',
+            'certificate' => 'required|mimes:pdf,jpeg,png,jpg,gif,svg|max:5120',
         ]);
         $business_name = Auth::guard('business')->user()->username;
         $imageName = $business_name.'_'.time().'.'.$request->certificate->extension();  
-        $request->certificate->storeAs('images', $imageName);
+        $path = $request->certificate->storeAs('business/certs', $imageName);
         $user = Auth::guard('business')->user();
-        $user->certificate = $imageName;
+        $user->certificate = $path;
         $user->save();
         return redirect(route('business.safe.registration'));
     }

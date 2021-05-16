@@ -107,3 +107,6 @@ Route::prefix('business')->group(function () {
                     ->name('business.upload.certificate');
 
 });
+
+// routes to download images
+Route::get('staff/business/certs/{image_name}',  ['uses' => 'ImageDownloadController@download_business_certs']);
