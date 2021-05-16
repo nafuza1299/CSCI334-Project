@@ -50,7 +50,7 @@ class SafeRegistrationController extends Controller
         }
         $user->certificate = $imageName;
         $user->save();
-        return redirect(route('business.safe.registration'));
+        return redirect(route('business.safe.registration'))->with('success', "Image Successfully Uploaded");
     }
 
     /**

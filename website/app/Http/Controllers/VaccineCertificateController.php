@@ -49,7 +49,7 @@ class VaccineCertificateController extends Controller
         }
         $user->certificate = $imageName;
         $user->save();
-        return redirect(route('vaccine.certificate'));
+        return redirect(route('vaccine.certificate'))->with('success', "Image Successfully Uploaded");
     }
 
     /**

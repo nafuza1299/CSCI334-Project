@@ -2,7 +2,7 @@
 @section('content')
 <section class="content-header">
 	<body>
-		<div class="container">
+		<div class="container mb-5">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="slider-text align-items-center" style="height:inherit !important">
@@ -46,6 +46,13 @@
 						</form>
 					</div>
 				</div>
+				@if(session()->has('success'))
+				<div class="col-md-12">
+					<div class="text-center ">
+						<h3>{{session('success')}}</h3>
+					<div>
+				</div>
+				@endif
 			</div>
 		</div>
 	</body>
