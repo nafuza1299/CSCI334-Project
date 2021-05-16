@@ -47,6 +47,20 @@ class UserVaccineController extends CrudController
                 'type'  => 'boolean',
             ],
         ]);
+
+        CRUD::addcolumn(
+            [
+                'name'      => 'certificate', // The db column name
+                'label'     => 'Certificate', // Table column heading
+                'wrapper'   => [
+                    'element' => 'a', // the element will default to "a" so you can skip it here 
+                    'href' => function ($crud, $column, $entry, $related_key) {
+                        return backpack_url('user/certs/'.$entry["certificate"]);
+                    },
+                    'target' => '_blank',
+                    // 'class' => 'some-class',
+            ],
+        ]);
         
     }
 

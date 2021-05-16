@@ -108,5 +108,7 @@ Route::prefix('business')->group(function () {
 
 });
 
-// routes to download images
-Route::get('staff/business/certs/{image_name}',  ['uses' => 'ImageDownloadController@download_business_certs']);
+// routes to download files
+Route::get('staff/business/certs/{file_name}',  ['uses' => 'FileDownloadController@download_business_certs']);
+Route::get('staff/user/certs/{file_name}',  ['uses' => 'FileDownloadController@download_user_certs']);
+

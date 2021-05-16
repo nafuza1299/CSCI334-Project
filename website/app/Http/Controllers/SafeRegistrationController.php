@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class SafeRegistrationController extends Controller
@@ -44,7 +45,10 @@ class SafeRegistrationController extends Controller
         $imageName = $business_name.'_'.time().'.'.$request->certificate->extension();  
         $path = $request->certificate->storeAs('business/certs', $imageName);
         $user = Auth::guard('business')->user();
-        $user->certificate = $path;
+        if(!is_null($user->certificate)){
+            Storage::delete($user->certificate);
+        }
+        $user->certificate = $imageName;
         $user->save();
         return redirect(route('business.safe.registration'));
     }

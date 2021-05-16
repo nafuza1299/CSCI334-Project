@@ -80,7 +80,7 @@ class BusinessCrudController extends CrudController
             'wrapper'   => [
                 'element' => 'a', // the element will default to "a" so you can skip it here 
                 'href' => function ($crud, $column, $entry, $related_key) {
-                    return backpack_url($entry["certificate"]);
+                    return backpack_url('business/certs/'.$entry["certificate"]);
                 },
                 'target' => '_blank',
                 // 'class' => 'some-class',
