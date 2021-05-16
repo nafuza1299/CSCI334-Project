@@ -38,6 +38,14 @@ Route::get('vaccine', ['middleware' => 'auth', function()
     return view('user.vaccine');
 }])->name('vaccine');
 
+
+Route::get('/vaccine/certificate',  ['middleware' => 'auth', 'uses' => 'VaccineCertificateController@index'])
+                    ->name('vaccine.certificate');
+
+Route::post('/vaccine/upload-vaccine-certificate',  ['middleware' => 'auth', 'uses' => 'VaccineCertificateController@store'])
+                    ->name('upload.vaccine.certificate');
+
+
 Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
 
 Route::get('alerts', ['middleware' => 'auth', 'uses' => 'AlertsController@index'])->name('alerts');
@@ -95,7 +103,7 @@ Route::prefix('business')->group(function () {
     Route::post('/generated-qr-code',  ['middleware' => 'business.auth:business', 'uses' => 'QRCodeController@generateQR'])
                     ->name('generate.qr.code');
 
-    Route::post('/upload-certificate',  ['middleware' => 'business.auth:business', 'uses' => 'SafeRegistrationController@store'])
+    Route::post('/upload-business-certificate',  ['middleware' => 'business.auth:business', 'uses' => 'SafeRegistrationController@store'])
                     ->name('business.upload.certificate');
 
 });
