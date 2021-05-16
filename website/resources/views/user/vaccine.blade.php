@@ -51,7 +51,7 @@
 								</ul>
 							</div>
 							<div class="d-flex align-items-center justify-content-center mt-2">
-								<p><a href="#" class="btn btn-white py-3 px-4">More Info</a></p>
+								<p><a href="{{route('vaccine.certificate')}}" class="btn btn-white py-3 px-4">More Info</a></p>
 							</div>
 						</div>
 					</div>
