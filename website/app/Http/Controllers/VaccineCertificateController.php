@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class VaccineCertificateController extends Controller
@@ -49,7 +50,7 @@ class VaccineCertificateController extends Controller
         }
         $user->certificate = $imageName;
         $user->save();
-        return redirect(route('vaccine.certificate'));
+        return redirect(route('vaccine.certificate'))->with('success', "Image Successfully Uploaded");
     }
 
     /**
