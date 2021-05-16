@@ -38,12 +38,15 @@ class VaccineCertificateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'certificate' => 'required|image|mimes:pdf,jpeg,png,jpg,gif,svg|max:2048',
+            'certificate' => 'required|mimes:pdf,jpeg,png,jpg,gif,svg|max:5120',
         ]);
         $user_name = Auth::user()->name;
         $imageName = $user_name.'_'.time().'.'.$request->certificate->extension();  
-        $request->certificate->storeAs('images', $imageName);
+        $request->certificate->storeAs('user/certs', $imageName);
         $user = Auth::user();
+        if(!is_null($user->certificate)){
+            Storage::delete($user->certificate);
+        }
         $user->certificate = $imageName;
         $user->save();
         return redirect(route('vaccine.certificate'));

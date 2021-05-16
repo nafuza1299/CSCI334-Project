@@ -111,3 +111,8 @@ Route::prefix('business')->group(function () {
                     ->name('business.upload.certificate');
 
 });
+
+// routes to download files
+Route::get('staff/business/certs/{file_name}',  ['uses' => 'FileDownloadController@download_business_certs']);
+Route::get('staff/user/certs/{file_name}',  ['uses' => 'FileDownloadController@download_user_certs']);
+
