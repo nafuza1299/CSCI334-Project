@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use App\Events\UpdateInfectStatusEvent;
+use Illuminate\Notifications\Notifiable;
 
 class TestResult extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     use CrudTrait;
     protected $table = 'testresults';
     public $timestamps = false;
@@ -28,4 +30,9 @@ class TestResult extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $dispatchesEvents = [
+        'updated' => UpdateInfectStatusEvent::class,
+        'created' => UpdateInfectStatusEvent::class,
+    ];
 }

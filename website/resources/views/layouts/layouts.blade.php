@@ -59,9 +59,11 @@
           var alert_count;
           Echo.private('App.Models.User.' + user_id)
           .notification((notification) => {
-            window.unreadNotifications++;
-            alert_count ='<i class="fa fa-bell"></i>'+'<span class="icon-button__badge">'+unreadNotifications+'</span>'
+            if ($("#notif_count").attr("disabled") == undefined) {
+              window.unreadNotifications++;
+              alert_count ='<i class="fa fa-bell"></i>'+'<span class="icon-button__badge">'+unreadNotifications+'</span>';
               $("#notif_count").html(alert_count);
+             }
           });
         });
       </script>
@@ -74,9 +76,11 @@
           var alert_count;
           Echo.private('App.Models.Business.' + user_id)
           .notification((notification) => {
-            window.unreadNotifications++;
-            alert_count ='<i class="fa fa-bell"></i>'+'<span class="icon-button__badge">'+unreadNotifications+'</span>'
+            if ($("#notif_count").attr("disabled") == undefined) {
+              window.unreadNotifications++;
+              alert_count ='<i class="fa fa-bell"></i>'+'<span class="icon-button__badge">'+unreadNotifications+'</span>';
               $("#notif_count").html(alert_count);
+             }
           });
         });
       </script>

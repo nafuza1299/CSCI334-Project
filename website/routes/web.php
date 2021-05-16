@@ -58,6 +58,8 @@ Route::get('/message', ['middleware' => 'auth', 'uses' => 'AlertsController@crea
 Route::post('/edit-profile',['middleware' => 'auth', 'uses' => 'ProfileController@editAccountInfo'])
                 ->name('edit.profile');
 
+Route::get('test-resulted', ['middleware' => 'auth', 'uses' => 'TestResultController@infectalert'])->name('test.resulted');
+
 //business
 Route::prefix('business')->group(function () {
     Route::get('/', function () {

@@ -62,6 +62,7 @@
         window.unreadNotifications=0;
         user_id = {{auth()->guard('business')->id()}}
         $("#notif_count").html('<i class="fa fa-bell"></i>');
+        $("#notif_count").attr("disabled","true");
         var new_alert;
         Echo.private('App.Models.Business.' + user_id)
         .notification((notification) => {
