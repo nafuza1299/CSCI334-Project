@@ -49,6 +49,7 @@
     <script src="{{asset('assets/js/google-map.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="{{asset('assets/js/moment.min.js')}}"></script>
+    <script src="{{asset('assets/js/qrcode.min.js')}}"></script>
 
     <script src="{{asset('js/app.js')}}"></script>
     @auth   

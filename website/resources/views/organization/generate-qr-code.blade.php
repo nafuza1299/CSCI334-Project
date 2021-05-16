@@ -1,12 +1,13 @@
 @extends('layouts.layouts')
 @section('content')
+
 <section>
     <body>
         @if(session()->has('qrcode'))
             <div class="container mb-5">
-                <div class=" text-center ">
+                <div class="text-center ">
                     <h3>Your QR Code has been generated </h3>
-                    {{ session('qrcode') }}
+                    <div style="display: flex; justify-content: center; text-align: center;" id="qrcode"></div>
                 <div>
             </div>
         @else
@@ -48,4 +49,10 @@
         console.log( this.value );
         });
 </script>
+@if(session()->has('qrcode'))
+    <script type="text/javascript">
+        new QRCode(document.getElementById("qrcode"), "{{session('qrcode')}}");
+    </script>
+@endif
 @endsection
+
