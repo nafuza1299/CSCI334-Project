@@ -36,6 +36,7 @@
 								<a class="navbar-brand" href="{{route('business')}}">COVID19 Tracker Business</a>
 								<ul class="navbar-nav">
 									<li class="nav-item {{ Request::segment(2) === NULL ? 'active' : null }}"><a href="{{route('business')}}" class="nav-link">Home</a></li>
+									<li class="nav-item {{ Request::segment(2) === 'location' ? 'active' : null }}"><a href="{{route('business.location')}}" class="nav-link">Location</a></li>
 									<li class="nav-item {{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{{route('business.news')}}" class="nav-link">News</a></li>
 								</ul>
 							</div>

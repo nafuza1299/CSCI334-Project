@@ -31,6 +31,8 @@ Route::get('quick-check-in',  function()
     return view('quick-check-in');
 })->name('quick-check-in');
 
+Route::get('/location',  [ 'uses' => 'SearchInfectLocationController@index'])->name('location');
+
 Route::get('overview', ['middleware' => 'auth', 'uses' => 'OverviewController@index'])->name('overview');
 
 Route::get('vaccine', ['middleware' => 'auth', function()
@@ -73,6 +75,8 @@ Route::prefix('business')->group(function () {
     Route::get('/', function () {
         return view('organization.home');
     })->name('business');
+
+    Route::get('/location',  [ 'uses' => 'SearchInfectLocationController@index'])->name('business.location');
 
     Route::get('/news', ['uses' => 'NewsController@index'])->name('business.news');
 

@@ -36,7 +36,8 @@
 								<a class="navbar-brand" href="{{route('home')}}">COVID19 Tracker</a>
 								<ul class="navbar-nav">
 									<li class="nav-item {{ Request::segment(1) === NULL ? 'active' : null }}"><a href="{{route('home')}}" class="nav-link">Home</a></li>
-									<li class="nav-item {{ Request::segment(1) === 'quick-check-in' ? 'active' : null }}"><a href="{{route('quick-check-in')}}" class="nav-link">Quick Check In</a></li>
+									<!-- <li class="nav-item {{ Request::segment(1) === 'quick-check-in' ? 'active' : null }}"><a href="{{route('quick-check-in')}}" class="nav-link">Quick Check In</a></li> -->
+									<li class="nav-item {{ Request::segment(1) === 'location' ? 'active' : null }}"><a href="{{route('location')}}" class="nav-link">Location</a></li>
 									<li class="nav-item {{ Request::segment(1) === 'news' ? 'active' : null }}"><a href="{{route('news')}}" class="nav-link">News</a></li>
 								</ul>
 							</div>
