@@ -60,9 +60,9 @@ class QRCodeController extends Controller
                             ->where('id', $request->id)
                             ->get();
 
-       $qrcode = QrCode::generate(route('qr-check-in', ['latitude' => $address[0]->latitude,'longitude' => $address[0]->longitude,'address' => $address[0]->address]));
-        
-       return redirect()->route('business.generate.qr')->with('qrcode', $qrcode);
+        $url = route('qr-check-in', ['latitude' => $address[0]->latitude,'longitude' => $address[0]->longitude,'address' => $address[0]->address]);
+    
+        return redirect()->route('business.generate.qr')->with('qrcode', $url);
 
     }
 }
