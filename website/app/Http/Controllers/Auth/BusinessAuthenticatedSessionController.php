@@ -32,7 +32,7 @@ class BusinessAuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/business');
+        return redirect(route('business'));
     }
 
     /**
@@ -49,7 +49,7 @@ class BusinessAuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/business');
+        return redirect(route('business'));
     }
 
 }

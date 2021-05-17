@@ -3,14 +3,14 @@
 <section>
     <body>
         <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
-            <h3> Sign up for a free business account</h3>
+            <h3> Sign up for a free organization account</h3>
             <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
             <form class="px-4 py-3" method="POST" action="{{ route('business.register') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required placeholder="Business Name" />
+                            <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required placeholder="Organization Name" />
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="type" class="form-control" type="text" name="type" :value="old('type')" placeholder="Business Type"/>
+                            <x-input id="type" class="form-control" type="text" name="type" :value="old('type')" placeholder="Organization Type"/>
                         </div>
                     </div>
                     <div class="col-md-12">

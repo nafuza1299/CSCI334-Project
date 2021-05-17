@@ -71,7 +71,7 @@ Route::post('/edit-profile',['middleware' => 'auth', 'uses' => 'ProfileControlle
 Route::get('test-resulted', ['middleware' => 'auth', 'uses' => 'TestResultController@infectalert'])->name('test.resulted');
 
 //business
-Route::prefix('business')->group(function () {
+Route::prefix('organization')->group(function () {
     Route::get('/', function () {
         return view('organization.home');
     })->name('business');

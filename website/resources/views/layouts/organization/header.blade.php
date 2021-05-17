@@ -33,7 +33,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-6 d-flex align-items-center">
-								<a class="navbar-brand" href="{{route('business')}}">COVID19 Tracker Business</a>
+								<a class="navbar-brand" href="{{route('business')}}">COVID19 Tracker Organization</a>
 								<ul class="navbar-nav">
 									<li class="nav-item {{ Request::segment(2) === NULL ? 'active' : null }}"><a href="{{route('business')}}" class="nav-link">Home</a></li>
 									<li class="nav-item {{ Request::segment(2) === 'location' ? 'active' : null }}"><a href="{{route('business.location')}}" class="nav-link">Location</a></li>

@@ -68,37 +68,40 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
 
-// route for business
-Route::get('/business/register', [RegisteredBusinessController::class, 'create'])
-                ->middleware('guest')
-                ->name('business.register');
+Route::prefix('organization')->group(function () {
+    Route::get('/register', [RegisteredBusinessController::class, 'create'])
+                    ->middleware('guest')
+                    ->name('business.register');
 
-Route::post('/business/register', [RegisteredBusinessController::class, 'store'])
-                ->middleware('guest');
+    Route::post('/register', [RegisteredBusinessController::class, 'store'])
+                    ->middleware('guest');
 
-Route::get('/business/login', [BusinessAuthenticatedSessionController::class, 'create'])
-                ->middleware('guest')
-                ->name('business.login');
+    Route::get('/login', [BusinessAuthenticatedSessionController::class, 'create'])
+                    ->middleware('guest')
+                    ->name('business.login');
 
-Route::post('/business/login', [BusinessAuthenticatedSessionController::class, 'store'])
-                ->middleware('guest');
+    Route::post('/login', [BusinessAuthenticatedSessionController::class, 'store'])
+                    ->middleware('guest');
 
-Route::post('/business/logout', [BusinessAuthenticatedSessionController::class, 'destroy'])
-                ->middleware('business.auth:business')
-                ->name('business.logout');
+    Route::post('/logout', [BusinessAuthenticatedSessionController::class, 'destroy'])
+                    ->middleware('business.auth:business')
+                    ->name('business.logout');
+});
 
 
 // route for health staff
-Route::get('/healthstaff/register', [RegisteredUserController::class, 'create_healthstaff'])
-                ->middleware('guest')
-                ->name('healthstaff.register');
+Route::prefix('healthstaff')->group(function () {
+    Route::get('/register', [RegisteredUserController::class, 'create_healthstaff'])
+                    ->middleware('guest')
+                    ->name('healthstaff.register');
 
-Route::post('/healthstaff/register', [RegisteredUserController::class, 'store_user_healthstaff'])
-                ->middleware('guest');
+    Route::post('/register', [RegisteredUserController::class, 'store_user_healthstaff'])
+                    ->middleware('guest');
 
-Route::get('/healthstaff/login', [AuthenticatedSessionController::class, 'create_healthstaff'])
-                ->middleware('guest')
-                ->name('healthstaff.login');
+    Route::get('/login', [AuthenticatedSessionController::class, 'create_healthstaff'])
+                    ->middleware('guest')
+                    ->name('healthstaff.login');
 
-Route::post('/healthstaff/login', [AuthenticatedSessionController::class, 'store_healthstaff'])
-                ->middleware('guest');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store_healthstaff'])
+                    ->middleware('guest');
+});
