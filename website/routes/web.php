@@ -84,6 +84,8 @@ Route::prefix('organization')->group(function () {
 
     Route::get('/alerts', ['middleware' => 'business.auth:business', 'uses' => 'AlertsController@business'])->name('business.alerts');
 
+    Route::post('/alerts/create', ['middleware' => ['business.auth:business', 'checkifhealthorg:business'], 'uses' => 'AlertsController@createAlert'])->name('business.create.alerts');
+
     Route::get('/overview', ['middleware' => 'business.auth:business', 'uses' => 'OverviewController@business'])->name('business.overview');
 
     Route::get('/message', ['middleware' => 'business.auth:business','uses' => 'AlertsController@createAlertBusiness'])->name('createAlertBusiness');
