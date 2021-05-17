@@ -5,7 +5,7 @@
 		<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/#menu-forms -->
 		@guest('business')
 		<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
-            <h3> Sign up for a free business account</h3>
+            <h3> Sign up for a free organization account</h3>
             <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
             <form class="px-4 py-3" method="POST" action="{{ route('business.register') }}">
                 @csrf
@@ -75,9 +75,9 @@
 				<div class="row">
 					<div class="col-md-6 ftco-animate d-flex align-items-end mb-5">
 						<div class="text w-100">
-							<h1 class="mb-4">Track your business COVID-19 history</h1>
+							<h1 class="mb-4">Track your organization COVID-19 history</h1>
 							@guest('business')
-								<p class="mb-4">Sign up now to track your business activities and prevent COVID19 contact</p>
+								<p class="mb-4">Sign up now to track your organization  activities and prevent COVID19 contact</p>
 								<p>
 									<a href="{{route('business.login')}}" class="btn btn-white py-3 px-4">Log In</a> 
 									<a href="{{route('business.register')}}" class="btn btn-primary py-3 px-4">Register</a>
@@ -99,7 +99,7 @@
 								<div class="text-left">
 									<div class="text">
 											<h4><b>Contact Tracing</b></h4>
-											<p>Keep track of who and when enters your business areas with the contact tracing feature that will show safes areas and red zones</p>
+											<p>Keep track of who and when enters your organization areas with the contact tracing feature that will show safes areas and red zones</p>
 										</ul>
 									</div>
 								</div>
@@ -108,7 +108,7 @@
 								<div class="text-left">
 									<div class="text">
 										<h4><b>Generate QR-Code</b></h4>
-										<p>Create your own custom QR code for the public to scan at your business location</p>
+										<p>Create your own custom QR code for the public to scan at your organization location</p>
 									</div>
 								</div>
 							</div>
@@ -116,7 +116,7 @@
 								<div class="text-left">
 									<div class="text">
 									<h4><b>Safe Regisration</b></h4>
-										<p>Register and verify your business as COVID-19 safe</p>
+										<p>Register and verify your organization as COVID-19 safe</p>
 									</div>
 								</div>
 							</div>
@@ -124,7 +124,7 @@
 								<div class="text-left">
 									<div class="text">
 										<h4><b>Generate Report</b></h4>
-										<p>Generate a report on people that were on your business premises</p>
+										<p>Generate a report on people that were on your organization premises</p>
 									</div>
 								</div>
 							</div>

@@ -99,7 +99,7 @@ table.table td .add {
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="name">Business Name</label>
+                                        <label for="name">Organization Name</label>
                                         <x-input id="name" class="form-control" type="text" name="name" :value="Auth::guard('business')->user()->name" required placeholder="Business Name" />
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@ table.table td .add {
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="type">Business Type</label>
+                                        <label for="type">Organization Type</label>
                                         <x-input id="type" class="form-control" type="string" name="type" :value="Auth::guard('business')->user()->type" placeholder="Business Type"/>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ table.table td .add {
                     <div class="container block-7 " style="background-color:#FFF; border: 1px solid black !important; !important">
                         <form id="insert-address" method="POST" action="{{route('business.insert.address')}}">
                             @csrf
-                            <h3>Edit Business Address</h3>
+                            <h3>Edit Organization Address</h3>
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-4">
