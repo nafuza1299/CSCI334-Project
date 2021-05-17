@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required placeholder="Business Name" />
+                            <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required placeholder="Organization Name" />
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="type" class="form-control" type="text" name="type" :value="old('type')" placeholder="Business Type"/>
+                            <x-input id="type" class="form-control" type="text" name="type" :value="old('type')" placeholder="Organization Type"/>
                         </div>
                     </div>
                     <div class="col-md-12">
