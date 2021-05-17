@@ -28,7 +28,7 @@ class TestResultCreateRequest extends FormRequest
         return [
             'user_id' => 'required',
             'test_date' => 'required|date',
-            'location' => 'required|string|max:190',
+            'business_address_id' => 'required',
             'infected' => 'required|bool',
             
         ];

@@ -23,7 +23,7 @@ class TestResult extends Model
     protected $fillable = [
         'user_id',
         'test_date',
-        'location',
+        'business_address_id',
         'infected',
     ];
 
@@ -32,11 +32,16 @@ class TestResult extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function BusinessAddress()
+    {
+        return $this->belongsTo(BusinessAddress::class);
+    }
+    
+
     protected $dispatchesEvents = [
         'updated' => UpdateInfectStatusEvent::class, 
         'created' => UpdateInfectStatusEvent::class, 
         'updated' => UpdateTestResultEvent::class,
         'created' => UpdateTestResultEvent::class,
-     
     ];
 }

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 class BusinessCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
@@ -51,7 +51,7 @@ class BusinessCrudController extends CrudController
         $this->crud->setRequest($request);
         $this->crud->unsetValidation(); // Validation has already been run
 
-        return $this->traitStore();
+        return $this->Store();
     }
 
     /**

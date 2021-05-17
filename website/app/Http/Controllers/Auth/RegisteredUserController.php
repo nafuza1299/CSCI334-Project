@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Business;
 use App\Models\HealthStaff;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -25,7 +26,8 @@ class RegisteredUserController extends Controller
 
     public function create_healthstaff()
     {
-        return view('auth.healthstaff.register');
+        $result = Business::select('name', 'id')->where('type', 'Health')->where('verified', '1')->get();
+        return view('auth.healthstaff.register', compact('result'));
     }
 
     /**

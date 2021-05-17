@@ -27,4 +27,8 @@ class Business extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function addresses()
+    {
+        return $this->hasMany(BusinessAddress::class);
+    }
 }
