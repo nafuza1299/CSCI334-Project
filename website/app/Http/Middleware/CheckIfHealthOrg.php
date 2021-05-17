@@ -15,7 +15,7 @@ class CheckIfHealthOrg
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle()
+    public function handle(Request $request, Closure $next)
     {
         if(Auth::guard('business')->user()->type == 'Health'){
             return $next($request);
