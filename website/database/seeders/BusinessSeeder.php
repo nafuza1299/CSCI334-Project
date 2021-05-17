@@ -24,6 +24,11 @@ class BusinessSeeder extends Seeder
             'verified' => true,
             'password' => Hash::make('password'),
         ]);
-
+        DB::table('business_addresses')->insert([
+            'business_id' => 1,
+            'address' => 'test',
+            'latitude' => '13',
+            'longitude' => '13',
+        ]);
     }
 }

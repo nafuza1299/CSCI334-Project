@@ -27,7 +27,7 @@ class HealthStaffRequest extends FormRequest
     {
         return [
             'position' => 'required|string|max:190',
-            'business' => 'required|string|max:190',
+            'business_id' => 'required',
             'health_org_email' => 'required|email|max:190',
         ];
     }

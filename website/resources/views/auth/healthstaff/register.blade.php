@@ -35,7 +35,13 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <x-input id="business" class="form-control" type="text" name="business" :value="old('business')" required placeholder="Organization"/>
+                            <select class="form-control form-control-lg empty select-business" name=business required>
+                                <option value="" selected disabled hidden>Select Health Organization</option>
+                                @foreach ($result as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                @endforeach
+                            </select>
+                            <!-- <x-input id="username" class="form-control" type="text" name="username" :value="old('username')" required placeholder="Username" autofocus/> -->
                         </div>
                     </div>
                     <div class="col-md-12">

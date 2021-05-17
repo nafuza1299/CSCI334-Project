@@ -83,7 +83,16 @@ class HealthStaffCrudController extends CrudController
 
 
         CRUD::column('position');
-        CRUD::column('business');
+        CRUD::addColumn([
+            // Select
+           'label'      => 'Health Org',
+           'type'       => 'select',
+           'name'       => 'business_id', // the db column for the foreign key
+           'key'       => 'name',
+           'entity'     => 'business', // the method that defines the relationship in your Model
+           'attribute'  => 'name', // foreign key attribute that is shown to user
+           'model' => "App\Models\Business"
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -102,7 +111,26 @@ class HealthStaffCrudController extends CrudController
         CRUD::setValidation(HealthStaffRequest::class);
 
         CRUD::field('position');
-        CRUD::field('business');
+        CRUD::addfield(
+        [  // Select
+            'label'     => "Health Org",
+            'type'      => 'select2',
+            'name'      => 'business_id', // the db column for the foreign key
+         
+            // optional 
+            // 'entity' should point to the method that defines the relationship in your Model
+            // defining entity will make Backpack guess 'model' and 'attribute'
+            // 'entity'    => 'category', 
+         
+            // optional - manually specify the related model and attribute
+            'model'     => "App\Models\Business", // related model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+         
+            // optional - force the related options to be a custom query, instead of all();
+            'options'   => (function ($query) {
+                return $query->where('type', 'Health')->where('verified', 1)->get();
+            }), //  you can use this to filter the results show in the select
+        ]);
         CRUD::field('health_org_email');
 
         /**
@@ -122,7 +150,26 @@ class HealthStaffCrudController extends CrudController
     {
         CRUD::setValidation(HealthStaffRequest::class);
         CRUD::field('position');
-        CRUD::field('business');
+        CRUD::addfield(
+            [  // Select
+                'label'     => "Health Org",
+                'type'      => 'select2',
+                'name'      => 'business_id', // the db column for the foreign key
+             
+                // optional 
+                // 'entity' should point to the method that defines the relationship in your Model
+                // defining entity will make Backpack guess 'model' and 'attribute'
+                // 'entity'    => 'category', 
+             
+                // optional - manually specify the related model and attribute
+                'model'     => "App\Models\Business", // related model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+             
+                // optional - force the related options to be a custom query, instead of all();
+                'options'   => (function ($query) {
+                    return $query->where('type', 'Health')->where('verified', 1)->get();
+                }), //  you can use this to filter the results show in the select
+            ]);
         CRUD::field('health_org_email');
     }
 }

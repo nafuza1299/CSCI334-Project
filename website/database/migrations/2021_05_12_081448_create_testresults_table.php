@@ -18,7 +18,7 @@ class CreateTestresultsTable extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
             $table->date('test_date');
-            $table->string('location');
+            $table->foreignId('business_address_id')->constrained();
             $table->boolean('infected');
         });
     }

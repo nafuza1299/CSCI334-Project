@@ -24,4 +24,9 @@ class HealthStaff extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
+    }
 }
