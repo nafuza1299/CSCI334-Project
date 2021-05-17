@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredBusinessController extends Controller
 {
@@ -41,14 +42,28 @@ class RegisteredBusinessController extends Controller
             'password' => 'required|string|confirmed|min:8|max:190',
         ]);
 
+        if($request->type == "Health"){
+            $request->validate([
+                'certificate' => 'required|mimes:pdf,jpeg,png,jpg,gif,svg|max:5120',
+            ]);
+        }
+
         $business = Business::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'type' => $request->type,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password)
         ]);
+
+        if($request->type == "Health"){        
+            $business_name = $request->username;
+            $imageName = $business_name.'_'.time().'.'.$request->certificate->extension();  
+            $path = $request->certificate->storeAs('business/certs', $imageName);
+            $business->certificate = $imageName;
+            $business->save();
+        }
 
         event(new Registered($business));
 

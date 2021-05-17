@@ -11,7 +11,7 @@
                 <div>
             </div>
         @else
-        <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
+        <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width: 600px !important">
             <h3>Generate a <b>QR Code</b> for your business location</h3>
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <select class="form-control form-control-lg empty select-address" name=id required>
+                            <select class="form-control form-control-lg empty select-address" name="id" required>
                                 <option value="" selected disabled hidden>Select Business Address</option>
                                 @foreach ($address as $data)
                                     <option value="{{$data->id}}">{{$data->address}}</option>
@@ -46,7 +46,7 @@
 @section('javascript')
 <script>
     $('.select-address').on('change', function() {
-        console.log( this.value );
+        // console.log( this.value );
         });
 </script>
 @if(session()->has('qrcode'))

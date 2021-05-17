@@ -69,8 +69,6 @@
 		reader.onloadend = function () {
             var result = reader.result.replace(/^data:.+;base64,/, '');
 			$("#certificate").val(result)
-			console.log($("#certificate").val())
-		}
 		reader.readAsDataURL(f[0]);
 	});
 
