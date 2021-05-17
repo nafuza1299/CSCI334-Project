@@ -18,7 +18,7 @@ class CheckIfGeneral
     public function handle(Request $request, Closure $next)
     {
         // Checks if the business type is 'general' redirects to home if not
-        if(Auth::guard('business')->user()->type == 'General'){
+        if(Auth::guard('business')->user()->type == 'Business'){
             return $next($request);
         }
         return redirect()->route('business');

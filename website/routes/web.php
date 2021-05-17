@@ -90,7 +90,7 @@ Route::prefix('organization')->group(function () {
 
     Route::get('/generate-qr-code', ['middleware' => 'business.auth:business','uses' => 'QRCodeController@indexGenerate'])->name('business.generate.qr');
     
-    Route::get('/safe-registration', ['middleware' => 'business.auth:business', 'uses' => 'SafeRegistrationController@index'])->name('business.safe.registration');
+    Route::get('/safe-registration', ['middleware' => ['business.auth:business', 'checkifgeneral:business'], 'uses' => 'SafeRegistrationController@index'])->name('business.safe.registration');
 
     Route::post('/edit-profile', ['middleware' => 'business.auth:business','uses' => 'ProfileController@editAccountInfoBusiness'])
                     ->name('business.edit.profile');
