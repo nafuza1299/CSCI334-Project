@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'business.auth' => \App\Http\Middleware\AuthenticateBusiness::class,
-        
+        'checkifhealthorg' => \App\Http\Middleware\CheckIfHealthOrg::class,
+        'checkifgeneral' => \App\Http\Middleware\CheckIfGeneral::class,
     ];
 }
