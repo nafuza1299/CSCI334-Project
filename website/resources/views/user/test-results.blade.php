@@ -51,7 +51,7 @@
                                             @endif
                                         </div>
                                     </th>
-                                    <td>{{ $data->location }}</td>
+                                    <td>{{ $data->address }}</td>
                                     <td>{{ $data->test_date }}</td>
                                 </tr>
                             @endforeach

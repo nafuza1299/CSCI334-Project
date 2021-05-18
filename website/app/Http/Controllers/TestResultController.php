@@ -14,9 +14,11 @@ class TestResultController extends Controller
     {
         $userid = Auth::user()->id;
         $test_results_data = TestResult::where('user_id', $userid)
+                            ->leftJoin('business_addresses', 'testresults.business_address_id', '=', 'business_addresses.id')
                             ->orderByDesc('test_date')
                             ->take(10)
                             ->get();
+
                     // return view('overview', compact());
         return view('user.test-results', compact('test_results_data'));
     }
