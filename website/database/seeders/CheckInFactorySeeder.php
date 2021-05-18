@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\BusinessAddress;
+use App\Models\CheckIn;
 
-class BusinessAddressFactorySeeder extends Seeder
+class CheckInFactorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class BusinessAddressFactorySeeder extends Seeder
      */
     public function run()
     {
-        BusinessAddress::factory()->count(env('SEED_LIMIT'))->create();
+        CheckIn::factory()->count(env('SEED_LIMIT'))->create();
     }
 }

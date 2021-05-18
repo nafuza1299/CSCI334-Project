@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\BusinessAddress;
+use App\Models\CheckIn;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class BusinessAddressFactory extends Factory
+class CheckInFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = BusinessAddress::class;
+    protected $model = CheckIn::class;
 
     /**
      * Define the model's default state.
@@ -23,10 +23,9 @@ class BusinessAddressFactory extends Factory
     public function definition()
     {
         return [
-            'business_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
-            'address' => $this->faker->address(),
-            'latitude' => $this->faker->latitude($min = -90, $max = 90), 
-            'longitude' => $this->faker->longitude($min = -90, $max = 90), 
+            'user_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
+            'business_address_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
+            'check_in_time' => $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'),
         ];
     }
 
@@ -35,4 +34,5 @@ class BusinessAddressFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
+
 }

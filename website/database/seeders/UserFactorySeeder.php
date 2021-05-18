@@ -14,6 +14,6 @@ class UserFactorySeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(10)->create();
+        User::factory()->count(env('SEED_LIMIT'))->create();
     }
 }
