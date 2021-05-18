@@ -81,6 +81,9 @@
 						<li class="nav-item {{ Request::segment(1) === 'vaccine' ? 'active' : null }}"><a href="{{route('vaccine')}}" class="nav-link">COVID-19 Vaccine</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'history' ? 'active' : null }}"><a href="{{route('history')}}" class="nav-link">Check-In History</a></li>
 						<li class="nav-item {{ Request::segment(1) === 'test-results' ? 'active' : null }}"><a href="{{route('test.results')}}" class="nav-link">Test Results</a></li>
+						@role('healthstaff')
+						<li class="nav-item {{ Request::segment(1) === 'report' ? 'active' : null }}"><a href="{{route('staff.report')}}" class="nav-link">Report</a></li>
+						@endrole
 						<li class="nav-item {{ Request::segment(1) === 'profile' ? 'active' : null }}"><a href="{{route('profile')}}" class="nav-link">Manage Account</a></li>
 					</ul>
 				</div>

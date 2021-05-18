@@ -69,7 +69,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="health_organization">Health Organization</label>
-                                            <input id="health_organization" class="form-control" type="text" name="business" value="{{$health_staff[0]->business}}" placeholder="Health Organization"/>
+                                            <input id="health_organization" class="form-control" type="text" name="business" value="{{$health_staff[0]->name}}" disabled placeholder="Health Organization"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

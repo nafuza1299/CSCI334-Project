@@ -40,13 +40,13 @@ Route::get('vaccine', ['middleware' => 'auth', function()
     return view('user.vaccine');
 }])->name('vaccine');
 
+Route::get('/report', ['middleware' => 'auth', 'uses' => 'ReportsController@staff'])->name('staff.report');
 
 Route::get('/vaccine/certificate',  ['middleware' => 'auth', 'uses' => 'VaccineCertificateController@index'])
                     ->name('vaccine.certificate');
 
 Route::post('/vaccine/upload-vaccine-certificate',  ['middleware' => 'auth', 'uses' => 'VaccineCertificateController@store'])
                     ->name('upload.vaccine.certificate');
-
 
 Route::get('profile', ['middleware' => 'auth', 'uses' => 'ProfileController@index'])->name('profile');
 
@@ -56,10 +56,7 @@ Route::get('history', ['middleware' => 'auth', 'uses' => 'CheckInController@inde
 
 Route::get('test-results', ['middleware' => 'auth', 'uses' => 'TestResultController@index'])->name('test.results');
 
-// Route::get('/qr-code/check-in/{latitude}/{longitude}/{address}', 'QRCodeController@index')->name("qr-check-in");
-
 Route::get('/qr-code/check-in/{id}', 'QRCodeController@index')->name("qr-check-in");
-
 
 Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
 
@@ -97,7 +94,9 @@ Route::prefix('organization')->group(function () {
     
     Route::get('/safe-registration', ['middleware' => ['business.auth:business', 'checkifgeneral:business'], 'uses' => 'SafeRegistrationController@index'])->name('business.safe.registration');
 
-    Route::get('/report', ['middleware' => 'business.auth:business', 'uses' => 'ReportsController@business'])->name('business.report');
+    Route::get('/report/business', ['middleware' => ['business.auth:business', 'checkifgeneral:business'], 'uses' => 'ReportsController@business'])->name('business.report');
+
+    Route::get('/report/health', ['middleware' => ['business.auth:business', 'checkifhealthorg:business'], 'uses' => 'ReportsController@healthorg'])->name('health.report');
 
     Route::post('/edit-profile', ['middleware' => 'business.auth:business','uses' => 'ProfileController@editAccountInfoBusiness'])
                     ->name('business.edit.profile');
