@@ -80,10 +80,10 @@ class ReportsController extends Controller
         $business_id = HealthStaff::where('user_id', $staff_id)
                                         ->select('business_id')
                                         ->first();
+
         //get statistics of business of staff
-        $org_statistics = HealthOrgStatistic::where('business_id', $business_id)
+        $org_statistics = HealthOrgStatistic::where('business_id', $business_id->business_id)
                                             ->get();
-        
         return view('user.healthstaff.report', compact('org_statistics'));
 
     }
@@ -95,7 +95,6 @@ class ReportsController extends Controller
                                             sum(infected) as infect_total, 
                                             sum(deaths) as death_total, 
                                             sum(recovered) as recovered_total'))
-                                            ->groupBy('business_id')
                                             ->get();
         return view('user.statistics', compact('org_statistics'));
 
