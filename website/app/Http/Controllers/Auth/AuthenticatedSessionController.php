@@ -39,10 +39,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // check if account is disabled. Logs out if disabled
-        if (Auth::user()->disabled == 1){
+        if (Auth::user()->suspended == 1){
             $this->destroy($request);
             return redirect('/login');
-    }
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -53,8 +53,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // check if user is not healthstaff or is disabled. logs out if it matches a criteria
-        if (HealthStaff::where('user_id', Auth::user()->id)->count() == 0 || Auth::user()->disabled == 1    ){
+        // check if user is not healthstaff or is suspended. logs out if it matches a criteria
+        if (HealthStaff::where('user_id', Auth::user()->id)->count() == 0 || Auth::user()->suspended == 1    ){
             $this->detroy($request);
         }
         else{

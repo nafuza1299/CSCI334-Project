@@ -17,7 +17,8 @@ class CheckIfHealthOrg
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::guard('business')->user()->type == 'Health'){
+        $user = Auth::guard('business')->user();
+        if($user->type == 'Health' && $user->verified == 1){
             return $next($request);
         }
         return redirect()->route('business');

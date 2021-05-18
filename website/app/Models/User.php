@@ -28,7 +28,7 @@ class User extends Authenticatable
         'address',
         'phone_number',
         'date_of_birth',
-        'disabled',
+        'suspended',
     ];
 
     /**

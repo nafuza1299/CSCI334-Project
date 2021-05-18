@@ -52,8 +52,8 @@ class UserCrudController extends CrudController
                 'type'  => 'boolean',
             ],
             [
-                'name'  => 'disabled',
-                'label' => "Disabled",
+                'name'  => 'suspended',
+                'label' => "Suspended",
                 'type'  => 'boolean',
             ],
             [ // n-n relationship (with pivot table)
@@ -135,8 +135,8 @@ class UserCrudController extends CrudController
         $this->addUserFields();
         $this->crud->addFields([
             [
-                'name'  => 'disabled',
-                'label' => "Disabled",
+                'name'  => 'suspended',
+                'label' => "Suspended",
                 'type'  => 'boolean',
             ]
         ]);

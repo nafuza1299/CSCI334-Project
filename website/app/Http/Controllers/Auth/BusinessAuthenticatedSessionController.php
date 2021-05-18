@@ -31,6 +31,11 @@ class BusinessAuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        
+        if (Auth::guard('business')->user()->suspended == 1){
+            $this->destroy($request);
+            return redirect('/organization/login');
+        }
 
         return redirect(route('business'));
     }
