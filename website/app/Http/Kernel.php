@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'business.auth' => \App\Http\Middleware\AuthenticateBusiness::class,
         'checkifhealthorg' => \App\Http\Middleware\CheckIfHealthOrg::class,
         'checkifgeneral' => \App\Http\Middleware\CheckIfGeneral::class,
+        'checkifhealthstaff' => \App\Http\Middleware\CheckIfHealthStaff::class,
     ];
 }

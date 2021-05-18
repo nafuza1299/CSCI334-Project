@@ -40,7 +40,7 @@ Route::get('vaccine', ['middleware' => 'auth', function()
     return view('user.vaccine');
 }])->name('vaccine');
 
-Route::get('/report/staff', ['middleware' => 'auth', 'uses' => 'ReportsController@staff'])->name('staff.report');
+Route::get('/report/staff', ['middleware' => ['auth', 'checkifhealthstaff'], 'uses' => 'ReportsController@staff'])->name('staff.report');
 
 Route::get('/statistics', ['middleware' => 'auth', 'uses' => 'ReportsController@public'])->name('statistics');
 
