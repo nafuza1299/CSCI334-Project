@@ -109,7 +109,9 @@ Route::prefix('organization')->group(function () {
 
     Route::post('/upload-business-certificate',  ['middleware' => 'business.auth:business', 'uses' => 'SafeRegistrationController@store'])
                     ->name('business.upload.certificate');
-
+    
+    Route::get('/health-statistics', ['middleware' => ['business.auth:business', 'checkifhealthorg:business'], 'uses' => 'HealthStatisticsController@index'])->name('business.healthorg.statistics');
+    Route::post('/health-statistics', ['middleware' => ['business.auth:business', 'checkifhealthorg:business'], 'uses' => 'HealthStatisticsController@store']);
 });
 
 // routes to download files

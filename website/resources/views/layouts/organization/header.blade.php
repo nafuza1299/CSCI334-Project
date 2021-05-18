@@ -79,6 +79,9 @@
 						@if(Auth::guard('business')->user()->type == 'Business')
 						<li class="nav-item {{ Request::segment(2) === 'safe-registration' ? 'active' : null }}"><a href="{{route('business.safe.registration')}}" class="nav-link">Safe Registration</a></li>
 						@endif
+						@if(Auth::guard('business')->user()->type == 'Health')
+						<li class="nav-item {{ Request::segment(2) === 'statistics' ? 'active' : null }}"><a href="{{route('business.healthorg.statistics')}}" class="nav-link">Statistics</a></li>
+						@endif
 						<li class="nav-item {{ Request::segment(2) === 'report' ? 'active' : null }}"><a href="{{url('business.report')}}" class="nav-link">Report</a></li>
 						<li class="nav-item {{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{route('business.profile')}}" class="nav-link">Manage Account</a></li>
 					</ul>
