@@ -23,8 +23,8 @@ class BusinessFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->company(),
-            'username' => $this->faker->unique()->word(),
+            'name' => $this->faker->company()." ".$this->faker->companySuffix()." ".$this->faker->randomNumber($nbDigits = NULL, $strict = false) ,
+            'username' => $this->faker->word."".$this->faker->randomLetter."".$this->faker->randomNumber($nbDigits = NULL, $strict = false),
             'email' => $this->faker->safeEmail(),
             'email_verified_at' => now(),
             'type' => $this->faker->randomElement(['Health', 'Business']),
