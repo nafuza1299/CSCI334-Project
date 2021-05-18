@@ -10,9 +10,7 @@
             <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
             <form method="POST" action="{{ route('qr-login') }}">
                 @csrf
-                <x-input type="hidden" id="latitude" class="form-control" value="{{$latitude}}" name="latitude"/>
-                <x-input type="hidden" id="longitude" class="form-control" value="{{$longitude}}" name="longitude"/>
-                <x-input type="hidden" id="address" class="form-control" value="{{$address}}" name="address"/>
+                <x-input type="hidden" id="business_address_id" class="form-control" value="{{$id}}" name="business_address_id"/>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">

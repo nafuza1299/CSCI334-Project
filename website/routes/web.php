@@ -56,7 +56,10 @@ Route::get('history', ['middleware' => 'auth', 'uses' => 'CheckInController@inde
 
 Route::get('test-results', ['middleware' => 'auth', 'uses' => 'TestResultController@index'])->name('test.results');
 
-Route::get('/qr-code/check-in/{latitude}/{longitude}/{address}', 'QRCodeController@index')->name("qr-check-in");
+// Route::get('/qr-code/check-in/{latitude}/{longitude}/{address}', 'QRCodeController@index')->name("qr-check-in");
+
+Route::get('/qr-code/check-in/{id}', 'QRCodeController@index')->name("qr-check-in");
+
 
 Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
 
@@ -93,6 +96,8 @@ Route::prefix('organization')->group(function () {
     Route::get('/generate-qr-code', ['middleware' => 'business.auth:business','uses' => 'QRCodeController@indexGenerate'])->name('business.generate.qr');
     
     Route::get('/safe-registration', ['middleware' => ['business.auth:business', 'checkifgeneral:business'], 'uses' => 'SafeRegistrationController@index'])->name('business.safe.registration');
+
+    Route::get('/report', ['middleware' => 'business.auth:business', 'uses' => 'ReportsController@business'])->name('business.report');
 
     Route::post('/edit-profile', ['middleware' => 'business.auth:business','uses' => 'ProfileController@editAccountInfoBusiness'])
                     ->name('business.edit.profile');
