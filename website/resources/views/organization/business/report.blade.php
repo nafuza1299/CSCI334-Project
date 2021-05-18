@@ -24,7 +24,7 @@
                         <div class="text">
                             <h1  style="font-size:40px !important">Report</h1>
                             <h2>Hi, {{{Auth::guard('business')->user()->name}}}</h2>
-                            <h4>Edit Report</h4>
+                            <h4>View Report</h4>
                         </div>
                     </div>
                     <div class="col-md-6 text-right justify-content-md-end">
@@ -40,20 +40,16 @@
                                 <th scope="col">Location</th>
                                 <th scope="col">Number of People visited</th>
                                 <th scope="col">Number of cases</th>
-                                <th scope="col">Last Case</th>
+                                <th scope="col">Last Check In</th>
                                 </tr>
                             </thead>
                             <tbody id="alert_notif">
-                            @foreach(Auth::guard('business')->user()->notifications as $notification)
+                            @foreach($report_data as $data)
                                 <tr>
-                                    <th scope="row">
-                                        <div class="row-status">
-                                            <div class='box yellow'></div>
-                                            <span>{{$notification->data['type']}}</span>
-                                        </div>
-                                    </th>
-                                    <td>{{$notification->data['message']}}</td>
-                                    <td>{{$notification->created_at->diffForHumans()}}</td>
+                                    <td>{{$data["address"]}}</td>
+                                    <td>{{$data["visited"]}}</td>
+                                    <td>{{$data["positive"]}}</td>
+                                    <td>{{$data["last_check"]}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

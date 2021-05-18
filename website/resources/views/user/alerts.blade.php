@@ -23,7 +23,7 @@
 					<div class="text">
 						<h1  style="font-size:40px !important">Alerts</h1>
 						<h2>Hi, {{{Auth::user()->name}}}</h2>
-                        <h4>Edit Alerts</h4>
+                        <h4>View Alerts</h4>
 					</div>
 				</div>
                 <div class="col-md-12 d-flex align-items-end">
