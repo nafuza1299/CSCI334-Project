@@ -87,6 +87,20 @@ class ReportsController extends Controller
         return view('user.healthstaff.report', compact('org_statistics'));
 
     }
+
+    public function public(){
+   
+        //get statistics of business of staff
+        $org_statistics = HealthOrgStatistic::select(HealthOrgStatistic::raw('
+                                            sum(infected) as infect_total, 
+                                            sum(deaths) as death_total, 
+                                            sum(recovered) as recovered_total'))
+                                            ->groupBy('business_id')
+                                            ->get();
+        return view('user.statistics', compact('org_statistics'));
+
+    }
+
     public function healthorg(){ 
         //get patients which are positive
         $test_result_data= TestResult::where('infected', 1)
