@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\HealthStaff;
+use App\Models\TestResult;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class HealthStaffFactory extends Factory
+class TestResultFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = HealthStaff::class;
+    protected $model = TestResult::class;
 
     /**
      * Define the model's default state.
@@ -23,10 +23,10 @@ class HealthStaffFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')/5),
-            'position'=> $this->faker->jobTitle,
-            'business_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')/5),
-            'health_org_email' => $this->faker->safeEmail(),
+            'user_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
+            'business_address_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
+            'test_date' => $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'),
+            'infected' => (int) $this->faker->boolean(50),
         ];
     }
 
