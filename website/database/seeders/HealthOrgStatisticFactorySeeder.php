@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\HealthOrgStatistic;
 
-class UserFactorySeeder extends Seeder
+class HealthOrgStatisticFactorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class UserFactorySeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(env('SEED_LIMIT'))->create();
+        HealthOrgStatistic::factory()->count(env('SEED_LIMIT'))->create();
     }
 }

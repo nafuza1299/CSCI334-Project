@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\Business;
 
-class UserFactorySeeder extends Seeder
+class BusinessFactorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class UserFactorySeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(env('SEED_LIMIT'))->create();
+        Business::factory()->count(env('SEED_LIMIT'))->create();
     }
 }
