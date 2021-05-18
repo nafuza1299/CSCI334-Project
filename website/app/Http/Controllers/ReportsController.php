@@ -10,6 +10,7 @@ use App\Models\BusinessAddress;
 use App\Models\HealthStaff;
 use App\Models\CheckIn;
 use App\Models\TestResult;
+use App\Models\HealthOrgStatistic;
 
 use App\Notifications\Alerts;
 
@@ -72,10 +73,25 @@ class ReportsController extends Controller
             return $result;
         }
         //merge the first two arrays; positive_data and checkin_data
-        $merge_data =  custom_array_merge($positive_data->toArray(), $checkin_data->toArray());
+        $merge_data = custom_array_merge($positive_data->toArray(), $checkin_data->toArray());
         //get final report data with last check_in      
         $report_data =  custom_array_merge($merge_data, $last_checkin_data->toArray());
         return view('organization.business.report', compact('report_data'));
+    }
+
+    public function staff(){
+        //get id
+        $staff_id = Auth::user()->id;
+        //get business ids
+        $business_id = HealthStaff::where('user_id', $staff_id)
+                                        ->select('business_id')
+                                        ->first();
+        //get statistics of business of staff
+        $org_statistics = HealthOrgStatistic::where('business_id', $business_id)
+                                            ->get();
+        
+        return view('user.healthstaff.report', compact('org_statistics'));
+
     }
 
    

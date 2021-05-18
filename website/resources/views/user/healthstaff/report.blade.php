@@ -23,7 +23,7 @@
                     <div class="col-md-6 d-flex align-items-end">
                         <div class="text">
                             <h1  style="font-size:40px !important">Report</h1>
-                            <h2>Hi, {{{Auth::guard('business')->user()->name}}}</h2>
+                            <h2>Hi, {{{Auth::user()->name}}}</h2>
                             <h4>View Report</h4>
                         </div>
                     </div>
@@ -33,19 +33,17 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Location</th>
-                                <th scope="col">Number of People visited</th>
                                 <th scope="col">Number of cases</th>
-                                <th scope="col">Last Check In</th>
+                                <th scope="col">Number of deaths </th>
+                                <th scope="col">Number of recovered</th>
                                 </tr>
                             </thead>
                             <tbody id="alert_notif">
-                            @foreach($report_data as $data)
+                            @foreach($org_statistics as $data)
                                 <tr>
-                                    <td>{{$data["address"]}}</td>
-                                    <td>{{$data["visited"]}}</td>
-                                    <td>{{$data["positive"]}}</td>
-                                    <td>{{$data["last_check"]}}</td>
+                                    <td>{{$data->infected}}</td>
+                                    <td>{{$data->deaths}}</td>
+                                    <td>{{$data->recovered}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -57,4 +55,3 @@
     </body>
 </section>
 @endsection
-
