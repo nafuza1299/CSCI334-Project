@@ -22,9 +22,9 @@
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-end">
                         <div class="text">
-                            <h1  style="font-size:40px !important">Alerts</h1>
+                            <h1  style="font-size:40px !important">Report</h1>
                             <h2>Hi, {{{Auth::guard('business')->user()->name}}}</h2>
-                            <h4>View Alerts</h4>
+                            <h4>Edit Report</h4>
                         </div>
                     </div>
                     <div class="col-md-6 text-right justify-content-md-end">
@@ -37,9 +37,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Alert</th>
-                                <th scope="col">Message</th>
-                                <th scope="col">Time</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Number of People visited</th>
+                                <th scope="col">Number of cases</th>
+                                <th scope="col">Last Case</th>
                                 </tr>
                             </thead>
                             <tbody id="alert_notif">

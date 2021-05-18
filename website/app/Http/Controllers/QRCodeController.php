@@ -16,11 +16,11 @@ class QRCodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($latitude, $longitude, $address)
+    public function index($id)
     {
         Auth::guard('web')->logout();
 
-        return view('user.qr-check-in',  compact('latitude', 'longitude', 'address'));
+        return view('user.qr-check-in',  compact('id'));
     }
 
     public function store(LoginRequest $request)
@@ -28,16 +28,12 @@ class QRCodeController extends Controller
         $request->authenticate();
         $id = auth()->id();
         $request->validate([
-            'latitude' => 'required|integer|max:255',
-            'longitude' => 'required|integer|max:255',
-            'address' => 'required|string|max:255',
-        ]);
+            'business_address_id' => 'required|integer|max:255',
 
+        ]);
          $check_in= CheckIn::create([
             'user_id' => $id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'address' => $request->address,
+            'business_address_id' => $request->business_address_id,
         ]);
 
         return redirect(route('home'));
@@ -60,8 +56,9 @@ class QRCodeController extends Controller
                             ->where('id', $request->id)
                             ->get();
 
-        $url = route('qr-check-in', ['latitude' => $address[0]->latitude,'longitude' => $address[0]->longitude,'address' => $address[0]->address]);
-    
+        // $url = route('qr-check-in', ['latitude' => $address[0]->latitude,'longitude' => $address[0]->longitude,'address' => $address[0]->address]);
+        $url = route('qr-check-in', ['id'=>$address[0]->id]);
+
         return redirect()->route('business.generate.qr')->with('qrcode', $url);
 
     }

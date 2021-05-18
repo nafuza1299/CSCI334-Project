@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCheckInTable extends Migration
+class AddBusinessAddressesIdToCheckinTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateCheckInTable extends Migration
      */
     public function up()
     {
-        Schema::create('check_in', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamp("check_in_time")->useCurrent();
+        Schema::table('check_in', function (Blueprint $table) {
+           $table->foreignId('business_address_id')->constrained('business_addresses');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateCheckInTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('check_in');
+        Schema::table('checkin', function (Blueprint $table) {
+            //
+        });
     }
 }
