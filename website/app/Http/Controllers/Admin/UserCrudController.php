@@ -51,6 +51,11 @@ class UserCrudController extends CrudController
                 'label' => "Vaccinated",
                 'type'  => 'boolean',
             ],
+            [
+                'name'  => 'disabled',
+                'label' => "Disabled",
+                'type'  => 'boolean',
+            ],
             [ // n-n relationship (with pivot table)
                 'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
                 'type'      => 'select_multiple',
@@ -127,6 +132,14 @@ class UserCrudController extends CrudController
 
     public function setupUpdateOperation()
     {
+        $this->addUserFields();
+        $this->crud->addFields([
+            [
+                'name'  => 'disabled',
+                'label' => "Disabled",
+                'type'  => 'boolean',
+            ]
+        ]);
         $this->addUserFields();
         $this->crud->setValidation(UserUpdateRequest::class);
     }

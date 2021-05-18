@@ -23,6 +23,7 @@ class AddColumnsToUsersTable extends Migration
             $table->date("date_of_birth")->nullable();
             $table->boolean('infected')->default(0);
             $table->string('certificate')->nullable();
+            $table->boolean('disabled')->default(0);
         });
     }
 

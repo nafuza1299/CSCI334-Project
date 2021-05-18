@@ -93,6 +93,11 @@ class HealthStaffCrudController extends CrudController
            'attribute'  => 'name', // foreign key attribute that is shown to user
            'model' => "App\Models\Business"
         ]);
+        CRUD::addcolumn([
+            'name'  => 'verified',
+            'label' => 'Verified',
+            'type'  => 'boolean',
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

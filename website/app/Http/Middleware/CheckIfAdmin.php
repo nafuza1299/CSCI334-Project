@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\HealthStaff;
+use Illuminate\Support\Facades\Auth;
 
 class CheckIfAdmin
 {
@@ -31,10 +32,17 @@ class CheckIfAdmin
     {
         $flag = false;
 
+        // check if user is disabled
+        if($user->disabled == 1){
+            return false;
+        }
+
+        // check if user has admin role
         if($user->hasRole('admin')){
             
             $flag = true;
         }
+        // check if user has healthstaff role
         else if($user->hasRole('healthstaff')){
             try{
                 $healthstaff = HealthStaff::where('user_id', $user->id)->firstOrFail();
@@ -79,6 +87,16 @@ class CheckIfAdmin
     {
         if (backpack_auth()->guest()) {
             return $this->respondToUnauthorizedRequest($request);
+        }
+
+        if (backpack_user()->disabled == 1){
+            Auth::guard('web')->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+
+            return redirect('/');
         }
 
         if (! $this->checkIfUserIsAdmin(backpack_user())) {
