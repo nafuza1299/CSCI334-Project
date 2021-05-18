@@ -21,6 +21,7 @@ class Business extends Authenticatable
         'type',
         'verified',
         'password',
+        'suspended',
     ];
 
     protected $hidden = [

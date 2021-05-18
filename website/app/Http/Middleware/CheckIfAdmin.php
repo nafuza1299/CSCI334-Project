@@ -32,8 +32,8 @@ class CheckIfAdmin
     {
         $flag = false;
 
-        // check if user is disabled
-        if($user->disabled == 1){
+        // check if user is suspended
+        if($user->suspended == 1){
             return false;
         }
 
@@ -89,7 +89,7 @@ class CheckIfAdmin
             return $this->respondToUnauthorizedRequest($request);
         }
 
-        if (backpack_user()->disabled == 1){
+        if (backpack_user()->suspended == 1){
             Auth::guard('web')->logout();
 
             $request->session()->invalidate();

@@ -86,6 +86,11 @@ class BusinessCrudController extends CrudController
                 // 'class' => 'some-class',
             ],
         ]);
+        CRUD::addcolumn([
+            'name'  => 'suspended',
+            'label' => 'Suspended',
+            'type'  => 'boolean',
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -142,6 +147,11 @@ class BusinessCrudController extends CrudController
         CRUD::field('phone_number');
         CRUD::field('type');
         CRUD::field('verified');
+        CRUD::addfield([
+            'name'  => 'suspended',
+            'label' => 'Suspended',
+            'type'  => 'boolean',
+        ]);
         
     }
 }

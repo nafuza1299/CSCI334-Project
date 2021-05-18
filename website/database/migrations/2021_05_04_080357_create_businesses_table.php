@@ -26,6 +26,7 @@ class CreateBusinessesTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->string('certificate')->nullable();
+            $table->boolean('suspended')->default(0);
         });
     }
 
