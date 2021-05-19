@@ -28,7 +28,7 @@ class QRCodeController extends Controller
         $request->authenticate();
         $id = auth()->id();
         $request->validate([
-            'business_address_id' => 'required|integer|max:255',
+            'business_address_id' => 'required|integer',
 
         ]);
          $check_in= CheckIn::create([
