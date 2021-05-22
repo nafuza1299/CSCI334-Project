@@ -73,7 +73,7 @@
 			@auth('business')
 				<div class="collapse navbar-collapse" id="ftco-nav" >
 					<ul class="navbar-nav" style="font-weight:600 !important">
-						<li class="nav-item {{ Request::segment(2) === 'overview' ? 'active' : null }}"><a href="{{route('business.overview')}}" class="nav-link">Overview</a></li>
+						<!-- <li class="nav-item {{ Request::segment(2) === 'overview' ? 'active' : null }}"><a href="{{route('business.overview')}}" class="nav-link">Overview</a></li> -->
 						<li class="nav-item {{ Request::segment(2) === 'alerts' ? 'active' : null }}"><a href="{{route('business.alerts')}}" class="nav-link">Alerts</a></li>
 						<li class="nav-item {{ Request::segment(2) === 'generate-qr-code' ? 'active' : null }}"><a href="{{route('business.generate.qr')}}" class="nav-link">Generate QR-Code</a></li>
 						@if(Auth::guard('business')->user()->type == 'Business')

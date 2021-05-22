@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CheckIn;
+use App\Models\TestResult;
 
 class OverviewController extends Controller
 {
@@ -16,11 +17,17 @@ class OverviewController extends Controller
     {
         $userid = auth()->id();
         $last_checkin_data = CheckIn::where('user_id', $userid)
+                            ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
                             ->orderByDesc('check_in_time')
                             ->take(1)
-                            ->get();
+                            ->first();
 
-            return view('user.overview', compact('last_checkin_data'));
+        $test_result = TestResult::where('user_id', $userid)
+                            ->leftJoin('business_addresses', 'testresults.business_address_id', '=', 'business_addresses.id')
+                            ->orderByDesc('testresults.created_at')
+                            ->take(1)
+                            ->first();
+        return view('user.overview', compact('last_checkin_data', 'test_result'));
         
     }
 
