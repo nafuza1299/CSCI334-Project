@@ -2,7 +2,7 @@
 @section('content')
 <section>
   <body>
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_5.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url();" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -26,7 +26,7 @@
             <div class="col-md-4 d-flex ftco-animate">
               <div class="blog-entry justify-content-end">
                 <div class="text text-center">
-                  <a href="{{url('blog-single')}}" class="block-20 img" style="background-image: url({{$news_data['articles'][$i]['urlToImage']}});">
+                  <a href={{$news_data["articles"][$i]["url"]}} class="block-20 img" style="background-image: url({{$news_data['articles'][$i]['urlToImage']}});">
                   </a>
                   <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
                     <div>
@@ -183,7 +183,7 @@
         </div> 
         <div class="row mt-5">
           <div class="col text-center">
-            <div class="block-27">
+            <!-- <div class="block-27">
               <ul>
                 <li><a href="#">&lt;</a></li>
                 <li class="active"><span>1</span></li>
@@ -193,7 +193,7 @@
                 <li><a href="#">5</a></li>
                 <li><a href="#">&gt;</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
