@@ -24,12 +24,11 @@ class EventServiceProvider extends ServiceProvider
     //     ],
     // ];
     protected $listen = [
-        UpdateInfectStatusEvent::class => [
-            AlertInfectedListener::class,
-        ],
         UpdateTestResultEvent::class => [
-            AlertTestResultListener::class,
+            AlertInfectedListener::class, 
+            AlertTestResultListener::class
         ],
+     
     ];
 
     /**

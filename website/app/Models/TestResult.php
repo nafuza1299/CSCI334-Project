@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use App\Events\UpdateInfectStatusEvent;
 use App\Events\UpdateTestResultEvent;
 use Illuminate\Notifications\Notifiable;
 
@@ -62,9 +61,7 @@ class TestResult extends Model
     }
 
     protected $dispatchesEvents = [
-        'updated' => UpdateInfectStatusEvent::class, 
-        'created' => UpdateInfectStatusEvent::class, 
-        'updated' => UpdateTestResultEvent::class,
-        'created' => UpdateTestResultEvent::class,
+        'updated' => UpdateTestResultEvent::class, 
+        'created' => UpdateTestResultEvent::class, 
     ];
 }
