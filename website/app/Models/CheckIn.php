@@ -36,15 +36,6 @@ class CheckIn extends Model
                     ->take(1)
                     ->first();
    }
-   //get areas where infected users have visited
-   public function getInfectedAreas($userid){
-      return $this->whereIn('user_id', $userid)
-                  ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-                  ->select('address', 'longitude', 'latitude', $this->raw('count(distinct(user_id)) as total'))
-                  ->groupBy('address', 'longitude', 'latitude')
-                  ->orderByDesc('total')
-                  ->get();
-   }
    //create check in
    public function createCheckIn($id, $request){
       return $this->create([
@@ -56,8 +47,8 @@ class CheckIn extends Model
    public function getPeopleVisitedAddress($getAddress = NULL){
       $people_visited = $this->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
                   ->select('business_address_id', 'address', 'longitude','latitude', $this->raw('count((user_id)) as visited'))
-                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude');
-
+                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude')
+                  ->orderByDesc('visited');
       if(isset($getAddress)){
          $people_visited->whereIn('business_address_id', $getAddress);
       }
@@ -68,7 +59,8 @@ class CheckIn extends Model
       $infected_visited = $this->whereIn('user_id', $getUserID)
                   ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
                   ->select('business_address_id','address', 'longitude', 'latitude', $this->raw('count(distinct(user_id)) as positive'))
-                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude');
+                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude')
+                  ->orderByDesc('positive');
       if(isset($getAddress)){
          $infected_visited->whereIn('business_address_id', $getAddress);
       }
@@ -78,7 +70,8 @@ class CheckIn extends Model
    public function getLastCheckInDate($getAddress = NULL){
       $date = $this->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
                   ->select('business_address_id','address', 'longitude', 'latitude', $this->raw('max((check_in_time)) as last_check'))
-                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude');
+                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude')
+                  ->orderByDesc('last_check');
       if(isset($getAddress)){
          $date->whereIn('business_address_id', $getAddress);
       }

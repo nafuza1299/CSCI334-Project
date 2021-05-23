@@ -58,7 +58,7 @@
                                         </div>
                                     </th>
                                     <td>{{ $data->address }}</td>
-                                    <td>{{ $data->total }}</td>
+                                    <td>{{ $data->positive }}</td>
                                     <td>{{ $data->latitude }}</td>
                                     <td>{{ $data->longitude }}</td>
                                 </tr>

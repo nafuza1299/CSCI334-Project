@@ -18,8 +18,7 @@ class SearchInfectLocationController extends Controller
         
         //get areas where infected users have visited
         $checkin = new CheckIn;
-        $result = $checkin->getInfectedAreas($getUserID);
-                    
+        $result = $checkin->getPositiveVisitedAddress($getUserID);
         return view('location', compact('result'));
     }
 }
