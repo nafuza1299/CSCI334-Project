@@ -36,6 +36,14 @@ class TestResult extends Model
     {
         return $this->belongsTo(BusinessAddress::class);
     }
+    //get all test result of user
+    public function getTestResult($userid){
+        return $this->where('user_id', $userid)
+                    ->leftJoin('business_addresses', 'testresults.business_address_id', '=', 'business_addresses.id')
+                    ->orderByDesc('test_date')
+                    ->take(10)
+                    ->get();
+    }
     //get last test result of user
     public function getLastResult($userid){
         return $this->where('user_id', $userid)

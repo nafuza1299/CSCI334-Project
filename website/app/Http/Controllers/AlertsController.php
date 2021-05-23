@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Business;
 use App\Models\HealthStaff;
-
 use App\Notifications\Alerts;
 
 class AlertsController extends Controller
