@@ -23,9 +23,16 @@ class CheckIn extends Model
     public function getCheckIn($userid)
     {
        return $this->where('user_id', $userid)
-        ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-        ->orderByDesc('check_in_time')
-        ->take(10)
-        ->get();
+                    ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
+                    ->orderByDesc('check_in_time')
+                    ->take(10)
+                    ->get();
+    }
+    public function getLastCheckIn($userid){
+       return $this->where('user_id', $userid)
+                    ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
+                    ->orderByDesc('check_in_time')
+                    ->take(1)
+                    ->first();
     }
 }

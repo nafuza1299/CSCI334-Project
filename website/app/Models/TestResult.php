@@ -36,7 +36,14 @@ class TestResult extends Model
     {
         return $this->belongsTo(BusinessAddress::class);
     }
-    
+    //get last test result of user
+    public function getLastResult($userid){
+        return $this->where('user_id', $userid)
+                    ->leftJoin('business_addresses', 'testresults.business_address_id', '=', 'business_addresses.id')
+                    ->orderByDesc('testresults.created_at')
+                    ->take(1)
+                    ->first();
+    }
 
     protected $dispatchesEvents = [
         'updated' => UpdateInfectStatusEvent::class, 

@@ -54,8 +54,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(TestResult::class);
     }
+    //get user ids from public which are not health staff
     public function getPublicIDnotStaff($getStaffID){
-         //get user ids from public which are not health staff
          return $this->select("id")
                     ->whereNotIn('id', $getStaffID)
                     ->get();
