@@ -12,6 +12,7 @@ class CheckInController extends Controller
 {
     public function index()
     {
+        //retrieves check-in data of user
         $userid = Auth::user()->id;
         $checkin= new CheckIn();
         $checkin_data = $checkin->getCheckIn($userid);

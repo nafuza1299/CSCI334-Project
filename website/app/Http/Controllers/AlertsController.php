@@ -52,10 +52,9 @@ class AlertsController extends Controller
     public function createAlertBusiness($msg_type, $message)
     {
         // get business ID that is not a health org
-        $getBusinessID = Business::select("id")
-                        ->where('type', '!=', 'Health')
-                        ->get();
-        
+        $business = new Business;
+        $getBusinessID = $business->getBusinessNotHealth();
+  
         //alert all Businesses
         foreach($getBusinessID as $data){
             $user = Business::findOrFail($data["id"]);
@@ -65,14 +64,13 @@ class AlertsController extends Controller
     public function createAlertPublic($msg_type, $message)
     {
         //get staff to exclude from user
-        $StaffID = HealthStaff::select("user_id")->get()->toArray();
-        $getStaffID = array_filter(array_map(function($data) { return $data['user_id']; }, $StaffID));
+        $healthstaff = new HealthStaff();
+        $getStaffID = $healthstaff->getAllStaff();
 
         //get user ids from public which are not health staff
-        $getPublicID = User::select("id")
-                        ->whereNotIn('id', $getStaffID)
-                        ->get();
-
+        $public = new User();
+        $getPublicID = $public->getPublicIDnotStaff($getStaffID);
+    
         //alert all public
         foreach($getPublicID as $data){
             $user = User::findOrFail($data["id"]);
@@ -83,10 +81,8 @@ class AlertsController extends Controller
     {
         //get staff IDs that belongs to the health organization
         $getHealthOrgId = Auth::guard('business')->id();
-        $getStaffID = HealthStaff::select("user_id")
-                                ->where("business_id", $getHealthOrgId)
-                                ->get()
-                                ->toArray();
+        $healthstaff = new HealthStaff();
+        $getStaffID = $healthstaff->getAllIDinOrg($getHealthOrgId);
 
         //alert all health staff
         foreach($getStaffID as $data){

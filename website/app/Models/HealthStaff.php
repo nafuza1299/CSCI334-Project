@@ -29,4 +29,17 @@ class HealthStaff extends Model
     {
         return $this->belongsTo(Business::class);
     }
+    //gets all staff belonging to specific health org.
+    public function getAllIDinOrg($getHealthOrgId){
+        return $this->select("user_id")
+                    ->where("business_id", $getHealthOrgId)
+                    ->get()
+                    ->toArray();
+    }
+    //get all existing health staff
+    public function getAllStaff(){
+        $StaffID = $this->select("user_id")->get()->toArray();
+        $getStaffID = array_filter(array_map(function($data) { return $data['user_id']; }, $StaffID));
+        return $getStaffID;
+    }
 }
