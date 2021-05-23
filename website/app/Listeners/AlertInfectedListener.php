@@ -38,23 +38,18 @@ class AlertInfectedListener
             $from = date('Y-m-d H:i:s', strtotime('-14 day', strtotime($to)));
 
             //gather all the infected user's check-in data
-            $checkin_data_user = CheckIn::where('user_id', $user_id)
-                                ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-                                ->whereBetween('check_in_time', [$from, $to])
-                                ->get()
-                                ->toArray();
+            $checkin = new CheckIn;
+            $checkin_data_user = $checkin->getAddressBetweenTime($user_id, $from, $to);
+
             //gather the lat/lon for every places they visited
             $getCoord = array_filter(array_map(function($data) { return array($data['latitude'], $data['longitude'] ); }, $checkin_data_user));
+            
             //check closes location of user's
             $user_notified = array_unique([]);
             foreach($getCoord as $coordinates)
             {
                 // query to get closest distance based on haversine
-                $result = CheckIn::query()
-                    ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-                    ->whereRaw('(2 * asin(sqrt(power(sin((radians(latitude) - radians('.$coordinates[0].')) / 2),2 ) + cos(radians('.$coordinates[0].')) * cos(radians(latitude)) * power(sin((radians(longitude) - radians('.$coordinates[1].')) / 2), 2) ) )) * 6731 <= 5')
-                    ->where('user_id', '!=', $user_id)
-                    ->get();
+                $result = $checkin->IDbyHaversine($user_id, $coordinates[0], $coordinates[1]);
 
                 $getUserID = array_filter(array_map(function($data) { return array($data['user_id'], $data['address']); }, $result->toArray()));
                 
