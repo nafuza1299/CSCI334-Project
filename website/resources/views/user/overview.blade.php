@@ -7,7 +7,7 @@
 				<div class="col-md-6 d-flex align-items-end">
 					<div class="text">
 						<h1  style="font-size:40px !important">Overview</h1>
-						<h2>Hi, {{{Auth::user()->name}}}</h2>
+						<h2>Hi, {{{auth()->user()->name}}}</h2>
 					</div>
 				</div>
 			</div>
@@ -47,7 +47,7 @@
 									<li>Test Result:  @isset($test_result) 
 									@if($test_result->infected == 1)
 										Positive
-									@elseif(test_result->infected == 0)
+									@elseif($test_result->infected == 0)
 										Negative
 									@endif
 									@else N/A @endisset</li>

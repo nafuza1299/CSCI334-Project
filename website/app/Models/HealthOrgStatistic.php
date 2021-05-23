@@ -25,4 +25,17 @@ class HealthOrgStatistic extends Model
                         'deaths' => $request->deaths
                     ]);
     }
+    //get individual org's statistics
+    public function getOrgStatistic($business_id){
+        return $this->where('business_id', $business_id)
+                     ->get();
+    }
+    //get sum of all org's statistics
+    public function getAllOrgStatistic(){
+        return $this->select($this->raw('
+               sum(infected) as infect_total, 
+                sum(deaths) as death_total, 
+                sum(recovered) as recovered_total'))
+        ->get();
+    }
 }

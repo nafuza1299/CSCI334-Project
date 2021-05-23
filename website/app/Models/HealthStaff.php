@@ -42,4 +42,10 @@ class HealthStaff extends Model
         $getStaffID = array_filter(array_map(function($data) { return $data['user_id']; }, $StaffID));
         return $getStaffID;
     }
+    //get health staff's org's ID
+    public function getHealthStaffID($staff_id){
+        return $this->where('user_id', $staff_id)
+                    ->select('business_id')
+                    ->first();
+    }
 }
