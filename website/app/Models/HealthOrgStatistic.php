@@ -16,4 +16,12 @@ class HealthOrgStatistic extends Model
         'recovered',
         'deaths',
     ];
+    public function saveStatistic($request, $user){
+       return $this->where('business_id', $user)
+                    ->update([
+                        'infected' => $request->infected, 
+                        'recovered' => $request->recovered, 
+                        'deaths' => $request->deaths
+                    ]);
+    }
 }
