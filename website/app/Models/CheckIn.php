@@ -35,14 +35,22 @@ class CheckIn extends Model
                     ->orderByDesc('check_in_time')
                     ->take(1)
                     ->first();
-    }
-     //get areas where infected users have visited
-     public function getInfectedAreas($userid){
-        return $this->whereIn('user_id', $userid)
-        ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-        ->select('address', 'longitude', 'latitude', CheckIn::raw('count(distinct(user_id)) as total'))
-        ->groupBy('address', 'longitude', 'latitude')
-        ->orderByDesc('total')
-        ->get();
-     }
+   }
+   //get areas where infected users have visited
+   public function getInfectedAreas($userid){
+      return $this->whereIn('user_id', $userid)
+      ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
+      ->select('address', 'longitude', 'latitude', CheckIn::raw('count(distinct(user_id)) as total'))
+      ->groupBy('address', 'longitude', 'latitude')
+      ->orderByDesc('total')
+      ->get();
+   }
+   //create check in
+   public function createCheckIn($id, $request){
+      return $this->create([
+         'user_id' => $id,
+         'business_address_id' => $request->business_address_id,
+     ]);
+   }
+   
 }

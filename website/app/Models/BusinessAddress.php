@@ -17,5 +17,22 @@ class BusinessAddress extends Authenticatable
         'latitude',
         'longitude',
     ];
-
+    //check business address ID exists
+    public function checkBusinessAddressID($id){
+        return $this->where('id', $id)
+                    ->select('id')
+                    ->first();
+    }
+    //get list of business's address
+    public function getBusinessAddress($userid){
+        return $this->where('business_id', $userid)
+                                ->orderByDesc('address')
+                                ->get();
+    }
+    //get business address ID
+    public function getSelectedAddress($userid, $request){
+        return $this->where('business_id', $userid)
+        ->where('id', $request->id)
+        ->get();
+    }
 }
