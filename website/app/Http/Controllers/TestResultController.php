@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\TestResult;
-use App\Models\CheckIn;
 
 class TestResultController extends Controller
 {

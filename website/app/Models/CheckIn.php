@@ -19,7 +19,7 @@ class CheckIn extends Model
         'user_id',
         'business_address_id',
     ];
-
+    //get user's last ten check in
     public function getCheckIn($userid)
     {
        return $this->where('user_id', $userid)
@@ -28,6 +28,7 @@ class CheckIn extends Model
                     ->take(10)
                     ->get();
     }
+    //get the last check in data for users
     public function getLastCheckIn($userid){
        return $this->where('user_id', $userid)
                     ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
@@ -35,4 +36,13 @@ class CheckIn extends Model
                     ->take(1)
                     ->first();
     }
+     //get areas where infected users have visited
+     public function getInfectedAreas($userid){
+        return $this->whereIn('user_id', $userid)
+        ->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
+        ->select('address', 'longitude', 'latitude', CheckIn::raw('count(distinct(user_id)) as total'))
+        ->groupBy('address', 'longitude', 'latitude')
+        ->orderByDesc('total')
+        ->get();
+     }
 }

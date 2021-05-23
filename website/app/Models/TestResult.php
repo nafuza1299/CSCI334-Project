@@ -52,6 +52,14 @@ class TestResult extends Model
                     ->take(1)
                     ->first();
     }
+    //get all infected users
+    public function getInfected(){
+        return $this->where('infected', 1)
+                    ->select('user_id')
+                    ->distinct()
+                    ->get()
+                    ->toArray();
+    }
 
     protected $dispatchesEvents = [
         'updated' => UpdateInfectStatusEvent::class, 

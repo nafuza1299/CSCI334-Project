@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\HealthOrgStatistic;
 use App\Http\Requests\HealthStatisticRequest;
+
 class HealthStatisticsController extends Controller
 {
     // function used to show the health-statistic page

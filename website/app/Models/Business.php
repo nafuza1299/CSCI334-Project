@@ -32,6 +32,7 @@ class Business extends Authenticatable
     {
         return $this->hasMany(BusinessAddress::class);
     }
+    //get businesses which are not health orgs
     public function getBusinessNotHealth(){
         return $this->select("id")
         ->where('type', '!=', 'Health')
