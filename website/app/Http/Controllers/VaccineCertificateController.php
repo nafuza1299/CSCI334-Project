@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\VaccineCertificateRequest;
+use App\Http\Requests\CertificateRequest;
 
 class VaccineCertificateController extends Controller
 {
@@ -14,7 +14,7 @@ class VaccineCertificateController extends Controller
         return view('user.vaccine-certificate');
     }
 
-    public function store(VaccineCertificateRequest $request)
+    public function store(CertificateRequest $request)
     {
         $user_name = auth()->user()->name;
         $imageName = $user_name.'_'.time().'.'.$request->certificate->extension();  
