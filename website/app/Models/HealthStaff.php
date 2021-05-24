@@ -48,4 +48,16 @@ class HealthStaff extends Model
                     ->select('business_id')
                     ->first();
     }
+    //get health staff info
+    public function getHealthStaffInfo($userid){
+        return $this->where('user_id', $userid)
+                    ->leftJoin('businesses', 'health_staffs.business_id', '=', 'businesses.id')
+                    ->get();
+    }
+    //update health staff info
+    public function updateHealthStaffInfo($user, $request){
+        return $this->where('user_id', $user)
+                    ->update(['position' => $request->position, 'health_org_email' => $request->health_org_email]);
+    }
+   
 }

@@ -56,6 +56,7 @@ class CheckIn extends Model
    }
    //get number of people positive in each business address
    public function getPositiveVisitedAddress($getUserID = NULL, $getAddress = NULL){
+      //if positive paitients is null, return 0 for count
       $infected_visited = $this->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
                   ->select('check_in.business_address_id','address', 'longitude', 'latitude', $this->raw('0 as positive'))
                   ->groupBy('check_in.business_address_id', 'address', 'longitude', 'latitude')
@@ -64,6 +65,7 @@ class CheckIn extends Model
       if($getAddress != NULL){
          $infected_visited->whereIn('business_address_id', $getAddress);
       }
+      //if positive patient exists return count
       elseif($getUserID != NULL){
          $infected_visited->whereIn('user_id', $getUserID)
                   ->select('check_in.business_address_id','address', 'longitude', 'latitude', $this->raw('count(distinct(user_id)) as positive'))

@@ -26,13 +26,38 @@ class BusinessAddress extends Authenticatable
     //get list of business's address
     public function getBusinessAddress($userid){
         return $this->where('business_id', $userid)
-                                ->orderByDesc('address')
-                                ->get();
+                    ->orderByDesc('address')
+                    ->get();
     }
     //get business address ID
     public function getSelectedAddress($userid, $request){
         return $this->where('business_id', $userid)
-        ->where('id', $request->id)
-        ->get();
+                    ->where('id', $request->id)
+                    ->get();
+    }
+    //update business address
+    public function updateAddress($user, $request){
+        return $this->where('business_id', $user)
+                    ->where('id', $request->id)
+                    ->update([
+                    'address' => $request->address, 
+                    'longitude' => $request->longitude, 
+                    'latitude' => $request->latitude]);
+
+    }
+    //create business address
+    public function createAddress($user, $request){
+        return $this->create([
+                    'business_id' => $user,
+                    'latitude' => $request->latitude,
+                    'longitude' => $request->longitude,
+                    'address' => $request->address,
+                ]);
+    }
+    //deletes business address
+    public function deleteAddress($user, $request){
+        return $this->where('business_id', $user)
+                    ->where('id', $request->id)
+                    ->delete();
     }
 }

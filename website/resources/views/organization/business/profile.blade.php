@@ -119,7 +119,7 @@ table.table td .add {
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="type">Organization Type</label>
-                                        <x-input id="type" class="form-control" type="string" name="type" :value="Auth::guard('business')->user()->type" placeholder="Business Type"/>
+                                        <x-input id="type" class="form-control" type="string" name="type" :value="Auth::guard('business')->user()->type" disabled placeholder="Business Type"/>
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-12">
