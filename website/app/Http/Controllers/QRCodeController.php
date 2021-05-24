@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\CheckIn;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\BusinessAddress;
+
 
 class QRCodeController extends Controller
 {
@@ -12,8 +12,7 @@ class QRCodeController extends Controller
     {
         auth()->guard('web')->logout();
         
-        $businessAddress = new BusinessAddress;
-        $check_id = $businessAddress->checkBusinessAddressID($id);
+        $check_id = app("BusinessAddress")->checkBusinessAddressID($id);
 
         //check if business address exists, if not redirect to home
         if($check_id == NULL){
@@ -34,8 +33,7 @@ class QRCodeController extends Controller
             'business_address_id' => 'required|integer',
         ]);
 
-        $checkin = new CheckIn;
-        $checkin->createCheckIn($id, $request);
+        app("CheckIn")->createCheckIn($id, $request);
 
         return redirect(route('home'));
     }
@@ -43,8 +41,7 @@ class QRCodeController extends Controller
     public function indexGenerate()
     {
         //get business's business addresses
-        $businessAddress = new BusinessAddress;
-        $address = $businessAddress->getBusinessAddress(auth()->guard('business')->id());
+        $address = app("BusinessAddress")->getBusinessAddress(auth()->guard('business')->id());
 
         return view('organization.generate-qr-code', compact('address'));
     }
@@ -52,8 +49,7 @@ class QRCodeController extends Controller
     public function generateQR(Request $request)
     {   
         //get selected address information
-        $businessAddress = new BusinessAddress;
-        $address = $businessAddress->getSelectedAddress(auth()->guard('business')->id(), $request);
+        $address = app("BusinessAddress")->getSelectedAddress(auth()->guard('business')->id(), $request);
 
         $url = route('qr-check-in', ['id'=>$address[0]->id]);
 
