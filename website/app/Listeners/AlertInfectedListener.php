@@ -32,7 +32,7 @@ class AlertInfectedListener
         $user_id = $event->user->user_id;
         if($user->infected){
             //get Test date and date two weeks prior test date
-            $to = date('Y-m-d H:i:s', strtotime($user->test_date));
+            $to = date('Y-m-d H:i:s', strtotime(date_format($user->test_date, "Y-m-d H:i:s")));
             $from = date('Y-m-d H:i:s', strtotime('-14 day', strtotime($to)));
 
             //gather all the infected user's check-in data

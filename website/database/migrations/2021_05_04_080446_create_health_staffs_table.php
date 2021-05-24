@@ -15,7 +15,7 @@ class CreateHealthStaffsTable extends Migration
     {
         Schema::create('health_staffs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->unique();
             $table->string("position");
             $table->foreignId('business_id')->constrained();
             $table->string("health_org_email");

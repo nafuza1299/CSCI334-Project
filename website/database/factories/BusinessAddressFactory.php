@@ -26,7 +26,7 @@ class BusinessAddressFactory extends Factory
             'business_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
             'address' => $this->faker->address(),
             'latitude' => $this->faker->latitude($min = -90, $max = 90), 
-            'longitude' => $this->faker->longitude($min = -90, $max = 90), 
+            'longitude' => $this->faker->longitude($min = -180, $max = 180), 
         ];
     }
 
