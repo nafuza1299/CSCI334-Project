@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CheckIn;
-use App\Models\TestResult;
+
 
 class OverviewController extends Controller
 {
@@ -17,12 +16,10 @@ class OverviewController extends Controller
         $userid = auth()->id();
 
         //get the last check in data for user
-        $checkin = new CheckIn;
-        $last_checkin_data = $checkin->getLastCheckIn($userid);
+        $last_checkin_data = app("CheckIn")->getLastCheckIn($userid);
 
         //get last test result for user
-        $testresult = new TestResult;
-        $test_result = $testresult->getLastResult($userid);
+        $test_result = app("TestResult")->getLastResult($userid);
 
         return view('user.overview', compact('last_checkin_data', 'test_result'));
         

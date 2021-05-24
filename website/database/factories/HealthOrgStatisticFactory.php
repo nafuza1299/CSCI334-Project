@@ -23,11 +23,10 @@ class HealthOrgStatisticFactory extends Factory
     public function definition()
     {
         return [
-            'business_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')),
-            'infected' => $this->faker->numberBetween($min = 1, $max = 1000),
-            'deaths' => $this->faker->numberBetween($min = 1, $max = 1000),
-            'recovered' => $this->faker->numberBetween($min = 1, $max = 1000),
-
+            'business_id' => $this->faker->unique()->numberBetween($min = 1, $max = env('SEED_LIMIT')),
+            'infected' => $this->faker->unique()->numberBetween($min = 1, $max = 1000),
+            'deaths' => $this->faker->unique()->numberBetween($min = 1, $max = 1000),
+            'recovered' => $this->faker->unique()->numberBetween($min = 1, $max = 1000),
         ];
     }
 
