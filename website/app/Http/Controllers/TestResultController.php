@@ -9,8 +9,7 @@ class TestResultController extends Controller
     public function index()
     {
         //get test result of user
-        $testresult = new TestResult;
-        $test_results_data = $testresult->getTestResult(auth()->id());
+        $test_results_data = app("TestResult")->getTestResult(auth()->id());
 
         return view('user.test-results', compact('test_results_data'));
     }
