@@ -9,9 +9,6 @@ class ReportsController extends Controller
 {
     public function business()
     {
-        //get list of all business addresss   
-        // $address_data = app("BusinessAddress")->getBusinessAddress(auth()->guard('business')->id())->toArray();
-        // $id = array_filter(array_map(function($data) { return $data['id']; }, $address_data));
         $report_data = $this->getReportData(auth()->guard('business')->id());
         return view('organization.report', compact('report_data'));
     }
