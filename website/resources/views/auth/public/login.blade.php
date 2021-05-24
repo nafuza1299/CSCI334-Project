@@ -2,7 +2,7 @@
 @section('content')
 <section>
     <body>
-        <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; width: 600px !important">
+        <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width: 600px !important">
             <h3>Log in to your COVID-19 Safe Account</h3>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />  

@@ -4,63 +4,9 @@
 	<body>
 		<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/#menu-forms -->
 		@guest
-			<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width: 600px !important">
-				<h3> Sign up for a free account</h3>
-				<form class="px-4 py-3" method="POST" action="{{ route('register') }}">
-					@csrf
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required placeholder="Username" />
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<x-input id="first_name" class="form-control" type="text" name="first_name" :value="old('first_name')" required placeholder="First Name" />
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<x-input id="last_name" class="form-control" type="text" name="last_name" :value="old('last_name')" required placeholder="Last Name" />
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required placeholder="Email"/>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<x-input id="password" class="form-control" type="password" name="password" required placeholder="Password" />		
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-							<x-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required placeholder="Re-type Password"/>			
-							</div>
-						</div>
-						<!-- <div class="col-md-12">
-							<input type="checkbox" class="" id="dropdownCheck">
-								<label class="form-check-label" for="dropdownCheck">
-									Remember me
-								</label>
-						</div> -->
-
-						<div class="col-md-12">
-							<a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-								{{ __('Already registered?') }}
-							</a>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<x-button class="btn btn-primary py-3 px-4">
-									{{ __('Register') }}
-								</x-button>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
+			@section('modal')
+				@include('auth.public.register')
+			@endsection
 		@endguest
 		<div class="container mb-5">	
 			<div class="slider-text align-items-center" style="height:inherit !important">

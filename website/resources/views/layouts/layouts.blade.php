@@ -28,6 +28,7 @@
       @include('layouts.user.header')
     @endif
     <div class="content-wrapper">
+      @yield('modal')
       @yield('content')
     </div>
     @include('layouts.footer')
