@@ -20,7 +20,7 @@
 							<div class="icon-wrap">
 								<div class="number d-flex align-items-center justify-content-center"><span>01</span></div>
 								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-calendar"></span>
+									<span class="fa fa-calendar"></span>
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-justify">
@@ -38,7 +38,7 @@
 							<div class="icon-wrap">
 								<div class="number d-flex align-items-center justify-content-center"><span>02</span></div>
 								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-qa"></span>
+									<span class="fa fa-stethoscope"></span>
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-justify">

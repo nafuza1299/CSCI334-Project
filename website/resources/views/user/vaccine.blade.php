@@ -21,7 +21,7 @@
 							<div class="icon-wrap">
 								<div class="number d-flex align-items-center justify-content-center"><span>01</span></div>
 								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-calendar"></span>
+									<span class="fa fa-medkit"></span>
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-center">
@@ -32,7 +32,7 @@
 								</ul>
 							</div>
 							<div class="d-flex align-items-center justify-content-center mt-2">
-								<p><a href="#" class="btn btn-white py-3 px-4">Get Ready</a></p>
+								<p><a href="https://www.health.gov.au/initiatives-and-programs/covid-19-vaccines" class="btn btn-white py-3 px-4">Get Ready</a></p>
 							</div>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 							<div class="icon-wrap">
 								<div class="number d-flex align-items-center justify-content-center"><span>02</span></div>
 								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-qa"></span>
+									<span class="fa fa-paperclip"></span>
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-center">
