@@ -13,8 +13,7 @@ class SearchInfectLocationController extends Controller
         $getUserID = array_filter(array_map(function($data) { return $data['user_id']; }, $test_result_data));
         
         //get areas where infected users have visited
-        $result = app("CheckIn")->getPositiveVisitedAddress($getUserID);
-
+        $result = app("BusinessAddress")->getPositiveVisitedAddress($getUserID);
         return view('location', compact('result'));
     }
 }

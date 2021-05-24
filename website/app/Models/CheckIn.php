@@ -43,49 +43,6 @@ class CheckIn extends Model
          'business_address_id' => $request->business_address_id,
      ]);
    }
-   //get number of people which visited each of the business's address
-   public function getPeopleVisitedAddress($getAddress = NULL){
-      $people_visited = $this->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-                  ->select('check_in.business_address_id', 'address', 'longitude','latitude', $this->raw('count(user_id) as visited'))
-                  ->groupBy('check_in.business_address_id', 'address', 'longitude', 'latitude')
-                  ->orderByDesc('visited');
-      if($getAddress != NULL){
-         $people_visited->whereIn('business_address_id', $getAddress);
-      }
-      return $people_visited->get();       
-   }
-   //get number of people positive in each business address
-   public function getPositiveVisitedAddress($getUserID = NULL, $getAddress = NULL){
-      //if positive paitients is null, return 0 for count
-      $infected_visited = $this->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-                  ->select('check_in.business_address_id','address', 'longitude', 'latitude', $this->raw('0 as positive'))
-                  ->groupBy('check_in.business_address_id', 'address', 'longitude', 'latitude')
-                  ->orderByDesc('positive');
-
-      if($getAddress != NULL){
-         $infected_visited->whereIn('business_address_id', $getAddress);
-      }
-      //if positive patient exists return count
-      elseif($getUserID != NULL){
-         $infected_visited->whereIn('user_id', $getUserID)
-                  ->select('check_in.business_address_id','address', 'longitude', 'latitude', $this->raw('count(distinct(user_id)) as positive'))
-                  ->orderByDesc('positive');
-      }
-
-      return $infected_visited->get();  
-   }
-   //get last check in date of each business's address
-   public function getLastCheckInDate($getAddress = NULL){
-      $date = $this->leftJoin('business_addresses', 'check_in.business_address_id', '=', 'business_addresses.id')
-                  ->select('business_address_id','address', 'longitude', 'latitude', $this->raw('max(check_in_time) as last_check'))
-                  ->groupBy('business_address_id', 'address', 'longitude', 'latitude')
-                  ->orderByDesc('last_check');
-
-   if($getAddress != NULL){
-         $date->whereIn('business_address_id', $getAddress);
-      }
-      return $date->get(); 
-   }
    //get address between time period
    public function getAddressBetweenTime($user_id, $from, $to){
       return $this->where('user_id', $user_id)

@@ -10,9 +10,9 @@ class ReportsController extends Controller
     public function business()
     {
         //get list of all business addresss   
-        $address_data = app("BusinessAddress")->getBusinessAddress(auth()->guard('business')->id())->toArray();
-        $getAddress = array_filter(array_map(function($data) { return $data['id']; }, $address_data));
-        $report_data = $this->getReportData($getAddress);
+        // $address_data = app("BusinessAddress")->getBusinessAddress(auth()->guard('business')->id())->toArray();
+        // $id = array_filter(array_map(function($data) { return $data['id']; }, $address_data));
+        $report_data = $this->getReportData(auth()->guard('business')->id());
         return view('organization.report', compact('report_data'));
     }
 
@@ -41,7 +41,7 @@ class ReportsController extends Controller
 
     }
 
-    public function getReportData($getAddress = NULL){
+    public function getReportData($id = NULL){
         //get patients which are positive
         $test_result_data = app("TestResult")->getInfected();
 
@@ -49,16 +49,15 @@ class ReportsController extends Controller
         $getUserID = array_filter(array_map(function($data) { return $data['user_id']; }, $test_result_data));
 
         //get number of people which visited each address
-        $checkin_data = app("CheckIn")->getPeopleVisitedAddress($getAddress);
+        $checkin_data = app("BusinessAddress")->getPeopleVisitedAddress($id);
         
         //get areas where infected users have visited
-        $positive_data = app("CheckIn")->getPositiveVisitedAddress($getUserID, $getAddress);
-
+        $positive_data = app("BusinessAddress")->getPositiveVisitedAddress($getUserID, $id);
         //get the last check_in of user in location
-        $last_checkin_data = app("CheckIn")->getLastCheckInDate($getAddress);
+        $last_checkin_data = app("BusinessAddress")->getLastCheckInDate($id);
     
         //merge the first two arrays; positive_data and checkin_data
-        $merge_data = $this->custom_array_merge($positive_data->toArray(), $checkin_data->toArray());
+        $merge_data = $this->custom_array_merge($positive_data, $checkin_data->toArray());
 
         //get final report data with last check_in      
         $report_data =  $this->custom_array_merge($merge_data, $last_checkin_data->toArray());
@@ -79,7 +78,7 @@ class ReportsController extends Controller
         foreach ($array1 as $key_1 => &$value_1) {
             foreach ($array2 as $key_1 => $value_2) {
                 //merge by business_address_id
-                if($value_1['business_address_id'] ==  $value_2['business_address_id']) {
+                if($value_1['id'] ==  $value_2['id']) {
                     $result[] = array_merge($value_1,$value_2);
                 }
             }

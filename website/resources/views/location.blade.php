@@ -45,22 +45,22 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="row-status">
-                                        @if($data->total < 5)
+                                        @if($data['positive'] < 5)
                                             <div class='box green'></div>
                                             <span>Safe</span>
-                                        @elseif($data->total >= 5)
+                                        @elseif($data['positive'] >= 5)
                                             <div class='box yellow'></div>
                                             <span>Mild</span>
-                                        @elseif($data->total >= 10)
+                                        @elseif($data['positive'] >= 10)
                                             <div class='box red'></div>
                                             <span>Severe</span>
                                         @endif
                                         </div>
                                     </th>
-                                    <td>{{ $data->address }}</td>
-                                    <td>{{ $data->positive }}</td>
-                                    <td>{{ $data->latitude }}</td>
-                                    <td>{{ $data->longitude }}</td>
+                                    <td>{{ $data['address'] }}</td>
+                                    <td>{{ $data['positive'] }}</td>
+                                    <td>{{ $data['latitude'] }}</td>
+                                    <td>{{ $data['longitude'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
