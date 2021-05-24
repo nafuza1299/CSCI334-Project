@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Notifications\Alerts;
 
 class ReportsController extends Controller
 {
@@ -14,7 +13,6 @@ class ReportsController extends Controller
         $address_data = app("BusinessAddress")->getBusinessAddress(auth()->guard('business')->id())->toArray();
         $getAddress = array_filter(array_map(function($data) { return $data['id']; }, $address_data));
         $report_data = $this->getReportData($getAddress);
-
         return view('organization.report', compact('report_data'));
     }
 
@@ -50,18 +48,18 @@ class ReportsController extends Controller
         //store positive id as an array after mapping
         $getUserID = array_filter(array_map(function($data) { return $data['user_id']; }, $test_result_data));
 
-        $checkin = new CheckIn;
         //get number of people which visited each address
         $checkin_data = app("CheckIn")->getPeopleVisitedAddress($getAddress);
-   
+        
         //get areas where infected users have visited
         $positive_data = app("CheckIn")->getPositiveVisitedAddress($getUserID, $getAddress);
-      
+
         //get the last check_in of user in location
         $last_checkin_data = app("CheckIn")->getLastCheckInDate($getAddress);
     
         //merge the first two arrays; positive_data and checkin_data
         $merge_data = $this->custom_array_merge($positive_data->toArray(), $checkin_data->toArray());
+
         //get final report data with last check_in      
         $report_data =  $this->custom_array_merge($merge_data, $last_checkin_data->toArray());
 

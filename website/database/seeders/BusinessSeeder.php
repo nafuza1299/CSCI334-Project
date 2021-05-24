@@ -26,7 +26,7 @@ class BusinessSeeder extends Seeder
         ]);
         DB::table('business_addresses')->insert([
             'business_id' => 1,
-            'address' => 'test',
+            'address' => 'Health',
             'latitude' => '13',
             'longitude' => '13',
         ]);
