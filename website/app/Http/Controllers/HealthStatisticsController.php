@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HealthOrgStatistic;
 use App\Http\Requests\HealthStatisticRequest;
 
 class HealthStatisticsController extends Controller
@@ -11,7 +10,7 @@ class HealthStatisticsController extends Controller
     public function index()
     {
         // check if there is a healthorgstatistic model for the user if not create one
-        $statistic = HealthOrgStatistic::firstOrCreate(['business_id' => auth()->guard('business')->id()]);
+        $statistic = app("HealthOrgStatistic")->firstOrCreate(['business_id' => auth()->guard('business')->id()]);
         
         return view('organization.health.health-statistic', compact('statistic'));
     }
@@ -20,8 +19,7 @@ class HealthStatisticsController extends Controller
     public function store(HealthStatisticRequest $request)
     {
         //save statistics
-        $healthstatistic = new HealthOrgStatistic;
-        $healthstatistic->saveStatistic($request, auth()->guard('business')->id());
+        app("HealthOrgStatistic")->saveStatistic($request, auth()->guard('business')->id());
         
         return redirect(route('business.healthorg.statistics'));
     }
