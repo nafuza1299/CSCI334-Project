@@ -2,17 +2,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 d-flex align-items-center">
-				<p class="mb-2 mt-2 phone pl-md-2">
+				<!-- <p class="mb-2 mt-2 phone pl-md-2">
 					<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
 					<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
-				</p>
+				</p> -->
 			</div>
 			<div class="col-md-6 d-flex align-items-center">
 				<p class="mb-2 mt-2 phone pl-md-2" >
 					<a style="color:black">
 						<b>Visit our </b>
 					</a>
-					<a href="#" style="color:black"><b><u>news page</u></b></a>
+					<a href="{{route('news')}}" style="color:black"><b><u>news page</u></b></a>
 					<a style="color:black">
 						<b>for the latest on COVID-19 updates in Australia</b>
 					</a>
