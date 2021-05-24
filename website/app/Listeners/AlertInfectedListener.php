@@ -6,8 +6,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\UpdateTestResultEvent;
 use App\Notifications\Alerts;
-use App\Models\CheckIn;
-use App\Models\User;
 
 class AlertInfectedListener
 {
@@ -38,9 +36,8 @@ class AlertInfectedListener
             $from = date('Y-m-d H:i:s', strtotime('-14 day', strtotime($to)));
 
             //gather all the infected user's check-in data
-            $checkin = new CheckIn;
-            $checkin_data_user = $checkin->getAddressBetweenTime($user_id, $from, $to);
-
+            $checkin_data_user = app("CheckIn")->getAddressBetweenTime($user_id, $from, $to);
+            
             //gather the lat/lon for every places they visited
             $getCoord = array_filter(array_map(function($data) { return array($data['latitude'], $data['longitude'] ); }, $checkin_data_user));
             
@@ -49,7 +46,7 @@ class AlertInfectedListener
             foreach($getCoord as $coordinates)
             {
                 // query to get closest distance based on haversine
-                $result = $checkin->IDbyHaversine($user_id, $coordinates[0], $coordinates[1]);
+                $result = app("CheckIn")->IDbyHaversine($user_id, $coordinates[0], $coordinates[1]);
 
                 $getUserID = array_filter(array_map(function($data) { return array($data['user_id'], $data['address']); }, $result->toArray()));
                 
@@ -59,7 +56,7 @@ class AlertInfectedListener
             }   
             $msg_type = "Contact Tracing";
             foreach($user_notified as $data){
-                $user = User::findOrFail($data[0]);
+                $user = app("User")->findOrFail($data[0]);
                 $message = "You have been around who has COVID-19. Location of contact: ".$data[1];
                 $user->notify(new Alerts($message, $msg_type));
             }
