@@ -26,7 +26,7 @@
                         <h4>View Alerts</h4>
 					</div>
 				</div>
-                <div class="col-md-12 d-flex align-items-end">
+                <div class="col-md-12 d-flex align-items-end table-wrapper">
                     <table class="table">
                         <thead>
                             <tr>

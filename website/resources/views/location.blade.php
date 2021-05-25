@@ -29,7 +29,7 @@
 						<h1  style="font-size:40px !important">Location by COVID-19 infection</h1>
 					</div>
 				</div>
-                <div class="col-md-12 d-flex align-items-end">
+                <div class="col-md-12 d-flex align-items-end table-wrapper">
                     <table class="table">
                         <thead>
                             <tr>

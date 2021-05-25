@@ -27,7 +27,7 @@
                             <h4>View Alerts</h4>
                         </div>
                     </div>
-                    <div class="col-md-6 text-right justify-content-md-end">
+                    <div class="col-md-6 text-right justify-content-md-end table-wrapper">
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#alertsModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
                     @if(Auth::guard('business')->user()->type == 'Health')
                         <button type="button" class="btn btn-white py-2 px-4 mt-3" data-toggle="modal" data-target="#alertsModal">Update Alerts</button>
