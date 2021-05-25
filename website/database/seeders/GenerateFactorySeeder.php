@@ -20,7 +20,7 @@ class GenerateFactorySeeder extends Seeder
             BusinessAddressFactorySeeder::class,
             HealthStaffFactorySeeder::class,
             CheckInFactorySeeder::class,
-            HealthOrgStatisticFactorySeeder::class,
+            // HealthOrgStatisticFactorySeeder::class,
             TestResultFactorySeeder::class
         ]);
     }

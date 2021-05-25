@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\BusinessAddress;
-use App\Models\HealthStaff;
+use App\Http\Requests\BusinessAddressRequest;
+use App\Http\Requests\BusinessEditRequest;
 
 class ProfileController extends Controller
 {
@@ -17,26 +14,18 @@ class ProfileController extends Controller
         //placeholder value for health staff variable
         $health_staff = '';
         //get additonal data if user is healthstaff
-        if (HealthStaff::where('user_id', Auth::user()->id)->count() != 0){
-            $userid = Auth::user()->id;
-            $health_staff = HealthStaff::where('user_id', $userid)
-                            ->leftJoin('businesses', 'health_staffs.business_id', '=', 'businesses.id')
-                            ->get();
+        if (app("HealthStaff")->where('user_id', auth()->id())->count() != 0){
+            $health_staff = app("HealthStaff")->getHealthStaffInfo( auth()->id());
         }
         return view('user.public.profile', compact('health_staff'));
         
     }
     public function business()
     {
-        //get business id from logged in business
-        $business_id = Auth::guard('business')->user()->id;
         //returns business information
-        $address= BusinessAddress::where('business_id', $business_id)
-                            ->orderByDesc('address')
-                            ->get();
+        $address= app("BusinessAddress")->getBusinessAddress(auth()->guard('business')->id());
 
-        return view('organization.business.profile', compact('address'));
-        
+        return view('organization.business.profile', compact('address'));    
     }
     public function editAccountInfo(Request $request)
     {
@@ -51,94 +40,42 @@ class ProfileController extends Controller
         ]);
 
         //save additional data if healthstaff
-        if (HealthStaff::where('user_id', Auth::user()->id)->count() != 0){
+        if (app("HealthStaff")->where('user_id', auth()->id())->count() != 0){
             $request->validate([
-
                 'health_org_email' => 'required|email|max:190',
                 'position' => 'required|string|max:190',
             ]);
-            $user = Auth::user()->id;
-            HealthStaff::where('user_id', $user)
-                ->update(['position' => $request->position, 'health_org_email' => $request->health_org_email]);
+            app("HealthStaff")->updateHealthStaffInfo(auth()->id(), $request);
         }
         //save user data
-        $user = Auth::user();
-        $user->email = $request->email;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->address = $request->address;
-        $user->phone_number = $request->phone_number;
-        $user->date_of_birth = $request->date_of_birth;
-        $user->save();
+        app("User")->updateUserInfo(auth()->id(), $request);
         return redirect(route('profile'));
     }
-    public function editAccountInfoBusiness(Request $request)
+    public function editAccountInfoBusiness(BusinessEditRequest $request)
     {
-        //validate input
-        $request->validate([
-            'email' => 'required|email|max:190',
-            'name' => 'required|string|max:190',
-            'address' => 'nullable|string|max:190',
-            'phone_number' => 'nullable|numeric|digits_between:8,12',
-            'address' => 'nullable|string|max:190',
-        ]);
         //saves business info
-        $user = Auth::guard('business')->user();
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->phone_number = $request->phone_number;
-        $user->type = $request->type;
-        $user->save();
+        app("Business")->updateBusinessInfo(auth()->guard('business')->id(), $request);
         return redirect(route('business.profile'));
     }
 
-    public function editAddressInfoBusiness(Request $request)
+    public function editAddressInfoBusiness(BusinessAddressRequest $request)
     {
-        //validate input
-        $request->validate([
-            'latitude' => 'required|numeric|between:0,99.99',
-            'longitude' => 'required|numeric|between:0,99.99',
-            'address' => 'required|string|max:255',
-        ]);
         //edit business addresses to business address table
-        $user = Auth::guard('business')->user()->id;
-        BusinessAddress::where('business_id', $user)
-        ->where('id', $request->id)
-        ->update(['address' => $request->address, 'longitude' => $request->longitude, 'latitude' => $request->latitude]);
-
+        app('BusinessAddress')->updateAddress(auth()->guard('business')->id(), $request);
         return redirect(route('business.profile'));
     }
 
-    public function storeAddressInfoBusiness(Request $request)
-    {
-        //validate input
-        $request->validate([
-            'latitude' => 'required|numeric|between:0,99.99',
-            'longitude' => 'required|numeric|between:0,99.99',
-            'address' => 'required|string|max:255',
-        ]);
-
-        $user = Auth::guard('business')->user()->id;
-
+    public function storeAddressInfoBusiness(BusinessAddressRequest $request)
+    {        
         //save new business addresses to business address table
-        $insert_address= BusinessAddress::create([
-            'business_id' => $user,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'address' => $request->address,
-        ]);
+        app("BusinessAddress")->createAddress(auth()->guard('business')->id(), $request);
         return redirect(route('business.profile'));
     }
 
     public function deleteAddressInfoBusiness(Request $request)
     {
-        $user = Auth::guard('business')->user()->id;
-        
         //delete business address in business address table
-        BusinessAddress::where('business_id', $user)
-        ->where('id', $request->id)
-        ->delete();
-
+        app("BusinessAddress")->deleteAddress(auth()->guard('business')->id(), $request);
         return redirect(route('business.profile'));
     }
 }

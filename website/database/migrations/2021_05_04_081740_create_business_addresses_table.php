@@ -15,7 +15,7 @@ class CreateBusinessAddressesTable extends Migration
     {
         Schema::create('business_addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->constrained();
+            $table->foreignId('business_id')->constrained()->onDelete('cascade');
             $table->string("address");
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);

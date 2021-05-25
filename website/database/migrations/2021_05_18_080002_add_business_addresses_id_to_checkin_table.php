@@ -14,7 +14,7 @@ class AddBusinessAddressesIdToCheckinTable extends Migration
     public function up()
     {
         Schema::table('check_in', function (Blueprint $table) {
-           $table->foreignId('business_address_id')->constrained('business_addresses');
+           $table->foreignId('business_address_id')->constrained('business_addresses')->onDelete('cascade');
         });
     }
 

@@ -55,7 +55,7 @@ class AuthenticatedSessionController extends Controller
 
         // check if user is not healthstaff or is suspended. logs out if it matches a criteria
         if (HealthStaff::where('user_id', Auth::user()->id)->count() == 0 || Auth::user()->suspended == 1    ){
-            $this->detroy($request);
+            $this->destroy($request);
         }
         else{
             return redirect('/staff');

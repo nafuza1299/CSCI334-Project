@@ -7,7 +7,7 @@
 				<div class="col-md-6 d-flex align-items-end">
 					<div class="text">
 						<h1  style="font-size:40px !important">Overview</h1>
-						<h2>Hi, {{{Auth::user()->name}}}</h2>
+						<h2>Hi, {{{auth()->user()->name}}}</h2>
 					</div>
 				</div>
 			</div>
@@ -20,7 +20,7 @@
 							<div class="icon-wrap">
 								<div class="number d-flex align-items-center justify-content-center"><span>01</span></div>
 								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-calendar"></span>
+									<span class="fa fa-calendar"></span>
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-justify">
@@ -38,7 +38,7 @@
 							<div class="icon-wrap">
 								<div class="number d-flex align-items-center justify-content-center"><span>02</span></div>
 								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-qa"></span>
+									<span class="fa fa-stethoscope"></span>
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-center text-justify">
@@ -47,7 +47,7 @@
 									<li>Test Result:  @isset($test_result) 
 									@if($test_result->infected == 1)
 										Positive
-									@elseif(test_result->infected == 0)
+									@elseif($test_result->infected == 0)
 										Negative
 									@endif
 									@else N/A @endisset</li>

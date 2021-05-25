@@ -3,52 +3,44 @@
 		<div class="row mb-5">
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4">
-				<h2 class="ftco-heading-2 logo"><a href="#">COVID19 Tracker</a></h2>
+				<h2 class="ftco-heading-2 logo"><a href="{{route('home')}}">COVID19 Tracker</a></h2>
 				<p>Australia-based COVID19 Tracker for public, business, health staff and health organization use</p>
 			
 			</div>
 			</div>
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4 ml-md-4">
-				<h2 class="ftco-heading-2">Mobile App</h2>
+				<h2 class="ftco-heading-2">COVID-19 Tracker Organization</h2>
 				<ul class="list-unstyled">
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>What We Do</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Plans &amp; Pricing</a></li>
-				</ul>
+				<li><a href="{{route('business.login')}}"><span class="fa fa-chevron-right mr-2"></span>Login</a></li>
+				<li><a href="{{route('business.register')}}"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
 			</div>
 			</div>
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4 ml-md-4">
-				<h2 class="ftco-heading-2">Community</h2>
+				<h2 class="ftco-heading-2">Health Staff</h2>
 				<ul class="list-unstyled">
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Join us</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Blog</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Privacy &amp; Policy</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
+				<li><a href="{{route('healthstaff.login')}}"><span class="fa fa-chevron-right mr-2"></span>Login</a></li>
+				<li><a href="{{route('healthstaff.register')}}"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
 				</ul>
 			</div>
 			</div>
-			<div class="col-sm-12 col-md">
+			<!-- <div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4">
 				<h2 class="ftco-heading-2">Company</h2>
 				<ul class="list-unstyled">
 				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About Us</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Blog</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
-				<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Careers</a></li>
-				</ul>
+			
 			</div>
-			</div>
+			</div> -->
 			<div class="col-sm-12 col-md">
 			<div class="ftco-footer-widget mb-4">
-				<h2 class="ftco-heading-2">Have a Questions?</h2>
+				<h2 class="ftco-heading-2">Resources</h2>
 				<div class="block-23 mb-3">
 					<ul>
-					<li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-					<li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-					<li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+					<li><a href="https://www.health.nsw.gov.au/Infectious/covid-19/Pages/stats-nsw.aspx"><span class="icon fa fa-flag"></span><span class="text">NSW</span></a></li>
+					<li><a href="https://www.australia.gov.au/"><span class="icon fa fa-info-circle"></span><span class="text">Australia Government Website</span></a></li>
+					<li><a href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert"><span class="icon fa fa-hospital-o pr-4"></span><span class="text">Department of Health Website</span></a></li>
 					</ul>
 				</div>
 			</div>

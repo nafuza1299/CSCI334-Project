@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use App\Events\UpdateInfectStatusEvent;
 use App\Events\UpdateTestResultEvent;
 use Illuminate\Notifications\Notifiable;
 
@@ -36,12 +35,33 @@ class TestResult extends Model
     {
         return $this->belongsTo(BusinessAddress::class);
     }
-    
+    //get all test result of user
+    public function getTestResult($userid){
+        return $this->where('user_id', $userid)
+                    ->leftJoin('business_addresses', 'testresults.business_address_id', '=', 'business_addresses.id')
+                    ->orderByDesc('test_date')
+                    ->take(10)
+                    ->get();
+    }
+    //get last test result of user
+    public function getLastResult($userid){
+        return $this->where('user_id', $userid)
+                    ->leftJoin('business_addresses', 'testresults.business_address_id', '=', 'business_addresses.id')
+                    ->orderByDesc('testresults.created_at')
+                    ->take(1)
+                    ->first();
+    }
+    //get all infected users
+    public function getInfected(){
+        return $this->where('infected', 1)
+                    ->select('user_id')
+                    ->distinct()
+                    ->get()
+                    ->toArray();
+    }
 
     protected $dispatchesEvents = [
-        'updated' => UpdateInfectStatusEvent::class, 
-        'created' => UpdateInfectStatusEvent::class, 
-        'updated' => UpdateTestResultEvent::class,
-        'created' => UpdateTestResultEvent::class,
+        'updated' => UpdateTestResultEvent::class, 
+        'created' => UpdateTestResultEvent::class, 
     ];
 }

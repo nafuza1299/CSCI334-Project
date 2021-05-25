@@ -15,7 +15,7 @@ class CreateHealthOrgStatisticsTable extends Migration
     {
         Schema::create('health_org_statistics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->constrained();
+            $table->foreignId('business_id')->constrained()->unique();
             $table->bigInteger('infected')->default(0);
             $table->bigInteger('recovered')->default(0);
             $table->bigInteger('deaths')->default(0);   

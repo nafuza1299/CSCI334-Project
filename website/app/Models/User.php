@@ -54,4 +54,22 @@ class User extends Authenticatable
     {
         return $this->hasMany(TestResult::class);
     }
+    //get user ids from public which are not health staff
+    public function getPublicIDnotStaff($getStaffID){
+         return $this->select("id")
+                    ->whereNotIn('id', $getStaffID)
+                    ->get();
+    }
+    //update user entry
+    public function updateUserInfo($user, $request){
+        return $this->where('id', $user)
+                    ->update([
+                        'email' => $request->email, 
+                        'first_name' => $request->first_name, 
+                        'last_name'=> $request->last_name,
+                        'address' => $request->address,
+                        'phone_number' => $request->phone_number,
+                        'date_of_birth' => $request->date_of_birth,
+                    ]);
+    }
 }

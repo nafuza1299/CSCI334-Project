@@ -14,6 +14,6 @@ class HealthStaffFactorySeeder extends Seeder
      */
     public function run()
     {
-        HealthStaff::factory()->count(env('SEED_LIMIT'))->create();
+        HealthStaff::factory()->count(env('SEED_LIMIT')/5)->create();
     }
 }

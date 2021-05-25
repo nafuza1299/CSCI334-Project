@@ -23,7 +23,7 @@ class HealthStaffFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')/5),
+            'user_id' => $this->faker->unique($reset = true)->numberBetween($min = 3, $max = env('SEED_LIMIT')/5+2),
             'position'=> $this->faker->jobTitle,
             'business_id' => $this->faker->numberBetween($min = 1, $max = env('SEED_LIMIT')/5),
             'health_org_email' => $this->faker->safeEmail(),
