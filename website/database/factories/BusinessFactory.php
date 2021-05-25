@@ -27,7 +27,7 @@ class BusinessFactory extends Factory
             'username' => $this->faker->word."".$this->faker->randomLetter."".$this->faker->unique($reset = true)->numberBetween($min =1, $max = env('SEED_LIMIT')),
             'email' => $this->faker->safeEmail(),
             'email_verified_at' => now(),
-            'type' => $this->faker->randomElement(['Health', 'Business']),
+            'type' =>  'Business',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'phone_number' => $this->faker->numerify('02########'),
@@ -63,6 +63,14 @@ class BusinessFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'disabled' => 1,
+            ];
+        });
+    }
+    public function health()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'type' => 'health',
             ];
         });
     }

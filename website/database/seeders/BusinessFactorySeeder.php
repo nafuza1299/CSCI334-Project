@@ -14,6 +14,8 @@ class BusinessFactorySeeder extends Seeder
      */
     public function run()
     {
-        Business::factory()->count(env('SEED_LIMIT'))->create();
+        $businesss = Business::factory()->count(env('SEED_LIMIT')/8)->health()->create();
+
+        Business::factory()->count(env('SEED_LIMIT')*7/8)->create();
     }
 }
