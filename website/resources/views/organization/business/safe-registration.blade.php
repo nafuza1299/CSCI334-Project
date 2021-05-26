@@ -9,9 +9,15 @@
 						<div class="text">
 							<h1  style="font-size:40px !important">Safe Registration</h1>
 							<h2>Hi, {{{Auth::guard('business')->user()->username}}}</h2>
+							@if(Auth::guard('business')->user()->verified == 0 &&  Auth::guard('business')->user()->certificate != NULL)
+								<p>Pending Approval</p>
+							@elseif(Auth::guard('business')->user()->verified == 1)
+								<p>Approved</p>
+							@endif
 						</div>
 					</div>
 				</div>
+				@if(Auth::guard('business')->user()->verified == 0)
 				<div class="col-md-12">
 					<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width : 600px !important ">
 						<h3>Register your Business as COVID-19 Safe</h3>
@@ -46,6 +52,22 @@
 						</form>
 					</div>
 				</div>
+				@endif
+				@if(Auth::guard('business')->user()->certificate != NULL)
+					<div class="col-md-12">
+						<div class="container block-7 text-center" style="background-color:#FFF; border: 1px solid black !important; max-width : 600px !important ">
+							<h3>View Registration</h3>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<a href="{{route('saferegistration.download')}}" class="btn btn-primary py-3 px-4">Download</a>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				@endif
 				@if(session()->has('success'))
 				<div class="col-md-12">
 					<div class="text-center ">

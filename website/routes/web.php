@@ -98,6 +98,8 @@ Route::prefix('organization')->group(function () {
     
     Route::get('/safe-registration', ['middleware' => ['business.auth:business', 'checkifgeneral:business'], 'uses' => 'SafeRegistrationController@index'])->name('business.safe.registration');
 
+    Route::get('/safe-registration/download', [BusinessFileDownloadController::class, 'self_download_certs'])->name('saferegistration.download');
+
     Route::get('/report/business', ['middleware' => ['business.auth:business', 'checkifgeneral:business'], 'uses' => 'ReportsController@business'])->name('business.report');
 
     Route::get('/report/health', ['middleware' => ['business.auth:business', 'checkifhealthorg:business'], 'uses' => 'ReportsController@healthorg'])->name('health.report');
@@ -125,5 +127,6 @@ Route::prefix('organization')->group(function () {
 });
 
 // routes to download files
-Route::get('staff/user/certs/{file_name}', [UserFileDownloadController::class, 'download_certs']);
+Route::get('staff/user/certs/{file_name}', [UserFileDownloadController::class, 'admin_download_certs']);
 Route::get('staff/business/certs/{file_name}', [BusinessFileDownloadController::class, 'download_certs']);
+Route::get('/vaccine/download', [UserFileDownloadController::class, 'self_download_certs'])->name('vaccine.download');
