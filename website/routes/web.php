@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Notifications\Alerts;
 use App\Models\User;
+use App\Http\Controllers\FileDownloadControllers\UserFileDownloadController;
+use App\Http\Controllers\FileDownloadControllers\BusinessFileDownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +125,5 @@ Route::prefix('organization')->group(function () {
 });
 
 // routes to download files
-Route::get('staff/business/certs/{file_name}',  ['uses' => 'FileDownloadController@download_business_certs']);
-Route::get('staff/user/certs/{file_name}',  ['uses' => 'FileDownloadController@download_user_certs']);
-
+Route::get('staff/user/certs/{file_name}', [UserFileDownloadController::class, 'download_certs']);
+Route::get('staff/business/certs/{file_name}', [BusinessFileDownloadController::class, 'download_certs']);
