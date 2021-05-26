@@ -4,7 +4,7 @@
 	<body>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="slider-text align-items-center" style="height:inherit !important">
                         <div class="text">
                             <h1>{{{ucfirst(trans(Auth::user()->name))}}}'s Statistics</h1>

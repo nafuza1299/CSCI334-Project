@@ -27,7 +27,7 @@
 						<h2>Hi, {{{Auth::user()->name}}}</h2>
 					</div>
 				</div>
-                <div class="col-md-12 d-flex align-items-end">
+                <div class="col-md-12 d-flex align-items-end table-wrapper">
                     <table class="table">
                         <thead>
                             <tr>
