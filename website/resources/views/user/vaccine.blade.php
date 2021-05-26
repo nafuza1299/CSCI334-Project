@@ -47,11 +47,19 @@
 							<div class="d-flex align-items-center justify-content-center text-center">
 								<ul style="list-style-type: none !important;">
 									<li><h2>COVID-19 Vaccine Certificate</h2></li>
-									<li>You currently do not have a COVID-19 vaccine certificate</li>
+									@if(Auth::user()->certificate == NULL)
+										<li>You currently do not have a COVID-19 vaccine certificate</li>
+									@elseif(Auth::user()->certificate != NULL && Auth::user()->vaccinated == 0)
+										<li>Your report is pending approval</li>
+									@elseif(Auth::user()->certificate != NULL && Auth::user()->vaccinated == 1)
+										<li>Vacination Status Approved</li>
+									@endif
 								</ul>
 							</div>
 							<div class="d-flex align-items-center justify-content-center mt-2">
-								<p><a href="{{route('vaccine.certificate')}}" class="btn btn-white py-3 px-4">More Info</a></p>
+								@if(Auth::user()->vaccinated != 1)
+									<p><a href="{{route('vaccine.certificate')}}" class="btn btn-white py-3 px-4">Upload</a></p>
+								@endif
 							</div>
 						</div>
 					</div>

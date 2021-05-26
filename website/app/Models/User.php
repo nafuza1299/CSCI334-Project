@@ -29,6 +29,7 @@ class User extends Authenticatable
         'phone_number',
         'date_of_birth',
         'suspended',
+        'vaccinated',
     ];
 
     /**
