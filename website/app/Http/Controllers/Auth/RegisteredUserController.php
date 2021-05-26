@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\Alerts;
 
 class RegisteredUserController extends Controller
 {
@@ -72,7 +73,7 @@ class RegisteredUserController extends Controller
             'first_name' => 'required|string|max:190',
             'last_name' => 'required|string|max:190',
             'position' => 'required|string|max:190',
-            'business' => 'required|string|max:190',
+            'business_id' => 'required',
             'health_org_email' => 'required|email|max:190',
         ]);
 
@@ -87,7 +88,7 @@ class RegisteredUserController extends Controller
         $health_staff = HealthStaff::create([
             'user_id' => $user->id,
             'position' => $request->position,
-            'business' => $request->business,
+            'business_id' => $request->business_id,
             'health_org_email' => $request->health_org_email,
         ]);
         $user->assignRole('healthstaff');
