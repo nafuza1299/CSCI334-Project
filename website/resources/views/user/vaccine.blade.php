@@ -140,8 +140,8 @@
 							<h2 class="mb-4">This video describes how vaccines will be rolled out, and who they will go to first.</h2>
 						</div>
 					</div>
-					<div class="col-md-6 d-flex justify-content-center align-items-center" style="background-image: url(assets/images//about-1.jpg);">
-						<a href="https://vimeo.com/45830194" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
+					<div class="col-md-6 d-flex justify-content-center align-items-center" style="background-image: url(assets/images//vaccine_1.png);">
+						<a href="https://www.youtube.com/watch?v=jGeSm2-Qx4E" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
 							<span class="fa fa-play"></span>
 						</a>
 					</div>
