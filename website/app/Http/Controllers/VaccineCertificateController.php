@@ -10,7 +10,12 @@ class VaccineCertificateController extends Controller
 {
     public function index()
     {
-        return view('user.vaccine-certificate');
+        if(auth()->user()->vaccinated == 1){
+            return redirect(route('home'));
+        }
+        else{
+            return view('user.vaccine-certificate');
+        }
     }
 
     public function store(CertificateRequest $request)

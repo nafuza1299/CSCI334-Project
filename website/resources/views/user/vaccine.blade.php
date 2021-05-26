@@ -47,11 +47,19 @@
 							<div class="d-flex align-items-center justify-content-center text-center">
 								<ul style="list-style-type: none !important;">
 									<li><h2>COVID-19 Vaccine Certificate</h2></li>
-									<li>You currently do not have a COVID-19 vaccine certificate</li>
+									@if(Auth::user()->certificate == NULL)
+										<li>You currently do not have a COVID-19 vaccine certificate</li>
+									@elseif(Auth::user()->certificate != NULL && Auth::user()->vaccinated == 0)
+										<li>Your report is pending approval</li>
+									@elseif(Auth::user()->certificate != NULL && Auth::user()->vaccinated == 1)
+										<li>Vacination Status Approved</li>
+									@endif
 								</ul>
 							</div>
 							<div class="d-flex align-items-center justify-content-center mt-2">
-								<p><a href="{{route('vaccine.certificate')}}" class="btn btn-white py-3 px-4">More Info</a></p>
+								@if(Auth::user()->vaccinated != 1)
+									<p><a href="{{route('vaccine.certificate')}}" class="btn btn-white py-3 px-4">Upload</a></p>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -132,8 +140,8 @@
 							<h2 class="mb-4">This video describes how vaccines will be rolled out, and who they will go to first.</h2>
 						</div>
 					</div>
-					<div class="col-md-6 d-flex justify-content-center align-items-center" style="background-image: url(assets/images//about-1.jpg);">
-						<a href="https://vimeo.com/45830194" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
+					<div class="col-md-6 d-flex justify-content-center align-items-center" style="background-image: url(assets/images//vaccine_1.png);">
+						<a href="https://www.youtube.com/watch?v=jGeSm2-Qx4E" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
 							<span class="fa fa-play"></span>
 						</a>
 					</div>

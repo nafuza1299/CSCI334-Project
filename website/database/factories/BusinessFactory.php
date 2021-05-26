@@ -23,7 +23,7 @@ class BusinessFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company()." ".$this->faker->companySuffix()." ".$this->faker->randomNumber($nbDigits = NULL, $strict = false) ,
+            'name' => $this->faker->company()." ".$this->faker->companySuffix(),
             'username' => $this->faker->word."".$this->faker->randomLetter."".$this->faker->unique($reset = true)->numberBetween($min =1, $max = env('SEED_LIMIT')),
             'email' => $this->faker->safeEmail(),
             'email_verified_at' => now(),

@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <select class="form-control form-control-lg empty select-business" name=business required>
+                            <select class="form-control form-control-lg empty select-business" name="business_id" required>
                                 <option value="" selected disabled hidden>Select Health Organization</option>
                                 @foreach ($result as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>

@@ -15,7 +15,7 @@ class HealthStaff extends Model
     protected $fillable = [
         'user_id',
         'position',
-        'business',
+        'business_id',
         'health_org_email',
     ];
     protected $table = 'health_staffs';
