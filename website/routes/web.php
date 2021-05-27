@@ -62,7 +62,7 @@ Route::get('test-results', ['middleware' => 'auth', 'uses' => 'TestResultControl
 
 Route::get('/qr-code/check-in/{id}', 'QRCodeController@index')->name("qr-check-in");
 
-Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QrCodeController@store'])->name('qr-login');
+Route::post('/qr-code/success', ['middleware' => 'guest', 'uses' => 'QRCodeController@store'])->name('qr-login');
 
 Route::get('news', ['uses' => 'NewsController@index'])->name('news');
 
