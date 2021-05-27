@@ -23,7 +23,7 @@
 				</div>
                 <div class="col-md-12">
                     <div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width: 600px !important">
-                        <h3>Generate a <b>QR Code</b> for your business location</h3>
+                        <h3>Generate a <b>QR Code</b> for your organization location</h3>
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
                         <form method="POST" action="{{ route('generate.qr.code') }}">
@@ -32,13 +32,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <select class="form-control form-control-lg empty select-address" name="id" required>
-                                            <option value="" selected disabled hidden>Select Business Address</option>
+                                            <option value="" selected disabled hidden>Select Organization Address</option>
                                             @if(count($address) > 0)
                                                 @foreach ($address as $data)
                                                     <option value="{{$data->id}}">{{$data->address}}</option>
                                                 @endforeach
                                             @else
-                                                <option value="redirect" href="{{route('business.profile')}}">Register Business Address</option>
+                                                <option value="redirect" href="{{route('business.profile')}}">Register Organization Address</option>
                                             @endif
                                         </select>
                                         <!-- <x-input id="username" class="form-control" type="text" name="username" :value="old('username')" required placeholder="Username" autofocus/> -->

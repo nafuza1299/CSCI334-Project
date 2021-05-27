@@ -20,7 +20,7 @@
 				@if(Auth::guard('business')->user()->verified == 0)
 				<div class="col-md-12">
 					<div class="container block-7" style="background-color:#FFF; border: 1px solid black !important; max-width : 600px !important ">
-						<h3>Register your Business as COVID-19 Safe</h3>
+						<h3>Register your organization as COVID-19 Safe</h3>
 						<x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red;" />
 						<form method="POST" action="{{ route('business.upload.certificate') }}" id="certificate-upload" enctype="multipart/form-data">
 							@csrf
